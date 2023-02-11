@@ -28,5 +28,5 @@ pg 32 Fatigue and wounds. BCS modifiers will automatically be applied
 
 Supernatural Beings Sheet
 
-A Magic School skill is required to calculate the spell complexity bonus. This often missing in the Book 2 Rulebook  and published scenarios the GM will need to create a new skill of at least the high  knowledge required for the spells listed for the being. As a score is needed to calculate the complexity it will be generated as raw BCS*5 unless the raw BCS is 19 in which case the score will set to 100, 
+A Magic School skill is required to calculate the spell complexity bonus. This often missing in the Book 2 Rulebook  and published scenarios the GM will need to create a new skill of at least the highest  knowledge required for the spells listed for the being. As a score is needed to calculate the complexity it will be generated as raw BCS*5 unless the raw BCS is 19 in which case the score will set to 100, 
 The level of Supernatural Being is assumed as permanent Spirt Rank / 2
