@@ -1,0 +1,20 @@
+<rolltemplate class="sheet-rolltemplate-roll">
+    <br />
+    <br />
+    <div><b>{{name}}</b></div>
+    <div>rolls</div>
+    <div>{{Skill}}</div>
+    <div>Action Total: {{ActionTotal}}</div>
+    {{#rollTotal() ActionTotal crit}}
+    <div class="sheet-special">Critical Success</div>
+    {{/rollTotal() ActionTotal crit}}
+    {{#rollTotal() ActionTotal fumble1}}
+    <div class="sheet-special">Break Weapon</div>
+    {{/rollTotal() ActionTotal fumble1}}
+    {{#rollTotal() ActionTotal fumble2}}
+    <div class="sheet-special">Drop Weapon</div>
+    {{/rollTotal() ActionTotal fumble2}}
+    {{#rollTotal() ActionTotal fumble3}}
+    <div class="sheet-special">Loose Next Attack</div>
+    {{/rollTotal() ActionTotal fumble3}}
+ </rolltemplate>
