@@ -1,0 +1,116 @@
+input(type='checkbox' style='display:none' name='attr_show_npc' value='1')
+input(type='number' style='display:none' name='attr_setup_done' value='0')
+input.sheet-hideIt(type='text' name='attr_targetselect' value='?{Target Speed|1}')
+input(type='text' style='display:none' name='attr_show_npc' value='1')
+// - start pc sheet
+.sheet-pc.sheet-showIt(data-tab='sheet-pc')
+  div
+    button.menu(type='action' name='act_character') Character
+    button.menu(type='action' name='act_magictab') Magic
+    button#configButton.menu(type='action' name='act_configuration') y
+  input.sheet-tabstoggle(type='hidden' name='attr_sheetMenu' value='character')
+  // - Start Character
+  include src/pug/character.pug
+  // -- End character -
+  // start magictab  -
+  .sheet-magictab
+    span("vech")
+  // End magictab  -
+  // start config  -
+  .sheet-config
+    .sheet-mainWrapper
+      .sheet-SheetTitle(data-i18n='pc-configuration') PC CONFIGURATION
+      div
+        div
+          // <span style="position: relative;left: 20px;top: 18px;color: #ccd17d;display:inline;z-index: 99;">&#x029BF</span>
+          input#shownpc1.sheet-typeRadio(type='radio' checked='' name='attr_show_npc' value='1')
+          label.sheet-choiceLbl(for='shownpc1')
+            span.sheet-detailsLabel(data-tab='showPC' data-i18n='show-PC') Show PC
+        div
+          input#shownpc2.sheet-typeRadio(type='radio' name='attr_show_npc' value='2')
+          label.sheet-choiceLbl(for='shownpc2')
+            span.sheet-detailsLabel(data-tab='showNPC' data-i18n='show-NPC') Show NPC Sheet
+        div
+          input#shownpc3.sheet-typeRadio(type='radio' name='attr_show_npc' value='3')
+          label.sheet-choiceLbl(for='shownpc3')
+            span.sheet-detailsLabel(data-tab='showSQUAD' data-i18n='show-squad') Show Squad Sheet
+      .sheet-configItem
+        div
+          label.switch
+            input.switch-input(type='checkbox' name='attr_targetselectswitch' value='1')
+            span.switch-label(data-on='On' data-off='Off')
+            span.switch-handle
+        div
+          span.sheet-detailsLabel(data-i18n='')
+  // end config  -
+// - end pc sheet
+// - start npc sheet
+.sheet-npc(data-tab='sheet-npc')
+  div
+    button.menu(type='action' name='act_npc2') NPC
+    button#configButton.menu(type='action' name='act_configuration2') y
+  input.sheet-tabstoggle(type='hidden' name='attr_sheetMenu2' value='npc2')
+  .sheet-npc2
+  .sheet-config2
+    .sheet-mainWrapper
+      .sheet-SheetTitle(data-i18n='npc-configuration') NPC CONFIGURATION
+      div
+        div
+          input#shownpc4.sheet-typeRadio(type='radio' checked='' name='attr_show_npc' value='1')
+          label.sheet-choiceLbl(for='shownpc4')
+            span.sheet-detailsLabel(data-tab='showPC' data-i18n='show-PC') Show PC
+        div
+          input#shownpc5.sheet-typeRadio(type='radio' name='attr_show_npc' value='2')
+          label.sheet-choiceLbl(for='shownpc5')
+            span.sheet-detailsLabel(data-tab='showNPC' data-i18n='show-NPC') Show NPC Sheet
+        div
+          input#shownpc6.sheet-typeRadio(type='radio' name='attr_show_npc' value='3')
+          label.sheet-choiceLbl(for='shownpc6')
+            span.sheet-detailsLabel(data-tab='showSQUAD' data-i18n='show-squad') Show Squad Sheet
+      .sheet-configItem
+        div
+          label.switch
+            input.switch-input(type='checkbox' name='attr_targetselectswitch' value='1')
+            span.switch-label(data-on='On' data-off='Off')
+            span.switch-handle
+        div
+          span.sheet-detailsLabel(data-i18n='')
+// - end npc sheet
+// - start squad sheet
+.sheet-squad(data-tab='sheet-squad')
+  div
+    button.menu(type='action' name='act_npc2') SQUAD
+    button#configButton.menu(type='action' name='act_configuration2') y
+  input.sheet-tabstoggle(type='hidden' name='attr_sheetMenu2' value='npc2')
+  .sheet-npc2
+  .sheet-config2
+    .sheet-mainWrapper
+      .sheet-SheetTitle(data-i18n='squad-configuration') SQUAD CONFIGURATION
+      div
+        div
+          input#shownpc7.sheet-typeRadio(type='radio' checked='' name='attr_show_npc' value='1')
+          label.sheet-choiceLbl(for='shownpc7')
+            span.sheet-detailsLabel(data-tab='showPC' data-i18n='show-PC') Show PC
+        div
+          input#shownpc8.sheet-typeRadio(type='radio' name='attr_show_npc' value='2')
+          label.sheet-choiceLbl(for='shownpc8')
+            span.sheet-detailsLabel(data-tab='showNPC' data-i18n='show-NPC') Show NPC Sheet
+        div
+          input#shownpc9.sheet-typeRadio(type='radio' name='attr_show_npc' value='3')
+          label.sheet-choiceLbl(for='shownpc9')
+            span.sheet-detailsLabel(data-tab='showSQUAD' data-i18n='show-squad') Show Squad Sheet
+      .sheet-configItem
+        div
+          label.switch
+            input.switch-input(type='checkbox' name='attr_targetselectswitch' value='1')
+            span.switch-label(data-on='On' data-off='Off')
+            span.switch-handle
+        div
+          span.sheet-detailsLabel(data-i18n='')
+// - end squad sheet
+
+//- INCLUDES
+  =============================
+include src/js/_workers.js  
+include src/pug/_mixins.pug 
+include _roll-templates.html

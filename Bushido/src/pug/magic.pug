@@ -1,0 +1,269 @@
+include _mixins
+.sheet-magictab
+    div
+        .sheet-hvyBorder
+            .sheet-pow-magicBCS-grid
+                .sheet-borderRight        
+                    +inputLabel("LEVEL")
+                .sheet-borderRight
+                    +textInputWithValue("level","1")(readonly="readonly" class="sheet-centerIt")
+                .sheet-borderRight        
+                    +inputLabel("magic-resist")
+                .sheet-borderRight
+                    +textInputWithValue("magic_resist_mod",0)(class="sheet-centerIt")                
+                .sheet-borderRight
+                    +textInputWithValue("magic_resistance",0)(class="sheet-centerIt" readonly="readonly")                                
+                .sheet-borderRight            
+                    +inputLabel("Power")
+                .sheet-borderRight   
+                    +inputLabel("Perm")        
+                .sheet-borderRight    
+                    +textInput("pow_perm")(class="sheet-centerIt" readonly="readonly")            
+                .sheet-borderRight    
+                    +inputLabel("Curr")        
+                .sheet-borderRight   
+                    +textInput("pow_cur")(class="sheet-centerIt")
+                .sheet-borderRight.sheet-borderRight.sheet-borderLeft    
+                    +inputLabel("magic_bcs","MAGIC BCS")
+                .sheet-borderRight.sheet-borderLeft
+                    +actionTexTButton("magic")              
+                        span(name='attr_magicBCS') 
+                .sheet-borderRight        
+                    +inputLabel("Mod")                  
+                .sheet-borderRight
+                    +textInputWithValue("magicMod",0)(class="sheet-centerIt")
+                div 
+                    +hiddenInputWithValue("profession")(class="sheet-rel-pow-hider")                   
+                    div.sheet-rel-pow
+                        .sheet-rel-pow-grid   
+                            .sheet-borderRight        
+                                +inputLabel("religion-pow")
+                            .sheet-borderRight
+                                +textInputWithValue("relgious_pow_mod",0)(class="sheet-centerIt")                  
+                            .sheet-borderRight
+                                +textInputWithValue("religious_pow",0)(class="sheet-centerIt" readonly="readonly")
+                    +hiddenInputWithValue("profession")(class="sheet-backlash-hider")                   
+                    .sheet-backlash
+                        +textRollButton("Backlash","&{template:backlash} {{name=@{character_name}}} {{roll=[[1D20]]}} {{hours=[[1D3]]}}")    
+                        //+actionSTButton("backlash","backlash-effect")(class="sheet-borderRight")                    
+
+        br
+        .sheet-magic-grid
+            .sheet-basic-powerz-ki-powerz
+                .sheet-hvyBorder.sheet-basic-powers-wrapper
+                    .sheet-basic-powers-grid
+                        .sheet-borderBott.sheet-borderRight  
+                            +inputLabel("Basic Power")(class="sheet-gridName")
+                        .sheet-borderBott.sheet-borderRight.sheet-borderLeft
+                            +inputLabel("Range")(class="sheet-basic-pow-range")
+                        .sheet-borderBott.sheet-borderRight.sheet-borderRight.sheet-borderLeft  
+                            +inputLabel("Cost")
+                        .sheet-borderBott.sheet-borderRight.sheet-borderRight   
+                    fieldset.repeating_bscpowers
+                        .sheet-basic-powers-grid
+                            .sheet-borderBott.sheet-borderRight
+                                +textInput("basic_power")
+                            .sheet-borderBott.sheet-borderRight    
+                                .sheet-basic-powers-range-grid
+                                    +select("range")
+                                        +option2("")(selected="selected")                                           
+                                        - var range_list = ["Self","Touch","Very Short","Short","Medium","Long","Very Long","Special"]
+                                        each range in range_list
+                                            +option2(range)
+                                    | (  
+                                    +textInputWithValue("range_value")(value="" readonly="readonly") 
+                                    | )
+                            .sheet-borderBott.sheet-borderRight
+                                +select("cost")
+                                    +option2("")(selected="selected")                                           
+                                    - var cost_list = ["0","1","10-LoG","KN/10","LoC","LoG","LoS","Rank of Kami","Varies"]
+                                    each cost in cost_list
+                                        +option2(cost)
+                            .sheet-borderRight.sheet-borderBott                          
+                                label.sheet-hideCheckbox(title='Details' id="details" data-i18n-title='Details')
+                                    +checkboxInputWithValue("toggle-section","1")(style="display:none"  checked="checked")
+                                    | y 
+                        input.sheet-section-toggle(type='hidden' value="1" name='attr_toggle-section')
+                        .sheet-section-details
+                            +textAreaExpanding("basic_powers_details")(id="basic_powers_details")
+                            //.sheet-auto-expand
+                            //    span(name="attr_basic_powers_details")
+                            //    textarea(name="attr_basic_powers_details" id="basic_powers_details")
+                            //span(contenteditable style="background-color:transaprent"  role="textbox" name="attr_basic_powers_details" id="basic_powers_details" )
+                //- end of wrapper
+                br
+                .sheet-ki-wrapper.sheet-hvyBorder
+                    .sheet-ki-powers-grid2
+                        .sheet-borderRight.sheet-borderBott
+                            +inputLabel("KI POWER")(class="sheet-gridName")
+                        .sheet-borderRight.sheet-borderBott.sheet-capabilityGridF
+                        .sheet-borderBott
+                    fieldset.repeating_kipowers             
+                        .sheet-ki-powers-grid2
+                            .sheet-borderRight.sheet-borderBott
+                                +textInput("ki_power_name")(class="sheet-gridName")  
+                            .sheet-borderRight.sheet-borderBott
+                                label.sheet-hideCheckbox(title='Details' data-i18n-title='Details')
+                                    +checkboxInputWithValue("toggle-section","1")(style="display:none")
+                                    | y
+                        input.sheet-section-toggle(type='hidden' value="1" name='attr_toggle-section')
+                        .sheet-section-details
+                            +textArea("ki_power_detials")                              
+
+            .sheet-spells-finearts
+
+                +hiddenInputWithValue("profession")(class="sheet-sacred-text-hider")
+                .sheet-hvyBorder.sheet-sacred-text-wrapper
+                    .sheet-sacred-text-grid
+                        .sheet-borderRight.sheet-borderBott
+                            +inputLabel("sacred_text")(class="sheet-gridName")
+                        .sheet-borderRight.sheet-borderBott.sheet-capabilityGridF
+                        .sheet-borderBott
+                    fieldset.repeating_sacredtexts             
+                        .sheet-sacred-text-grid
+                            .sheet-borderRight.sheet-borderBott
+                                +textInput("sacred_text_name")(class="sheet-gridName")  
+                            .sheet-borderRight.sheet-borderBott
+                                label.sheet-hideCheckbox(title='Details' data-i18n-title='Details')
+                                    +checkboxInputWithValue("toggle-section","1")(style="display:none")
+                                    | y
+                        input.sheet-section-toggle(type='hidden' value="1" name='attr_toggle-section')
+                        .sheet-section-details
+                            +textArea("sacred_text_detials")
+                +hiddenInputWithValue("profession")(class="sheet-spells-hider")           
+                .sheet-hvyBorder.sheet-spellx
+                    .sheet-spells-grid
+                        .sheet-borderBott.sheet-borderRight  
+                            +inputLabel("spell")(class="sheet-gridName")                                                     
+                        .sheet-borderBott.sheet-borderRight  
+                            +inputLabel("kn")
+                        .sheet-borderBott.sheet-borderRight.sheet-borderLeft
+                            +inputLabel("Range")                                           
+                        .sheet-borderBott.sheet-borderRight.sheet-borderRight.sheet-borderLeft  
+                            +inputLabel("Cost")
+                        .sheet-borderBott.sheet-borderRight.sheet-borderRight.sheet-borderLeft  
+                            +inputLabel("Duration")    
+                        .sheet-borderBott.sheet-borderRight.sheet-borderRight
+                        .sheet-borderBott.sheet-borderRight.sheet-borderRight
+                    fieldset.repeating_spells
+                        .sheet-spells-grid
+                            .sheet-borderBott.sheet-borderRight
+                                +actionTexTButton("spell")                
+                                    span(name='attr_spell' class="sheet-gridName")                                                   
+                            .sheet-borderBott.sheet-borderRight
+                                +textInputWithValue("knowledge","0")(class="sheet-centerIt") 
+                            .sheet-borderBott.sheet-borderRight
+                                .sheet-basic-powers-range-grid
+                                    +select("range")
+                                        +option2("")(selected="selected")                                           
+                                        - var range_list = ["Self","Touch","Very Short","Short","Medium","Long","Very Long","Special"]
+                                        each range in range_list
+                                            +option2(range)
+                                    | (  
+                                    +textInputWithValue("range_value")(value="" readonly="readonly") 
+                                    | )
+                            .sheet-borderBott.sheet-borderRight
+                                +select("cost")
+                                    +option2("")(selected="selected")                                           
+                                    - var cost_list = ["1","2","3","4","5","6","10","12","20","1xLoS","2xLoS","3xLoS","4xLoS","5xLoS","6xLoS","7xLoS","10xLoS","15xLoS","3 per Dart","4 per arrow","Special","Varies"]
+                                    each cost in cost_list
+                                        +option2(cost)
+                            .sheet-borderBott.sheet-borderRight
+                                div
+                                    +select("duration")
+                                        - var duration_list = ["-","10  minutes","10 DT x LoC","10 minutes x LoC.","1D10 DT + LoC","1D10 DT per LoC.","1D6 DT","1D6 DT per LoC","1D6+LoS in DT","20 minutes x LoC","2D6 + LoC DT","Special","Variable"]
+                                        each duration in duration_list
+                                            +option2(duration)
+                            .sheet-borderRight.sheet-borderBott                          
+                                label.sheet-hideCheckbox(title='Details' id="details" data-i18n-title='Details')
+                                    +checkboxInputWithValue("toggle-section","1")(style="display:none"  checked="checked")
+                                    | y
+                        input.sheet-section-toggle(type='hidden' value="1" name='attr_toggle-section')
+                        .sheet-section-details
+                            .sheet-spell-name-skill-used-grid
+                                .sheet-borderRight.sheet-borderBott 
+                                    +inputLabel("Spell Name")
+                                .sheet-borderBott 
+                                    +textInput("spell")                    
+                                .sheet-borderBott.sheet-borderRight
+                                    +inputLabel("Skill-Used")
+                                .sheet-borderBott
+                                    +textInput("skill_used")
+                                    +hiddenInputWithValue("skills_used_rowid","0")
+                                //.sheet-borderRight.sheet-borderBott 
+                                //    +inputLabel("die-roll")
+                                //.sheet-borderBott 
+                                //    +textInput("die_roll")                                                                               
+                            div          
+                                textarea(name="attr_spell_details" id="basic_powers_details")                                          
+                br
+                .sheet-hvyBorder.sheet-magictab-finearts-wrapper
+                  .sheet-bugeiGrid
+                    .sheet-borderRight.sheet-borderBott
+                        +inputLabel("Fine-Art")
+                    .sheet-borderRight.sheet-borderBott
+                        +inputLabel("BN")
+                    .sheet-borderRight.sheet-borderBott
+                        +inputLabel("FIS")
+                    .sheet-borderRight.sheet-borderBott
+                        +inputLabel("SCR")
+                    .sheet-borderRight.sheet-borderBott
+                        +inputLabel("RAW")                
+                    .sheet-borderRight.sheet-borderBott
+                        +inputLabel("BASE")
+                    .sheet-borderRight.sheet-borderBott                
+                        +inputLabel("Mod")            
+                    .sheet-borderRight.sheet-borderBott
+                        +inputLabel("AVG")
+                    .sheet-borderBott
+                  fieldset.repeating_finearts
+                    input.sheet-section-toggle(type='hidden' value="1" name='attr_toggle-section')
+                    .sheet-section-min
+                      .sheet-bugeiGrid
+                        .sheet-borderRight.sheet-borderBott
+                          +textAttributeSpan("skill_name")(class="sheet-gridName")  
+                        .sheet-borderRight.sheet-borderBott.sheet-centerIt
+                          input(type='checkbox' value='1' name='attr_bonus')
+                        .sheet-borderRight.sheet-borderBott.sheet-centerIt
+                          input(type='checkbox' value='1' name='attr_fis')
+                        .sheet-borderRight.sheet-borderBott
+                          input.sheet-text_input(type='text' value='0' name='attr_score')
+                        .sheet-borderRight.sheet-borderBott
+                          +actionTexTButton("raw")
+                            +hiddenInputWithValue("raw_bcs","0")
+                            span(name='attr_raw_bcs')
+                        .sheet-borderRight.sheet-borderBott
+                          +actionTexTButton("base")
+                            +hiddenInputWithValue("base_bcs","0")
+                            span(name='attr_base_bcs')
+                        .sheet-borderRight.sheet-borderBott
+                          input.sheet-text_input(type='text' value='0' name='attr_mod')                  
+                        .sheet-borderRight.sheet-borderBott.sheet-useAvg
+                          //-input.sheet-text_input(type='text' value='0' name='attr_AVG')
+                          input(type='checkbox' value='1' name='attr_useAvg')
+                        .sheet-borderBott
+                          label.sheet-hideCheckbox(title='Details' data-i18n-title='Details')
+                            input(type='checkbox' style='display:none' value='1' name='attr_toggle-section')
+                            | y
+                    .sheet-section-details
+                      .sheet-skills-skill-name.sheet-borderBott
+                        .sheet-borderRight 
+                          +inputLabel("Name")
+                        .sheet-borderRight           
+                          +textInput("skill_name")(list="Fine_arts" class="sheet-gridName")              
+                        div
+                          label.sheet-hideCheckbox(title='Details' data-i18n-title='Details')
+                            input(type='checkbox' style='display:none' value='1' name='attr_toggle-section')
+                            | y
+                      .sheet-max1frNoGap
+                        .sheet-borderRight.sheet-borderBott 
+                            +inputLabel("Skill ID")
+                        .sheet-borderBott 
+                            +textInput("skill_id")(readonly="readonly")                          
+                      .sheet-skills-avgskill-name.sheet-borderBott
+                        .sheet-borderRight  
+                          +inputLabel("Avg-Skill")
+                        .sheet-borderRight      
+                          +textInput("avg_skill_used")(list="avg_skills_used" class="sheet-gridName")
+                          +hiddenInputWithValue("avg_skill_used_rowid","0")
+

@@ -1,0 +1,1278 @@
+include _mixins
+-  var Form_lists = [["Bash","Butt Stroke","Butt Stroke - S S","Disarm","Disarm - Break","Entangle","Grapple","Second Strike","Strike","Throw - Takedown","Throw - Toss","Thrust","Trip"],["Strike","Grapple","Throw - Takedown","Throw - Toss"],["Strike","Bash"],["Strike","Butt Stroke","Butt Stroke - S S","Thrust"],["Strike","Butt Stroke","Butt Stroke - S S","Disarm","Disarm - Break"],["Strike","Disarm","Disarm - Break"],["Strike","Disarm","Disarm - Break","Thrust"],["Strike","Entangle"],["Strike","Entangle","Trip"],["Strike","Second Strike"],["Strike","Throw - Takedown","Throw - Toss"],["Strike","Thrust"],["Strike","Thrust","Butt Stroke","Butt Stroke - S S"],["Strike"],["Strike","Grapple","Throw - Takedown","Throw - Toss","Second Strike"],["Grapple","Throw - Takedown","Throw - Toss","Trip"]]
+.sheet-character
+    +hiddenInputWithValue("str_spell_mod","0")
+    +hiddenInputWithValue("str_st_spell_mod","0")
+    +hiddenInputWithValue("unarmd_damage_spell_mod","0")
+    +hiddenInputWithValue("bap_spell_mod","0")
+    +hiddenInputWithValue("dft_spell_mod","0")
+    +hiddenInputWithValue("dft_st_spell_mod","0")
+    +hiddenInputWithValue("damage_mod_spell_mod","0")
+    +hiddenInputWithValue("spd_spell_mod","0")
+    +hiddenInputWithValue("spd_st_spell_mod","0") 
+    +hiddenInputWithValue("bma_spell_mod","0")
+    +hiddenInputWithValue("hlh_spell_mod","0") 
+    +hiddenInputWithValue("hlh_st_spell_mod","0")
+    +hiddenInputWithValue("mna_spell_mod","0")
+    +hiddenInputWithValue("wit_spell_mod","0")
+    +hiddenInputWithValue("wit_st_spell_mod","0")
+    +hiddenInputWithValue("zanshin_spell_mod","0")
+    +hiddenInputWithValue("wil_st_spell_mod","0") 
+    +hiddenInputWithValue("enc_pen","0")
+    +hiddenInputWithValue("enc_reduction","1")
+    +hiddenInputWithValue("shugenja_wound_penalty","0")   
+    +hiddenInputWithValue("shugenja_mental_loss_mod","0")
+    .sheet-hvyBorder
+      .sheet-headerGrid
+        .sheet-borderRight.sheet-borderBott
+          +inputLabel("Name")        
+        .sheet-borderRight.sheet-borderBott
+          +textInput("character_name")        
+        .sheet-borderRight
+          +inputLabel("PROFESSION")
+        .sheet-borderRight    
+          +select("profession")
+            +optionSelected("Bushi") 
+            +option2("Budoka")
+            +option4('Gakusho (Buddhist)','Gakusho-Buddhist')
+            +option4('Gakusho (Shintoist)','Gakusho-Shintoist')                 
+            +option2('Shugenja')
+            +option2('Ninja')
+            +option2('Yakuza')
+        .sheet-borderRight
+          +inputLabel("ON")(class="sheet-centerIt")
+        .sheet-borderRight
+          +textInput("on")(class="sheet-centerIt")         
+        .sheet-borderRight
+          //+select("XPType")(class="sheet-xpType")
+          //  +optionSelected('BUDO')(class="sheet-xpType")
+          //  +option2('SHUGENDO')(class="sheet-xpType")
+          +hiddenInputWithValue("XPType","BUDO" )
+          +textAttributeSpan("XPType")(class="sheet-labels sheet-centerIt")               
+        .sheet-borderRight
+          +textInputWithValue("XP","0")(class="sheet-centerIt")
+        .sheet-borderRight
+          +inputLabel("LEVEL")(class="sheet-centerIt")
+        div           
+          +textInputWithValue("level","1")(readonly="readonly" class="sheet-centerIt")
+    br
+    .sheet-statusPowKiGroup
+      .sheet-statusPowKi
+        .sheet-statusPowKiGrid
+          .sheet-borderRight.sheet-borderBott
+            +inputLabel("Current Caste")
+          .sheet-borderBott.sheet-casteRank
+            +textInput("current_caste")
+          .sheet-borderRight.sheet-borderBott
+            +inputLabel("Birth Caste")
+          .sheet-borderBott.sheet-casteRank
+            +select('birth_caste')
+              option(value="Samurai-in-service" data-i18n="Buke-Samurai-in-service") Buke:Samurai in service
+              option(value="Samurai" data-i18n="Buke-Samurai") Buke:Samurai
+              option(value="Ronin" data-i18n="Buke-Ronin") Buke:Ronin
+              option(value="Famer" selected="selected" data-i18n="Heimin-Farmer") Heimin:Famer
+              option(value="Artisan" data-i18n="Heimen-Artisan") Heimen:Artisan
+              option(value="Merchant" data-i18n="Heimin-Merchant") Heimin:Merchant
+              option(value="Ninja" data-i18n="Eta-Ninja") Eta:Ninja
+          .sheet-borderRight.sheet-borderBott
+            +inputLabel("Rank")
+          .sheet-borderBott.sheet-casteRank
+            +select('rank')
+              option(value="high" data-i18n="high") High
+              option(value="middle" data-i18n="middle") Middle
+              option(value="low" data-i18n="low") Low            
+          .sheet-borderRight.sheet-borderBott
+            +inputLabel("Status")
+          .sheet-borderBott.sheet-casteRank
+            +textInputWithValue("personal_status","0")(readonly="readonly")          
+          .sheet-borderRight.sheet-borderBott
+          .sheet-borderRight.sheet-borderBott.sheet-centerIt
+            +inputLabel("Permanent")
+          .sheet-borderBott.sheet-centerIt
+            +inputLabel("Current")
+          .sheet-borderRight.sheet-borderBott
+            +inputLabel("Ki")
+          .sheet-borderRight.sheet-borderBott
+            +textInputWithValue("ki_perm","0")
+          .sheet-borderBott
+            +textInputWithValue("ki_cur","0")
+          .sheet-borderRight
+            +inputLabel("Power")
+          .sheet-borderRight
+            .sheet-permPowGrid
+              .sheet-borderRight
+                +textInput("wil_perm")(readonly="readonly" data-i18n-title="Base Power" title="Base Power" )
+              .sheet-borderRight.sheet-labels  &#43;
+              .sheet-borderRight
+                +textInputWithValue("powerpoints_mod",0)(data-i18n-title="Power Points Mod" title="Powr Points Mod" )
+              .sheet-borderRight.sheet-labels  &#61;
+              .sheet-borderRight 
+                +textInputWithValue("pow_perm","0")(readonly="readonly" data-i18n-title="Total Power Points" title="Total Power Points"  )
+          div
+            +textInputWithValue("pow_cur","0")
+      .sheet-Group
+        .sheet-GroupGrid
+          .sheet-borderRight.sheet-borderBott
+            +inputLabel("Group")(class="sheet-gridName")
+          .sheet-borderRight.sheet-borderBott.sheet-centerIt
+            +inputLabel("Factor")            
+          .sheet-borderRight.sheet-borderBott.sheet-centerIt
+            +inputLabel("Standing")
+          .sheet-borderRight.sheet-borderBott.sheet-centerIt
+            +inputLabel("prsn")(data-i18n-title="Personal" title="Personal")
+          .sheet-borderRight.sheet-borderBott.sheet-centerIt
+            +inputLabel("bns")
+          .sheet-borderRight.sheet-borderBott.sheet-centerIt
+            +inputLabel("SCR")
+          .sheet-borderRight.sheet-borderBott.sheet-centerIt
+            +inputLabel("BCS")
+          .sheet-borderRight.sheet-borderBott.sheet-centerIt
+            +inputLabel("Mod")            
+          .sheet-borderRight.sheet-borderBott.sheet-centerIt
+            +inputLabel("SCTY")(data-i18n-title="society" title="Society")
+          .sheet-borderRight.sheet-borderBott.sheet-centerIt
+            +inputLabel("BCS")
+          .sheet-borderRight.sheet-borderBott.sheet-centerIt
+            +inputLabel("Mod")                                               
+        .sheet-groupWrapper
+          fieldset.repeating_groups
+            .sheet-GroupGrid
+              .sheet-borderBott.sheet-borderRight
+                +textInput("group")(class="sheet-gridName")
+              .sheet-borderBott.sheet-borderRight
+                +textInputValueTitle("factor","0.0","Status Factor")                   
+              .sheet-borderBott.sheet-borderRight
+                +select('standing')               
+                  option(selected='' value='member' data-i18n='member') Member
+                  option(value="smember" data-i18n="smember") Senior Member
+                  option(value="supervisor" data-i18n="supervisor") Supervisor
+                  option(value="manager" data-i18n="manager") Manager
+                  option(value="advisor" data-i18n="advisor") Advisor
+                  option(value="elder" data-i18n="elder") Elder
+                  option(value="head" data-i18n="head") Head
+              .sheet-borderBott.sheet-borderRight
+                +textInputWithValue("personal","0")(readonly="readonly")
+                //+hiddenInputWithValue("personal","0" )
+                //+textAttributeSpan("personal")(class="sheet-labels")
+              .sheet-borderBott.sheet-borderRight
+                +textInputWithValue("bonus","0")
+              .sheet-borderBott.sheet-borderRight
+                +textInputWithValue("score","0")(readonly="readonly")
+              .sheet-borderBott.sheet-borderRight
+                +actionTexTButton("base")
+                  +hiddenInputWithValue("bcs","0")
+                  span(name='attr_bcs')               
+                    //+textInputWithValue("bcs","0")
+              .sheet-borderBott.sheet-borderRight
+                +textInputWithValue("mod","0")                
+              .sheet-borderBott.sheet-borderRight
+                +textInputWithValue("society","0")(readonly="readonly")
+              .sheet-borderBott.sheet-borderRight
+                +actionTexTButton("society-base")
+                  +hiddenInputWithValue("society_bcs","0")
+                  span(name='attr_society_bcs')               
+                  //+textInputWithValue("society_bcs","0")
+              .sheet-borderBott.sheet-borderRight
+                +textInputWithValue("society_mod","0")                 
+    br
+    .sheet-baseAttribGrade
+      .sheet-borderRight.sheet-borderBott
+        +inputLabel("Attributes")
+      .sheet-borderRight.sheet-borderBott.sheet-centerIt
+        +inputLabel("Perm")
+      .sheet-borderRight.sheet-borderBott.sheet-centerIt
+        +inputLabel("Mod")        
+      .sheet-borderRight.sheet-borderBott.sheet-centerIt
+        +inputLabel("Curr")
+      .sheet-borderRight.sheet-borderBott.sheet-centerIt
+        +inputLabel("ST")
+      .sheet-borderhvyRight.sheet-borderBott.sheet-centerIt
+        +inputLabel("Mod")        
+      .sheet-borderRight.sheet-borderBott
+        +inputLabel("Ability")
+      .sheet-borderRight.sheet-borderBott.sheet-centerIt
+        +inputLabel("Focus")
+      .sheet-borderRight.sheet-borderBott.sheet-centerIt &nbsp;
+      .sheet-borderRight.sheet-borderBott
+        +inputLabel("Ability")
+      .sheet-borderRight.sheet-borderBott.centerIt
+        +inputLabel("Focus")
+      .sheet-borderBott.sheet-centerIt &nbsp;
+      .sheet-borderRight.sheet-borderBott
+        +actionSTButton("StrengthST","Strength")
+      .sheet-borderRight.sheet-borderBott
+        +textInputWithValue("str_perm","0")
+      .sheet-borderRight.sheet-borderBott.sheet-borderRight
+        +textInputWithValue("str_mod","0")    
+      .sheet-borderRight.sheet-borderBott
+        +textInputWithValue("str_cur","0")(readonly="readonly")
+      .sheet-borderRight.sheet-borderBott.sheet-borderRight.sheet-centerIt
+        +actionTexTButton("str_st")(class="saving_throw")
+          span(name='attr_str_base_st') 
+          //+textInputWithValue("str_base_st","0")(readonly="readonly")
+      .sheet-borderRight.sheet-borderBott.sheet-borderhvyRight.sheet-centerIt        
+        +textInputWithValue("str_st_mod","0")
+      .sheet-borderRight.sheet-borderBott
+        +inputLabel("Unarmed-Combat-Damage")
+      .sheet-borderRight.sheet-borderBott
+        +textInputWithValue("unarmd_damage_focus","0")
+      .sheet-borderRight.sheet-borderBott
+        +textInputWithValue("unarmd_damage","0")(readonly="readonly")
+      .sheet-borderRight.sheet-borderBott
+        +inputLabel("Base-Action-Phase")
+      .sheet-borderRight.sheet-borderBott
+        +textInputWithValue("bap_focus","0")
+      .sheet-borderBott
+        +textInputWithValue("bap","0")(readonly="readonly") 
+      .sheet-borderRight.sheet-borderBott
+        +actionSTButton("deftness_st","Deftness")
+      .sheet-borderRight.sheet-borderBott
+        +textInputWithValue("dft_perm","0")
+      .sheet-borderRight.sheet-borderBott.sheet-borderRight
+        +textInputWithValue("dft_mod","0")
+      .sheet-borderRight.sheet-borderBott
+        +textInputWithValue("dft_cur","0")(readonly="readonly")        
+      .sheet-borderRight.sheet-borderBott.sheet-borderRight.sheet-centerIt
+        +actionTexTButton("dft_st")(class="saving_throw")
+          span(name='attr_dft_base_st')       
+          //+textInputWithValue("dft_base_st","0")(readonly="readonly")
+      .sheet-borderRight.sheet-borderBott.sheet-borderhvyRight.sheet-centerIt        
+        +textInputWithValue("dft_st_mod","0")
+      .sheet-borderRight.sheet-borderBott
+        +inputLabel("Damage-Modifier")
+      .sheet-borderRight.sheet-borderBott
+        +textInputWithValue("damage_mod_focus","0")
+      .sheet-borderRight.sheet-borderBott
+        +textInputWithValue("damage_mod","0")(readonly="readonly")
+      .sheet-borderRight.sheet-borderBott
+        +inputLabel("Primary-Action-Phases")
+      .sheet-fillIn.sheet-borderRight.sheet-borderBott
+      .sheet-borderBott
+        +textInputWithValue("pma","0")(readonly="readonly")
+      .sheet-borderRight.sheet-borderBott
+        +actionSTButton("speed_st","Speed")
+      .sheet-borderRight.sheet-borderBott
+        +textInputWithValue("spd_perm","0")
+      .sheet-borderRight.sheet-borderBott.sheet-borderRight
+        +textInputWithValue("spd_mod","0")      
+      .sheet-borderRight.sheet-borderBott
+        +textInputWithValue("spd_cur","0")(readonly="readonly")
+      .sheet-borderRight.sheet-borderBott.sheet-borderRight.sheet-centerIt
+        +actionTexTButton("spd_st")(class="saving_throw")
+          span(name='attr_spd_base_st')       
+          //+textInputWithValue("spd_base_st","0")(readonly="readonly")
+      .sheet-borderRight.sheet-borderBott.sheet-borderhvyRight.sheet-centerIt        
+        +textInputWithValue("spd_st_mod","0")
+      .sheet-borderRight.sheet-borderBott
+        +inputLabel("Base-Movement-Allowance") 
+      .sheet-borderRight.sheet-borderBott
+        +textInputWithValue("bma_focus","0")
+      .sheet-borderRight.sheet-borderBott
+       +textInputWithValue("bma","0")(readonly="readonly")
+      .sheet-borderRight.sheet-borderBott
+        +inputLabel("Secondary-Action-Phases")
+      .sheet-fillIn.sheet-borderRight.sheet-borderBott
+      .sheet-borderBott       
+        +textInputWithValue("sap","0")(readonly="readonly")
+      .sheet-borderRight.sheet-borderBott
+        +actionSTButton("health_st","Health")
+      .sheet-borderRight.sheet-borderBott
+       +textInputWithValue("hlh_perm","0")
+      .sheet-borderRight.sheet-borderBott.sheet-borderRight
+        +textInputWithValue("hlh_mod","0")                      
+      .sheet-borderRight.sheet-borderBott
+        +textInputWithValue("hlh_cur","0")(readonly="readonly")
+      .sheet-borderRight.sheet-borderBott.sheet-borderRight.sheet-centerIt
+        +actionTexTButton("hlh_st")(class="saving_throw")
+          span(name='attr_hlh_base_st')       
+          //+textInputWithValue("hlh_base_st","0")(readonly="readonly")
+      .sheet-borderRight.sheet-borderBott.sheet-borderhvyRight.sheet-centerIt        
+        +textInputWithValue("hlh_st_mod","0")
+      .sheet-borderBott.sheet-borderRight
+        +inputLabel("Learning-Rate")
+      .sheet-fillIn.sheet-borderRight.sheet-borderBott
+      .sheet-borderBott.sheet-borderRight
+        +textInputWithValue("learning_rate","0")(readonly="readonly")
+      .sheet-borderRight.sheet-borderBott
+        +inputLabel("Maximum-Number-of-Actions")
+      .sheet-borderRight.sheet-borderBott
+        +textInputWithValue("mna_focus","0")
+      .sheet-borderBott
+        +textInputWithValue("mna","0")(readonly="readonly")
+      .sheet-borderRight.sheet-borderBott
+        +actionSTButton("wit_st","Wit")
+      .sheet-borderRight.sheet-borderBott
+        +textInputWithValue("wit_perm","0")
+      .sheet-borderRight.sheet-borderBott.sheet-borderRight
+        +textInputWithValue("wit_mod","0")
+      .sheet-borderRight.sheet-borderBott
+        +textInputWithValue("wit_cur","0")(readonly="readonly")
+      .sheet-borderRight.sheet-borderBott.sheet-borderRight.sheet-centerIt
+        +actionTexTButton("wit_st")(class="saving_throw")
+          span(name='attr_wit_base_st')       
+          //+textInputWithValue("wit_base_st","0")(readonly="readonly")
+      .sheet-borderRight.sheet-borderBott.sheet-borderhvyRight.sheet-centerIt        
+        +textInputWithValue("wit_st_mod","0")
+      .sheet-borderRight.sheet-borderBott
+        +inputLabel("Freely-Improvable-Skills")
+      .sheet-fillIn.sheet-borderRight.sheet-borderBott
+      .sheet-borderRight.sheet-borderBott
+        +textInputWithValue("wit_perm","0")(readonly="readonly")
+      .sheet-borderBott.sheet-borderRight
+        +inputLabel("Zanshin")
+      .sheet-borderBott.sheet-borderRight
+        +textInputWithValue("zanshin_focus","0")
+      .sheet-borderBott
+        +textInputWithValue("zanshin","0")
+      .sheet-borderRight
+        +actionSTButton("will_st","Will")
+      .sheet-borderRight
+         +textInputWithValue("wil_perm","0")
+      .sheet-borderRight.sheet-borderRight
+        +textInputWithValue("wil_mod","0")
+        +hiddenInputWithValue("wil_spell_mod","0" )                  
+      .sheet-borderRight
+         +textInputWithValue("wil_cur","0")(readonly="readonly")
+      .sheet-borderRight.sheet-borderRight.sheet-centerIt
+        +actionTexTButton("wil_st")(class="saving_throw")
+          span(name='attr_wil_base_st')       
+          //+textInputWithValue("wil_base_st","0")(readonly="readonly")
+      .sheet-borderRight.sheet-borderhvyRight.sheet-centerIt        
+        +textInputWithValue("wil_st_mod","0")
+      .sheet-borderRight
+          +inputLabel("magic-resist")
+      .sheet-borderRight.sheet-borderBott
+        +textInputWithValue("magic_resist_mod",0)(class="sheet-centerIt")         
+      .sheet-borderRight
+        +textInputWithValue("magic_resistance",0)(class="sheet-centerIt" readonly="readonly")
+      .sheet-borderRight
+          +inputLabel("religion-pow")
+      .sheet-borderRight.sheet-borderBott      
+        +textInputWithValue("relgious_pow_mod",0)(class="sheet-centerIt") 
+      .sheet-borderRight
+        +textInputWithValue("religious_pow",0)(class="sheet-centerIt" readonly="readonly")         
+        //- .sheet-spellEffectsGrid
+          //-.sheet-borderRight
+            +inputLabel("Spells-In-Effect")
+          //-.sheet-customcb
+            input#customcb1(type='checkbox' value='1' name='attr_WingsofHeaven')
+            label.sheet-inner(for='customcb1')
+          //-.sheet-spellName Wings of Heaven
+          //-.sheet-cellPadding
+            input.sheet-text_input(type='text' title='Spell Level' value='0' name='attr_WHEffect')
+          //-.sheet-customcb
+            input#customcb2(type='checkbox' value='1' name='attr_ManyWaves')
+            label.sheet-inner(for='customcb2')
+          //-.sheet-spellName Many Waves
+          //-.sheet-cellPadding
+            input.sheet-text_input(type='text' title='Spell Level' value='0' name='attr_MWEffect')
+          //-.sheet-customcb
+            input#customcb3(type='checkbox' value='1' name='attr_SwiftStream')
+            label.sheet-inner(for='customcb3')
+          //-.sheet-spellName Swift Stream
+          //-.sheet-cellPadding
+            input.sheet-text_input(type='text' title='Spell Level' value='0' name='attr_SSEffect')
+    br
+    .sheet-EqpSkillsWndsGrid
+      .EqpSkillsWndsLeft
+        .sheet-meleeWpns 
+            .sheet-meleeWpnsGridMin
+                .sheet-borderRight.sheet-borderBott
+                    +inputLabel("Melee-Weapon")                          
+                .sheet-borderRight.sheet-borderBott.sheet-centerIt
+                    +inputLabel("Range")
+                .sheet-borderRight.sheet-borderBott.sheet-centerIt
+                    +inputLabel("C. Rng")
+                .sheet-borderRight.sheet-borderBott.sheet-centerIt                          
+                    +inputLabel("Type")
+                .sheet-borderRight.sheet-borderBott.sheet-centerIt
+                    +inputLabel("Form")
+                .sheet-borderRight.sheet-borderBott.sheet-centerIt
+                    +inputLabel("BCS")
+                .sheet-borderRight.sheet-borderBott.sheet-centerIt
+                    +inputLabel("AVG") 
+                .sheet-borderRight.sheet-borderBott.sheet-centerIt
+                    +inputLabel("X")                           
+                .sheet-borderRight.sheet-borderBott.sheet-centerIt
+                    +inputLabel("Mod")
+                .sheet-borderRight.sheet-borderBott &nbsp;
+            fieldset.repeating_meleewpns
+                input.sheet-section-toggle(type='hidden' value="1" name='attr_toggle-section')
+                .sheet-section-min 
+                    .sheet-meleeWpnsGridMin
+                        .sheet-borderLeft.sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix.sheet-gridName
+                            +textAttributeSpan("wpnName")              
+                        .sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix                 
+                            +select('range')                  
+                                option(selected='' value='Shrt' data-i18n='Shrt') Shrt
+                                option(value='Mdm' data-i18n='Mdm') Mdm
+                                option(value='Lng' data-i18n='Lng') Lng                  
+                        .sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix
+                            +hiddenInputWithValue("range_list","2")(class="sheet-range_list")
+                            .sheet-range_list1
+                                select(name='attr_curRange')
+                                    +option2('Cntct','Cntct')
+                                    +option2('Shrt','Shrt')
+                                    +optionSelected('Mdm','Mdm')
+                            .sheet-range_list2                       
+                                select(name='attr_curRange')    
+                                    .sheet-range_list2
+                                        +option2('Cntct','Cntct')
+                                        +option2('Shrt','Shrt')
+                                        +optionSelected('Mdm','Mdm')
+                                        +option2('Lng','Lng')
+                            .sheet-range_list3    
+                                select(name='attr_curRange')                                              
+                                    +option2('Cntct','Cntct')
+                                    +option2('Shrt','Shrt')
+                                    +optionSelected('Mdm','Mdm')
+                                    +option2('Lng','Lng')
+                                    +option2('XLng','XLng') 
+                        .sheet-borderBott.sheet-borderRight.sheet-capabilityGridFix
+                            +select("type")
+                                +optionValueSelected("L","L") 
+                                +optionSelected("S")
+                        .sheet-borderBott.sheet-borderRight.sheet-capabilityGridFix
+                            input(type="hidden" class="sheet-form_list" name="attr_form_list")
+                            - var n = -1
+                            while n < 15
+                                - ++n 
+                                - var this_list = Form_lists[n]
+                                div(class="sheet-form_list"+n)
+                                    select(name="attr_form") 
+                                        each form in this_list
+                                            +option3(form)
+                                            //option(value=form)=form                  
+                        .sheet-borderBott.sheet-borderRight.sheet-capabilityGridFix      
+                            +actionTexTButton("base")
+                                +hiddenInputWithValue("base_bcs","0")
+                                span(name='attr_base_bcs')                    
+                        .sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix
+                            div
+                                span
+                                    +checkboxInputWithValue("useAVG","1")
+                        .sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix                 
+                            +select('multiplier')(class="sheet-multiplier") 
+                                option(selected='selected' value='1' data-i18n='1') 1
+                                option(value='0.5' data-i18n='½') ½
+                                option(value='0.25' data-i18n='¼') ¼  
+                        .sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix
+                            +textInputWithValue("mod","0")                      
+                        .sheet-borderBott.sheet-capabilityGridFix.sheet-borderRight
+                            label.sheet-hideCheckbox(title='Details' data-i18n-title='Details') 
+                                input(type='checkbox' checked="checked" style='display:none'  value='1' name='attr_toggle-section')
+                                | y  
+                //-.sheet-section-hide
+                .sheet-section-details
+                    .sheet-name-skill.sheet-borderBott
+                        .sheet-borderRight 
+                            +inputLabel("Name")
+                        div
+                            +textInput("wpnName")(list="weapon_name" class="sheet-gridName")
+                        .sheet-borderRight
+                            +actionImageButton("lookup")
+                                img(src='https://raw.githubusercontent.com/Lockbox313/imagedump/master/Bushido/images/lookup2.png')
+                        .sheet-borderRight
+                            +inputLabel("Skill-Used")                         
+                        .sheet-borderRight
+                            +textInput("skill_used")(list="melee_skills_used" class="sheet-gridName")
+                            +hiddenInputWithValue("skills_used_rowid","0")                                  
+                        .sheet-borderRight
+                            +Label()(class="sheet-hideCheckbox")
+                                input(type='checkbox' style='display:none' checked="checked" value='1' name='attr_toggle-section')
+                                | y
+                    //.sheet-skill-used-grid.sheet-borderBott        
+                    //    .sheet-borderRight 
+                    //       +inputLabel("Skill Used ID")            
+                    //    .sheet-borderRight 
+                    //        +textInput("skills_used_rowid")(class="sheet-gridName")
+                    //    .sheet-borderRight.sheet-borderRight 
+                    //        +inputLabel("Default")    
+                    //    .sheet-centerIt.sheet-details-background.sheet-borderRight
+                    //        input(type='checkbox'  value='1' name='attr_use_default')                      
+                    .sheet-avgSkill.sheet-borderBott
+                        .sheet-borderRight  
+                            +inputLabel("Averaging-Skill")
+                        .sheet-borderRight      
+                            +textInput("avg_skill_used")(list="avg_skills_used" class="sheet-gridName")
+                            hiddenInputWithValue("avg_skill_used_rowid","0")
+                        .sheet-borderRight
+                            +inputLabel("row-id") 
+                        div
+                            +textInput("rowid")(readonly="readonly" id="rowid")                                                                 
+                    .sheet-weight-size.sheet-borderBott
+                        .sheet-borderRight 
+                            +inputLabel("Weight")
+                        .sheet-borderRight  
+                            +textInputWithValue("weight","0")
+                        .sheet-borderRight
+                            +inputLabel("Min-Str")
+                        .sheet-borderRight
+                            +textInputWithValue("min_str","0")                    
+                        .sheet-borderRight 
+                            +inputLabel("Size")
+                        .sheet-borderRight  
+                            +select('size')
+                                +optionSelected('1H','1H')
+                                +option2('1½H','1½H')
+                                +option2('2H','2H')
+                        .sheet-borderRight 
+                            +inputLabel("HANDS")
+                        .sheet-borderRight  
+                            +select('hands')
+                                +optionSelected('1H','1H')
+                                +option2('2H','2H')                    
+                        .sheet-borderRight 
+                            +inputLabel("Quality")
+                        .sheet-borderRight  
+                            +select('quality')
+                                +option2('Master','Master')
+                                +option2('Superior','Superior')                
+                                +optionSelected('Average','Average')
+                                +option2('Inferior','Inferior')
+                        .sheet-borderRight                             
+                    .sheet-damage-details.sheet-borderBott
+                        .sheet-borderRight 
+                            +inputLabel("Damage")
+                        .sheet-borderRight
+                            +hiddenInputWithValue("show_damage","1")(class="sheet-show_damage")
+                            .sheet-damage1                      
+                                +textInputWithValue("damage","1d6")(class="sheet-centerIt")
+                            .sheet-damage2  
+                                +textInputWithValue("damage","1d6")(class="sheet-centerIt" readonly="readonly")   
+                        .sheet-borderRight 
+                            +inputLabel("Damage Mod.")
+                        .sheet-borderRight  
+                            +textInputWithValue("damage_mod","0")(class="sheet-centerIt")                   
+                        .sheet-borderRight 
+                            +inputLabel("Step Mod.")
+                        .sheet-borderRight  
+                            +textInputWithValue("damage_step_mod","0")(class="sheet-centerIt")
+                        .sheet-borderRight 
+                            +inputLabel("Default Damage Type")
+                        .sheet-borderRight  
+                            +textInput("default_type")(class="sheet-centerIt")                                                    
+                    .sheet-formsGrid            
+                        .sheet-borderBott.sheet-borderRight
+                            +inputLabel("Forms")
+                        .sheet-borderBott
+                            +textInput("forms")(class="sheet-gridName") 
+                    .sheet-okudenGrid.sheet-borderBott
+                        .sheet-borderRight
+                            +inputLabel("Okuden") 
+                        .sheet-borderRight
+                            +textInputWithValue("okuden","")(list="okuden_list" class="sheet-gridName")
+                            //+textArea("okuden_desc")
+                    +textAreaExpanding("okuden_desc")                                                   
+        br
+        //- start bows
+        .sheet-bowWpns
+          .sheet-bowWpnsGridMin
+            .sheet-borderRight.sheet-borderBott
+              +inputLabel("Bow")
+            .sheet-borderRight.sheet-borderBott.sheet-centerIt
+              +inputLabel("Ranges")(title="Point Blank/Short/Long")
+            .sheet-borderRight.sheet-borderBott.sheet-centerIt
+              +inputLabel("C. Rng")
+            .sheet-borderRight.sheet-borderBott.sheet-centerIt
+              +inputLabel("Arrow")
+            .sheet-borderRight.sheet-borderBott.sheet-centerIt
+              +inputLabel("BCS")
+            .sheet-borderRight.sheet-borderBott.sheet-centerIt
+              +inputLabel("AVG") 
+            .sheet-borderRight.sheet-borderBott.sheet-centerIt
+              +inputLabel("X")             
+            .sheet-borderRight.sheet-borderBott.sheet-centerIt
+              +inputLabel("Mod")
+            .sheet-borderBott
+          fieldset.repeating_bowWpns
+            input.sheet-section-toggle(type='hidden' value="1" name='attr_toggle-section')
+            .sheet-section-min
+              .sheet-bowWpnsGridMin
+                .sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix.sheet-gridName
+                  +textAttributeSpan("wpnName")
+                .sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix
+                  +textInput("ranges")(readonly='readonly' id='ranges')
+                .sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix
+                  select(name='attr_curRange')
+                    option(value='Pnt Blnk' data-i18n='Pnt-Blnk') Pnt Blnk
+                    option(selected='selected' value='Shrt' data-i18n='Shrt') Short
+                    option(value='Lng' data-i18n='Lng') Lng
+                .sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix
+                  select(name='attr_arrowType')
+                    option(selected='' value='Willow Leaf' data-i18n='Willow-Leaf') Willow Leaf
+                    option(value='Bowel Raker' data-i18n='Bowel-Raker') Bowel Raker
+                    option(value='Armor Piercer' data-i18n='Armor Piercer') Armor Piercer
+                    option(value='Humming-Bulb' data-i18n='Humming-Bulb') Humming Bulb
+                .sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix
+                  +actionTexTButton("base")
+                    +hiddenInputWithValue("base_bcs","0")
+                    span(name='attr_base_bcs')
+                .sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix
+                  span
+                    //-input(type='checkbox' value='1' name='attr_useAVG')(class="sheet-avgChkBox")
+                    +checkboxInputWithValue("useAVG","1")
+                .sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix                 
+                  +select('multiplier')(class="sheet-multiplier") 
+                    option(selected='selected' value='1' data-i18n='1') 1
+                    option(value='0.5' data-i18n='½') ½
+                    option(value='0.25' data-i18n='¼') ¼                     
+                .sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix
+                  input.sheet-text_input(type='text' value='0' name='attr_mod')
+                .sheet-borderBott.sheet-capabilityGridFix
+                  label.sheet-hideCheckbox(title='Details' data-i18n-title='Details')
+                    input(type='checkbox' style='display:none' value='1' name='attr_toggle-section')
+                    | y
+            //-input.sheet-section-toggle(type='hidden' name='attr_toggle-section')
+            .sheet-section-details
+                .sheet-bows-arrowsGrid             
+                    .sheet-borderBott.sheet-borderRight
+                        +inputLabel("Arrows")
+                    .sheet-borderBott.sheet-borderRight
+                        +textInputWithValue("arrows","WL:0 BR:0 AP:0 HB:0")              
+                    .sheet-borderBott
+                        label.sheet-hideCheckbox(title='Details' data-i18n-title='Details')
+                            input(type='checkbox' style='display:none' value='1' name='attr_toggle-section')
+                            | y
+                .sheet-skill-name-skill_used.sheet-borderBott
+                    .sheet-borderRight 
+                        +inputLabel("Name")
+                    .sheet-borderRight           
+                        +textInput("wpnName")(list="bow_names" class="sheet-gridName")              
+                    .sheet-borderRight  
+                        +inputLabel("Skill-Used")
+                    .sheet-borderRight      
+                        +textInput("Skill Used")(list="bow_skills_used" class="sheet-gridName")
+                        +hiddenInputWithValue("skills_used_rowid","0")                                                                        
+                .sheet-max1frNoGap.sheet-borderBott  
+                    .sheet-borderRight  
+                        +inputLabel("Averaging-Skill")
+                    .sheet-borderRight      
+                        +textInput("avg_skill_used")(list="avg_skills_used2" class="sheet-gridName") 
+                        //+textInput("avg_skill_used_rowid","0")(class="sheet-gridName")                      
+                .sheet-bowgrid3.sheet-borderBott
+                    .sheet-borderRight
+                        +inputLabel("Bow-Man-Rating")
+                    .sheet-borderRight
+                        +textInputWithValue("manRating","0")
+                    .sheet-borderRight
+                        +inputLabel("Strength-Range")
+                    .sheet-borderRight
+                        +textInputWithValue("str_range","0")                  
+                    .sheet-borderRight 
+                        +inputLabel("Weight")
+                    .sheet-borderRight  
+                        +textInputWithValue("weight","0")
+                    .sheet-borderRight 
+                        +inputLabel("Damage")
+                    .sheet-borderRight  
+                        +textInputWithValue("damage","1d6")
+                .sheet-okudenGrid.sheet-borderBott
+                    .sheet-borderRight
+                        +inputLabel("Okuden") 
+                .sheet-borderRight
+                    +textInputWithValue("okuden","")(list="okuden_list2" class="sheet-gridName")
+                +textAreaExpanding("okuden_desc")
+        //- End bows                                                           
+        br
+        //- start hurled weapons 
+        .sheet-hurledWpns
+            .sheet-hurledWpnsGridMin
+                .sheet-borderRight.sheet-borderBott
+                    +inputLabel("Hurled Weapon")
+                .sheet-borderRight.sheet-borderBott.sheet-centerIt
+                    +inputLabel("Ranges")
+                .sheet-borderRight.sheet-borderBott.sheet-centerIt
+                    +inputLabel("C. Rng")
+                .sheet-borderRight.sheet-borderBott.sheet-centerIt
+                    +inputLabel("Type")               
+                .sheet-borderRight.sheet-borderBott.sheet-centerIt
+                    +inputLabel("#")(title="Ammo")
+                .sheet-borderRight.sheet-borderBott.sheet-centerIt        
+                    +inputLabel("BCS")
+                .sheet-borderRight.sheet-borderBott.sheet-centerIt
+                    +inputLabel("AVG")
+                .sheet-borderRight.sheet-borderBott.sheet-centerIt
+                    +inputLabel("X")                       
+                .sheet-borderRight.sheet-borderBott.sheet-centerIt
+                  +inputLabel("Mod")         
+                .sheet-borderBott
+            fieldset.repeating_hurledWpns
+                input.sheet-section-toggle(type='hidden' value="1" name='attr_toggle-section')            
+                .sheet-section-min
+                    .sheet-hurledWpnsGridMin          
+                      .sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix.sheet-gridName
+                        +textAttributeSpan("wpnName")             
+                      .sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix
+                        +textInput("ranges")(readonly='readonly' id='ranges')
+                      .sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix
+                        select(name='attr_curRange')
+                          option(selected='' value='Shrt' data-i18n='Shrt') Shrt
+                          option(value='Mdm' data-i18n='Mdm') Mdm
+                          option(value='Lng' data-i18n='Lng') Lng
+                      .sheet-borderBott.sheet-borderRight.sheet-capabilityGridFix
+                        select(name='attr_type')
+                          option(selected='' value='L' data-i18n='L') L
+                          option(value='S' data-i18n='S') S
+                        +hiddenInput("default_type")                        
+                      .sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix                 
+                        +textInputWithValue("ammo","0")
+                      .sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix
+                        +actionTexTButton("base")
+                          +hiddenInputWithValue("base_bcs","0")
+                          span(name='attr_base_bcs')
+                      .sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix           
+                        span
+                          +checkboxInputWithValue("useAVG","1")
+                      .sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix                 
+                        +select('multiplier')(class="sheet-multiplier") 
+                          option(selected='selected' value='1' data-i18n='1') 1
+                          option(value='0.5' data-i18n='½') ½
+                          option(value='0.25' data-i18n='¼') ¼                        
+                      .sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix
+                        +textInputWithValue("mod","0")
+                      .sheet-borderBott.sheet-capabilityGridFix
+                        label.sheet-hideCheckbox(title='Details' data-i18n-title='Details')
+                          input(type='checkbox' style='display:none' value='1' name='attr_toggle-section')
+                          | y              
+                .sheet-section-details
+                    .sheet-name-skill.sheet-borderBott 
+                        .sheet-borderRight.sheet-borderBott 
+                            +inputLabel("Name")
+                        .sheet-borderBott
+                            +textInput("wpnName")(list="hurled_weapons" class="sheet-gridName")
+                        .sheet-borderRight.sheet-borderBott
+                            +actionImageButton("lookup")
+                                img(src='https://raw.githubusercontent.com/Lockbox313/imagedump/master/Bushido/images/lookup2.png')
+                        .sheet-borderRight 
+                            +inputLabel("Skill-Used")
+                        .sheet-borderRight 
+                            +textInput("Skill Used")(list="hurled_skills_used" class="sheet-gridName")
+                            +hiddenInputWithValue("skills_used_rowid","0")                               
+                        .sheet-borderRight
+                            label.sheet-hideCheckbox
+                                input(type='checkbox' style='display:none' checked="checked" value='1' name='attr_toggle-section')
+                                | y
+                    .sheet-avgSkill(style="border-bottom:1px solid black")
+                        .sheet-borderRight  
+                            +inputLabel("Averaging-Skill")
+                        .sheet-borderRight      
+                            +textInput("avg_skill_used")(list="avg_skills_used" class="sheet-gridName")
+                            hiddenInputWithValue("avg_skill_used_rowid","0")
+                        .sheet-borderRight
+                            +inputLabel("row-id") 
+                        .sheet-borderRight
+                            +textInput("rowid")(readonly="readonly" id="rowid")                             
+                    .sheet-hurledgrid3.sheet-borderBott
+                        .sheet-borderRight
+                            +inputLabel("Min-Str")
+                        .sheet-borderRight
+                            +textInputWithValue("min_str","0") 
+                        .sheet-borderRight 
+                            +inputLabel("Weight")
+                        .sheet-borderRight  
+                            +textInputWithValue("weight","0")
+                    .sheet-damage-details.sheet-borderBott
+                        .sheet-borderRight 
+                            +inputLabel("Damage")
+                        .sheet-borderRight
+                            +hiddenInputWithValue("show_damage","1")(class="sheet-show_damage")
+                            .sheet-damage1                      
+                                +textInputWithValue("damage","1d6")(class="sheet-centerIt")
+                            .sheet-damage2  
+                                +textInputWithValue("damage","1d6")(class="sheet-centerIt" readonly="readonly")   
+                        .sheet-borderRight 
+                            +inputLabel("Damage Mod.")
+                        .sheet-borderRight  
+                            +textInputWithValue("damage_mod","0")(class="sheet-centerIt")                   
+                        .sheet-borderRight 
+                            +inputLabel("Step Mod.")
+                        .sheet-borderRight  
+                            +textInputWithValue("damage_step_mod","0")(class="sheet-centerIt")
+                        .sheet-borderRight 
+                            +inputLabel("Default Damage Type")
+                        .sheet-borderRight
+                            +textInputWithValue("default_type","L")(class="sheet-centerIt")                          
+                    .sheet-formsGrid            
+                        .sheet-borderBott.sheet-borderRight
+                            +inputLabel("Forms")
+                        .sheet-borderBott
+                            +textInput("forms")(value="Hurl Weapon" class="sheet-gridName")                              
+                    .sheet-okudenGrid.sheet-borderBott
+                        .sheet-borderRight
+                            +inputLabel("Okuden") 
+                        .sheet-borderRight
+                            +textInputWithValue("okuden","")(list="okuden_list2" class="sheet-gridName")
+                    +textAreaExpanding("okuden_desc")            
+        //- end hurled weapons
+        br 
+        //-start armor clothing
+        .sheet-armorClothing
+            .sheet-.sheet-effectiveACGrid.sheet-borderBott
+              .sheet-borderRight
+                +inputLabel("Worn-AC")
+              .sheet-borderRight  
+                +textInputWithValue("worn_ac","0")(readonly="readonly")
+              .sheet-borderRight  
+                +inputLabel("Defense")
+              .sheet-borderRight  
+                +textInputWithValue("defense_ac","0")
+              .sheet-borderRight  
+                +inputLabel("Parry")
+              .sheet-borderRight  
+                +textInputWithValue("parry_ac","0")
+              .sheet-borderRight  
+                +inputLabel("Spell")
+              .sheet-borderRight  
+               +textInputWithValue("spell_ac","0")
+              .sheet-borderRight  
+                +inputLabel("Other")
+              .sheet-borderRight  
+                +textInputWithValue("other_ac","0")
+              .sheet-borderRight  
+                +inputLabel("Effective-AC")
+              .sheet-borderRight  
+                +textInputWithValue("effective_ac","0")(readonly="readonly") 
+            .sheet-armorClothingGrid               
+              .sheet-borderRight.sheet-borderBott
+                +inputLabel("Armor-Clothing")
+              .sheet-borderRight.sheet-borderBott.sheet-centerIt
+                +inputLabel("AC")
+              .sheet-borderRight.sheet-borderBott.sheet-centerIt
+                +inputLabel("WT")
+              .sheet-borderRight.sheet-borderBott.sheet-centerIt
+                +inputLabel("Carried")                
+              .sheet-borderBott.sheet-centerIt
+                +inputLabel("Worn")                
+            fieldset.repeating_armorClothing
+              .sheet-armorClothingGrid
+                .sheet-borderRight.sheet-borderBott
+                  +textInput("armor")(class="sheet-gridName")             
+                .sheet-borderRight.sheet-borderBott
+                  +textInputWithValue("ac","0")
+                .sheet-borderRight.sheet-borderBott
+                  +textInputWithValue("weight","0.0")
+                .sheet-borderRight.sheet-borderBott.sheet-centerIt
+                  +checkboxInputWithValue("carried","1")                  
+                .sheet-borderBott.sheet-centerIt
+                  +checkboxInputWithValue("worn","1")
+        .sheet-dummy        
+          +hiddenInputWithValue("armor_total_weight","0")                 
+        br        
+        .sheet-hvyBorder.sheet-gearWrapper
+          .sheet-gearGrid
+            .sheet-labels.sheet-borderBott.sheet-borderRight.sheet-centerIt(data-i18n='Equipment') Equipment
+            .sheet-labels.sheet-borderBott.sheet-borderRight.sheet-centerIt(data-i18n='WT') WT
+            .sheet-labels.sheet-borderBott.sheet-centerIt(data-i18n='Carried') Carried
+          fieldset.repeating_equipment
+            .sheet-gearGrid
+              .sheet-borderRight.sheet-borderBott
+                +textInput("eqpEntry")(class="sheet-gridName")
+                //input.sheet-text_input(type='text' name='attr_eqpEntry')
+              .sheet-borderRight.sheet-borderBott.sheet-centerIt
+                input.sheet-text_input(type='text' value='0.0' name='attr_weight')
+              .sheet-borderBott.sheet-centerIt
+                +checkboxInputWithValue("carried","1")
+        .sheet-dummy        
+          +hiddenInputWithValue("gear_total_weight","0")                 
+        br
+        .sheet-encWrapper
+          .sheet-encValuesGrid.borderBott
+            .sheet-borderRight
+              +inputLabel("UNENCUMBERED")           
+            .sheet-borderRight
+              +textInputWithValue("enc_unecumbered","0")(readonly="readonly")            
+            .sheet-borderRight
+              +inputLabel("PARTIALLY")
+            .sheet-borderRight
+              +textInputWithValue("enc_partial","0")(readonly="readonly")            
+            .sheet-borderRight
+              +inputLabel("FULLY")
+            .sheet-borderRight.sheet-centerIt
+              +textInputWithValue("enc_fully","0")(readonly="readonly")            
+            .sheet-borderRight
+              +inputLabel("OVER")
+            .sheet-borderRight
+              +textInputWithValue("enc_over","0")(readonly="readonly")
+            .sheet-borderRight.sheet-centeIt
+              +inputLabel("TOTAL CARRIED")
+            .sheet-dummy
+              +textInputWithValue("total_weight_carried","0")(readonly="readonly")              
+        br
+        .sheet-hvyBorder.sheet-taskWrapper
+          .sheet-taskGrid.sheet-borderBott
+            .sheet-borderRight.sheet-centerIt
+                +inputLabel("Task")(class="sheet-gridName")          
+            .sheet-borderRight.sheet-centerIt
+                +inputLabel("Turn")
+            .sheet-borderRight.sheet-centerIt
+                +inputLabel("Value")
+            .sheet-borderRight.sheet-centerIt
+                +inputLabel("Points")
+            .sheet-borderRight.sheet-centerIt
+                +inputLabel("Enhancements")
+          fieldset.repeating_tasks
+            .sheet-taskGrid
+              .sheet-borderRight.sheet-borderBott
+                +textInput("task")(class="sheet-gridName")
+              .sheet-borderRight.sheet-borderBott
+                +textInput("task_turn")
+              .sheet-borderRight.sheet-borderBott
+                +textInputWithValue("task_value","0")                
+              .sheet-borderRight.sheet-borderBott
+                +textInputWithValue("task_points","0")                                
+              .sheet-borderBott
+                +textInput("enhancements")              
+        //- end columns left
+      .EqpSkillsWndsRight
+        .sheet-hvyBorder
+            .sheet-bugeiGrid
+                .sheet-borderRight.sheet-borderBott
+                    +inputLabel("Bugei")
+                .sheet-borderRight.sheet-borderBott
+                    +inputLabel("BN")
+                .sheet-borderRight.sheet-borderBott
+                    +inputLabel("FIS")
+                .sheet-borderRight.sheet-borderBott
+                    +inputLabel("SCR")
+                .sheet-borderRight.sheet-borderBott
+                    +inputLabel("RAW")
+                .sheet-borderRight.sheet-borderBott
+                    +inputLabel("BASE")
+                .sheet-borderRight.sheet-borderBott
+                    +inputLabel("Mod")              
+                .sheet-borderRight.sheet-borderBott
+                    +inputLabel("AVG")
+                .sheet-borderBott
+            fieldset.repeating_bugeiskills
+                input.sheet-section-toggle(type='hidden' value="1" name='attr_toggle-section')
+                .sheet-section-min
+                    .sheet-bugeiGrid
+                        .sheet-borderRight.sheet-borderBott.sheet-gridName
+                            +textAttributeSpan("skill_name")                        
+                        .sheet-borderRight.sheet-borderBott.sheet-centerIt
+                            input(type='checkbox' value='1' name='attr_bonus')
+                        .sheet-borderRight.sheet-borderBott.sheet-centerIt
+                            input(type='checkbox' value='1' name='attr_fis')
+                        .sheet-borderRight.sheet-borderBott
+                            input.sheet-text_input(type='text' value='0' name='attr_score')
+                        .sheet-borderRight.sheet-borderBott
+                            +actionTexTButton("raw")
+                                +hiddenInputWithValue("raw_bcs","0")
+                                span(name='attr_raw_bcs')
+                        .sheet-borderRight.sheet-borderBott
+                            +actionTexTButton("base")
+                                +hiddenInputWithValue("base_bcs","0")
+                                span(name='attr_base_bcs')
+                        .sheet-borderRight.sheet-borderBott
+                            input.sheet-text_input(type='text' value='0' name='attr_mod')                      
+                        .sheet-borderRight.sheet-borderBott.sheet-useAvg
+                            input(type='checkbox' value='1' name='attr_useAvg')
+                        .sheet-borderBott
+                            label.sheet-hideCheckbox(title='Details' data-i18n-title='Details')
+                                input(type='checkbox' style='display:none' value='1' name='attr_toggle-section')
+                                | y
+                .sheet-section-details
+                    .sheet-skills-skill-name.sheet-borderBott
+                        .sheet-borderRight 
+                            +inputLabel("Name")
+                        .sheet-borderRight           
+                            +textInput("skill_name")(list="Bugei_skills" class="sheet-gridName")              
+                        div
+                            label.sheet-hideCheckbox(title='Details' data-i18n-title='Details')
+                                input(type='checkbox' style='display:none' value='1' name='attr_toggle-section')
+                                | y
+                    .sheet-max1frNoGap
+                        .sheet-borderRight.sheet-borderBott 
+                            +inputLabel("Skill ID")
+                        .sheet-borderBott 
+                            +textInput("skill_id")(readonly="readonly")                      
+                    .sheet-skills-avgskill-name.sheet-borderBott
+                        .sheet-borderRight  
+                            +inputLabel("Avg-Skill")
+                        .sheet-borderRight      
+                            //+textInput("avg_skill_used")(list="avg_skills_used" class="sheet-gridName")                  
+                            +textInput("avg_skill_used_rowid")(class="sheet-gridName")
+        br
+        .sheet-hvyBorder
+          .sheet-bugeiGrid
+            .sheet-borderRight.sheet-borderBott
+              +inputLabel("Practical-Art")
+            .sheet-borderRight.sheet-borderBott
+              +inputLabel("BN")
+            .sheet-borderRight.sheet-borderBott
+              +inputLabel("FIS")
+            .sheet-borderRight.sheet-borderBott
+              +inputLabel("SCR")
+            .sheet-borderRight.sheet-borderBott
+              +inputLabel("RAW")              
+            .sheet-borderRight.sheet-borderBott
+              +inputLabel("BASE")
+            .sheet-borderRight.sheet-borderBott
+              +inputLabel("Mod")              
+            .sheet-borderRight.sheet-borderBott
+                +inputLabel("AVG")
+            .sheet-borderBott
+          fieldset.repeating_practicalskills
+            input.sheet-section-toggle(type='hidden' value="1" name='attr_toggle-section')
+            .sheet-section-min
+              .sheet-bugeiGrid
+                .sheet-borderRight.sheet-borderBott
+                   +textAttributeSpan("skill_name")(class="sheet-gridName")                                                
+                .sheet-borderRight.sheet-borderBott.sheet-centerIt
+                  input(type='checkbox' value='1' name='attr_bonus')
+                .sheet-borderRight.sheet-borderBott.sheet-centerIt
+                  input(type='checkbox' value='1' name='attr_fis')
+                .sheet-borderRight.sheet-borderBott
+                  input.sheet-text_input(type='text' value='0' name='attr_score')
+                .sheet-borderRight.sheet-borderBott
+                  +actionTexTButton("raw")
+                    +hiddenInputWithValue("raw_bcs","0")
+                    span(name='attr_raw_bcs')
+                .sheet-borderRight.sheet-borderBott
+                  +actionTexTButton("base")
+                    +hiddenInputWithValue("base_bcs","0")
+                    span(name='attr_base_bcs')
+                .sheet-borderRight.sheet-borderBott
+                  input.sheet-text_input(type='text' value='0' name='attr_mod')                  
+                .sheet-borderRight.sheet-borderBott.sheet-useAvg
+                  //-input.sheet-text_input(type='text' value='0' name='attr_AVG')
+                  input(type='checkbox' value='1' name='attr_useAvg')                      
+                .sheet-borderBott
+                  label.sheet-hideCheckbox(title='Details' data-i18n-title='Details')
+                    input(type='checkbox' style='display:none' value='1' name='attr_toggle-section')
+                    | y
+            .sheet-section-details
+                .sheet-skills-skill-name.sheet-borderBott
+                    .sheet-borderRight 
+                        +inputLabel("Name")
+                    .sheet-borderRight           
+                        +textInput("skill_name")(list="Practical_skills" class="sheet-gridName")              
+                    div
+                        label.sheet-hideCheckbox(title='Details' data-i18n-title='Details')
+                            input(type='checkbox' style='display:none' value='1' name='attr_toggle-section')
+                            | y
+                .sheet-max1frNoGap
+                    .sheet-borderRight.sheet-borderBott 
+                        +inputLabel("Skill ID")
+                    .sheet-borderBott 
+                        +textInput("skill_id")(readonly="readonly")                      
+                .sheet-skills-avgskill-name.sheet-borderBott
+                    .sheet-borderRight  
+                        +inputLabel("Avg-Skill")
+                    .sheet-borderRight      
+                        //+textInput("avg_skill_used")(list="avg_skills_used" class="sheet-gridName")
+                        +textInput("avg_skill_used_rowid")(class="sheet-gridName") 
+
+        br
+        .sheet-hvyBorder
+          .sheet-bugeiGrid
+            .sheet-borderRight.sheet-borderBott
+                +inputLabel("Fine-Art")
+            .sheet-borderRight.sheet-borderBott
+                +inputLabel("BN")
+            .sheet-borderRight.sheet-borderBott
+                +inputLabel("FIS")
+            .sheet-borderRight.sheet-borderBott
+                +inputLabel("SCR")
+            .sheet-borderRight.sheet-borderBott
+                +inputLabel("RAW")                
+            .sheet-borderRight.sheet-borderBott
+                +inputLabel("BASE")
+            .sheet-borderRight.sheet-borderBott                
+                +inputLabel("Mod")            
+            .sheet-borderRight.sheet-borderBott
+                +inputLabel("AVG")
+            .sheet-borderBott
+          fieldset.repeating_finearts
+            input.sheet-section-toggle(type='hidden' value="1" name='attr_toggle-section')
+            .sheet-section-min
+              .sheet-bugeiGrid
+                .sheet-borderRight.sheet-borderBott
+                  +textAttributeSpan("skill_name")(class="sheet-gridName")  
+                .sheet-borderRight.sheet-borderBott.sheet-centerIt
+                  input(type='checkbox' value='1' name='attr_bonus')
+                .sheet-borderRight.sheet-borderBott.sheet-centerIt
+                  input(type='checkbox' value='1' name='attr_fis')
+                .sheet-borderRight.sheet-borderBott
+                  input.sheet-text_input(type='text' value='0' name='attr_score')
+                .sheet-borderRight.sheet-borderBott
+                  +actionTexTButton("raw")
+                    +hiddenInputWithValue("raw_bcs","0")
+                    span(name='attr_raw_bcs')
+                .sheet-borderRight.sheet-borderBott
+                  +actionTexTButton("base")
+                    +hiddenInputWithValue("base_bcs","0")
+                    span(name='attr_base_bcs')
+                .sheet-borderRight.sheet-borderBott
+                  input.sheet-text_input(type='text' value='0' name='attr_mod')                  
+                .sheet-borderRight.sheet-borderBott.sheet-useAvg
+                  //-input.sheet-text_input(type='text' value='0' name='attr_AVG')
+                  input(type='checkbox' value='1' name='attr_useAvg')
+                .sheet-borderBott
+                  label.sheet-hideCheckbox(title='Details' data-i18n-title='Details')
+                    input(type='checkbox' style='display:none' value='1' name='attr_toggle-section')
+                    | y
+            .sheet-section-details
+                .sheet-skills-skill-name.sheet-borderBott
+                    .sheet-borderRight 
+                        +inputLabel("Name")
+                    .sheet-borderRight           
+                        +textInput("skill_name")(list="Fine_arts" class="sheet-gridName")              
+                    div
+                        label.sheet-hideCheckbox(title='Details' data-i18n-title='Details')
+                            input(type='checkbox' style='display:none' value='1' name='attr_toggle-section')
+                            | y
+                .sheet-max1frNoGap
+                    .sheet-borderRight.sheet-borderBott 
+                        +inputLabel("Skill ID")
+                    .sheet-borderBott 
+                        +textInput("skill_id")(readonly="readonly")                                         
+                .sheet-max1frNoGap
+                    .sheet-borderRight  
+                        +inputLabel("Avg-Skill")
+                    .sheet-borderRight      
+                        //+textInput("avg_skill_used")(list="avg_skills_used" class="sheet-gridName")
+                        +textInput("avg_skill_used_rowid")(class="sheet-gridName")                     
+        br
+        .sheet-capabilities
+          .sheet-capabilityGrid
+            .sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix
+              +inputLabel("Capability")
+            .sheet-borderBott.sheet-capabilityGridFix
+                +inputLabel("BCS")
+            .sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix
+                +inputLabel("Mod")                
+            .sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix
+              +inputLabel2("Brawling")(class="sheet-gridName")
+            .sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix
+              +actionTexTButton("brawling")                
+                span(name='attr_brawlBCS')
+              +hiddenInputWithValue("brawlBCS","0")              
+            .sheet-borderBott.sheet-capabilityGridFix
+              +textInputWithValue("brawlMod",0)  
+            .sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix
+                +inputLabel2("Climbing")(class="sheet-gridName")
+            .sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix
+              +actionTexTButton("climbing")(class="capability")               
+                span(name='attr_climbBCS')
+              +hiddenInputWithValue("climbBCS","0")              
+            .sheet-borderBott.sheet-capabilityGridFix
+              +textInputWithValue("climbMod",0)
+            .sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix
+                +inputLabel2("Leaping")(class="sheet-gridName")            
+            .sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix
+              +actionTexTButton("leaping")
+                span(name='attr_leapBCS')
+              +hiddenInputWithValue("leapBCS","0")
+            .sheet-borderBott.sheet-capabilityGridFix
+              +textInputWithValue("leapMod",0)
+            +hiddenInputWithValue("profession")(class="sheet-magic-hider")                                
+            .sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix.sheet-magic-capability
+              +inputLabel2("Magic")(class="sheet-gridName")
+            +hiddenInputWithValue("profession")(class="sheet-magic-hider")    
+            .sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix.sheet-magic-capability
+              +actionTexTButton("magic")              
+                span(name='attr_magicBCS')
+              +hiddenInputWithValue("magicBCS","0")
+            +hiddenInputWithValue("profession")(class="sheet-magic-hider")    
+            .sheet-borderBott.sheet-capabilityGridFix.sheet-magic-capability
+              +textInputWithValue("magicMod",0)                       
+            .sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix
+                +inputLabel2("Swimming")(class="sheet-gridName")
+            .sheet-borderRight.sheet-borderBott.sheet-capabilityGridFix
+              +actionTexTButton("swimming")
+                span(name='attr_SwimBCS')              
+              +hiddenInputWithValue("SwimBCS","0")
+            .sheet-borderBott.sheet-capabilityGridFix
+              +textInputWithValue("SwimMod",0)              
+            .sheet-borderRight.sheet-capabilityGridFix.sheet-hideIt(data-tab="gimmickry")
+              +inputLabel2("Gimmickry")(class="sheet-gridName")         
+            .sheet-borderRight.sheet-capabilityGridFix.sheet-capabilityGridFix.sheet-hideIt(data-tab="gimmickry")
+              +actionTexTButton("gimmickry")                
+                span(name='attr_GimmickryBCS')
+                +hiddenInputWithValue("GimmickryBCS","0")
+            .sheet-capabilityGridFix.sheet-hideIt(data-tab="gimmickry")
+              +textInputWithValue("GimmickryMod",0)
+            //+textInputWithValue("enc_pen","0")                  
+        //- End Buegi grid -
+        br
+        .sheet-ki-wrapper.sheet-hvyBorder
+            .sheet-ki-powers-grid2
+                .sheet-borderRight.sheet-borderBott
+                    +inputLabel("KI POWER")(class="sheet-gridName")
+                .sheet-borderRight.sheet-borderBott.sheet-capabilityGridF
+                .sheet-borderBott
+            fieldset.repeating_kipowers             
+                .sheet-ki-powers-grid2
+                    .sheet-borderRight.sheet-borderBott
+                        +textInput("ki_power_name")(class="sheet-gridName")  
+                    .sheet-borderRight.sheet-borderBott
+                        label.sheet-hideCheckbox(title='Details' data-i18n-title='Details')
+                            +checkboxInputWithValue("toggle-section","1")(style="display:none")
+                            | y
+                input.sheet-section-toggle(type='hidden' value="1" name='attr_toggle-section')
+                .sheet-section-details
+                    +textAreaExpanding("ki_power_detials")
+        br
+        .sheet-hvyBorder.sheet-wounds
+          .sheet-healRateGrid.sheet-borderBott
+            .sheet-borderRight
+              +inputLabel("Healing Rate")
+            .sheet-borderRight
+              +textInputWithValue("healing_rate",0)(readonly="readonly" data-i18n-title="Healing Rate Mod" title="Healing Rate Mod" )
+            .sheet-borderRight.sheet-labels &#43;             
+            .sheet-borderRight
+              +textInputWithValue("healing_rate_mod",0)(data-i18n-title="Healing Rate Mod" title="Healing Rate Mod" )
+            .sheet-borderRight.sheet-labels  &#61;
+            .sheet-borderRight.sheet-borderLeft
+              +textInputWithValue("total_healing_rate",0)(readonly="readonly" data-i18n-title="Total Healing Rate" title="Total Healing Rate" )
+            .sheet-labels 
+          .sheet-hitPtsGrid.sheet-borderBott
+            .sheet-borderRight
+               +inputLabel("Hit Points")
+            .sheet-borderRight
+              +textInput("hlh_perm")(readonly="readonly" data-i18n-title="Base hit Points" title="Base hit Points" )
+            .sheet-borderRight.sheet-labels &#43;
+            .sheet-borderRight
+              +textInputWithValue("hit_dice_total",0)(data-i18n-title="Level hit dice" title="Level hit dice" )
+            .sheet-borderRight.sheet-labels  &#43;
+            .sheet-borderRight
+              +textInputWithValue("hit_points_mod",0)(data-i18n-title="Hit Points Mod" title="Hit Points Mod" )
+            .sheet-borderRight.sheet-labels  &#61;
+            .sheet-borderRight
+              +textInputWithValue("total_hit_points",0)(readonly="readonly" data-i18n-title="Total hit Points" title="Total hit Points"  )
+          .sheet-labels.sheet-borderBott
+            +textInputWithValue("damage_effect","")(readonly="readonly" class="sheet-centerIt")    
+          +inputLabel("DAMAGE TAKEN")(class="sheet-borderBott sheet-centerIt")
+          .sheet-damage-lethal-subdual.sheet-borderBott
+            .sheet-borderRight.sheet-centerIt
+              +inputLabel("Lethal")
+            .sheet-borderRight.sheet-centerIt 
+              +textInputWithValue("lethal",0)
+            .sheet-borderRight.sheet-centerIt
+              +inputLabel("Subdual")
+            .sheet-borderRight.sheet-centerIt
+              +textInputWithValue("subdual",0)
+            .sheet-borderRight.sheet-centerIt
+              +inputLabel("Total")
+            .sheet-centerIt
+              +textInputWithValue("total_damage",0)(readonly="readonly")
+          .sheet-dummy 
+            +inputLabel("Critical")(class="sheet-borderBott sheet-centerIt sheet-healthLabels")
+          .sheet-critDamage
+            .sheet-borderRight.sheet-centerIt
+              +inputLabel("Location")
+            .sheet-borderBott
+          fieldset.repeating_critical
+            .sheet-critDamage.sheet-borderBott
+              .sheet-borderRight.sheet-centerIt
+                +textInputWithValue("location","")
+              .sheet-centerIt
+                +textInputWithValue("damage","0")
+        br
+
+      // end  EqpSkillWndsRight              
+
+    include _datalists.pug
+

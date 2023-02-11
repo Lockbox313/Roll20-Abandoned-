@@ -1,0 +1,166 @@
+include _mixins.pug
+
+datalist(id="basic_powers_cost")
+    each val in ["0","1","10-LoG","KN/10","LoC","Varies"]
+        +optionValue(val)
+
+datalist(id="spell_cost")
+    each val in ["1","2","3","4","5","5","6","10","12","20","1 x LoS","10 x LoS","15 x LoS","2 x LoS","20 x LoS","3 per Dart","3 x LoS","4 per Arrow","4 x LoS","5 x LoS","6 x LoS","7 x LoS","Special"]
+        +optionValue(val)
+
+datalist(id="effects")
+    each val in ["Drug","Ki","Other","Poison","Spell"]
+        +optionValue(val)
+
+
+datalist(id="aug_spells")
+    - var spells =  ["Armor Invincible","Armor of Heaven","Blessing","Concealing Cloak","Curse","Eyes of True Sight","Many Waves","Mutability of Form","Phantom Form","Road","Scroll of the Mind","Shadow Cloak","Shadow Eyes","Swift Stream","Tongue of Beasts","Turn Steel","Wings of Heaven"]
+    each val in spells
+        +option3(val)
+
+datalist(id="aug_spells3")
+    each val in ["Armor-Invincible","Armor-of-Heaven","Blessing","Concealing-Cloak","Curse","Eyes-of-True-Sight","Many-waves","Mutability-of-Form","Phantom-Form","Road","Scroll-of-the-Mind","Shadow-Cloak","Shadow-Eyes","Swift-Stream","Tongue-of-Beasts","Turn-Steel","Wings-of-heaven"]
+        +option3(val)
+
+datalist(id="mod_target")
+    each val in ["Ability","Attribute","Mental ST","Physical ST","Skill"]
+        +optionValue(val)
+
+
+datalist(id="aug_attribute")
+    each val in ["STR","DFT","SPD","HLH","WT","WL"]
+        +optionValue(val)
+
+
+datalist(id="aug_ability")
+    each val in ["DAM","UCD","BAP","MNA","BMA","HR","FIS","POW","ZAN"]
+        +optionValue(val)
+
+
+datalist(id="all_skills")
+    each val in ["Atemi-Waza","Bajutsu","Bojutsu","Chikujo-Jutsu","Hojojutsu","Hayagakejutsu","Iaijutsu","Jittejutsu","Jojutsu","Jujutsu","Kamajutsu","Karumijutsu","Kenjutsu","Kiserujutsu","Kusari-Jutsu","Kyujutsu","Masakarijutsu","Naginatajutsu","Ni-To-Kenjutsu","Nunchaku-te","Onojutsu","Sai-te","Senjo-Jutsu","Shinobi-jutsu","Shurikenjutsu","Sodegaramijutsu","Sojutsu","Suieijutsu","Sumai","Tantojutsu","Tessenjutsu","Tonfa-te","Yadomejutsu","Yari-Nage-Jutsu","Acting","Armory","Bowyer","Calligraphy","Carving","Cha-no-yu","Chinese Classics","Chokoku","Court Dance","Dengaku","Divination","Flower Arrangement","Flower Cards","Gagaku","Gardening","Go","Hawking","Heraldry","Herbalist","Ikebana","Inst. (Biwa)","Inst. (Fue)","Inst. (Hichiriki)","Inst. (Koto)","Inst. (Samisen)","Inst. (San-ko)","Japanese Classics","Jugaku","Kagaku","Kagura","Kogaku","Medicine","Meditation","Mongaku","Monomane","Music(Composition)","Netsuke","Niwakutsuri","Painting","Poetry","Popular Dance","Rhetoric","Sacred Dance","Sculpture","Shogaku","Shogi","Singing: ","Sumi-e","Tea Ceremony","Theology(Buddist)","Theology(Shinten)","Tori-oi","Yoroi-sei","Yumi-shi","Za-zen","Acting","Armory","Bowyer","Calligraphy","Carving","Cha-no-yu","Chinese Classics","Chokoku","Court Dance","Dengaku","Divination","Flower Arrangement","Flower Cards","Gagaku","Gardening","Go","Hawking","Heraldry","Herbalist","Ikebana","Inst. (Biwa)","Inst. (Fue)","Inst. (Hichiriki)","Inst. (Koto)","Inst. (Samisen)","Inst. (San-ko)","Japanese Classics","Jugaku","Kagaku","Kagura","Kogaku","Medicine","Meditation","Mongaku","Monomane","Music(Composition)","Netsuke","Niwakutsuri","Painting","Poetry","Popular Dance","Rhetoric","Sacred Dance","Sculpture","Shogaku","Shogi","Singing: ","Sumi-e","Tea Ceremony","Theology(Buddist)","Theology(Shinten)","Tori-oi","Yoroi-sei","Yumi-shi","Za-zen"]
+        +optionValue(val)
+
+
+datalist(id="Bugei_skills")
+    each val in ["Atemi-Waza","Bajutsu","Bojutsu","Chikujo-Jutsu","Hojojutsu","Hayagakejutsu","Iaijutsu","Jittejutsu","Jojutsu","Jujutsu","Kamajutsu","Karumijutsu","Kenjutsu","Kiserujutsu","Kusari-Jutsu","Kyujutsu","Masakarijutsu","Naginatajutsu","Ni-To-Kenjutsu","Nunchaku-te","Onojutsu","Sai-te","Senjo-Jutsu","Shinobi-jutsu","Shurikenjutsu","Sodegaramijutsu","Sojutsu","Suieijutsu","Sumai","Tantojutsu","Tessenjutsu","Tonfa-te","Yadomejutsu","Yari-Nage-Jutsu"]
+        +optionValue(val)
+
+
+datalist(id="Fine_arts")
+    each val in ["Acting","Armory","Bowyer","Calligraphy","Carving","Cha-no-yu","Chinese Classics","Chokoku","Court Dance","Dengaku","Divination","Flower Arrangement","Flower Cards","Gagaku","Gnana-Yoga","Gardening","Go","Hatha-Yoga","Hawking","Heraldry","Herbalist","Ikebana","Inst. (Biwa)","Inst. (Fue)","Inst. (Hichiriki)","Inst. (Koto)","Inst. (Samisen)","Inst. (San-ko)","Japanese Classics","Jugaku","Kagaku","Kagura","Karma-Yoga","Kogaku","Medicine","Meditation","Mongaku","Monomane","Music(Composition)","Netsuke","Niwakutsuri","Painting","Poetry","Popular Dance","Prana-Yoga","Raja-Yoga","Rhetoric","Sacred Dance","Sculpture","Shogaku","Shogi","Singing: ","Sumi-e","Tea Ceremony","Theology(Buddist)","Theology(Shinten)","Tori-oi","Yoroi-sei","Yumi-shi","Za-zen"]
+        +optionValue(val)
+
+
+datalist(id="Practical_skills")
+    each val in ["Commerce","Craft:","Fishing","Forgery","Gambling","Hunting","Lockpicking","Massage","Torture","Tracking"]
+        +optionValue(val)        
+
+
+datalist(id="melee_default")
+    +optionValue("Brawling")
+
+datalist(id="melee_skills_used")
+    each val in ["Atemi-Waza","Bojutsu","Brawling","Iaijutsu","Jittejutsu","Jojutsu","Jujutsu","Kamajutsu","Kenjutsu","Kiserujutsu","Kusari-Jutsu","Masakarijutsu","Naginatajutsu","Ni-To-Kenjutsu","Nunchaku-te","Onojutsu","Sai-te","Sodegaramijutsu","Sojutsu","Sumai","Tantojutsu","Tessenjutsu","Tonfa-te","Yadomejutsu"]
+        +optionValue(val)
+
+datalist(id="weapon_name")
+    each val in ["Aiguchi","Atemi-Waza","Bo","Brawling","Club","Fumata-yari","Jitte","Jo","Jujutsu","Kama","Katana","Kawa-naga","Kiseru","Kusari-gama (kama)","Kusari-gama (chain)","Kyotetsu-shoge (knife)","Kyotetsu-shoge (rope)","Manrikigusari","Masakari","Nagamaki","Naginata","Nekode","No-dachi","Nunchaku","Ono","Rock","Sai","Sasumata","Shuko","Shuriken","Sodegarami","Sumai","Tanto","Tessen","Tetsubo","Tonfa","Uchi-ne","Wakizashi","Yari","Yari-Nage","Yawara"]
+        +optionValue(val)
+
+datalist(id="avg_skills_used")
+    each val in ["Bajutsu","Kusai-Jutsu","Ju-Jutsu","Swimming","Two-Weapon Bugei","Yadomejutsu"]
+        +optionValue(val) 
+
+datalist(id="okuden_list")
+    each val in ["Piercing Thrust","Smashing Blow","Fire and Stones","Reverse Cut","Hurling","The Lightning Stroke","The Returning Hurl","Disarm","Precision Strike"]
+        +optionValue2(val)  
+
+datalist(id="bow_names")
+    each val in ["Dai-kyu","Han-kyu"]
+        +optionValue(val) 
+
+datalist(id="bow_skills_used")
+    each val in ["Kyujutsu"]
+        +optionValue(val)         
+
+datalist(id="avg_skills_used2")
+    each val in ["Bajutsu"]
+        +optionValue(val)
+
+datalist(id="okuden_list2")
+    each val in ["Disarm","Precision Strike"]
+        +optionValue2(val)
+
+datalist(id="hurled_weapons")
+    each val in ["Aiguchi","Rock","Shuriken","Tanto","Uchi-ne","Yari-Nage"]
+        +optionValue(val) 
+
+
+datalist(id="hurled_default_used")
+    each val in ["Brawling","DFT ST"]
+        +optionValue(val) 
+
+
+datalist(id="hurled_skills_used")
+    each val in ["Brawling","DFT ST","Sai-te","Shurikenjutsu","Yari-Nage-Jutsu"]
+        +optionValue(val) 
+
+datalist(id="avg_skills_used3")
+    each val in ["Bajutsu","Kusari-Jutsu","Swimming"]
+        +optionValue(val) 
+
+datalist(id="forms_list0")
+    each val in ["Bash","Butt Stroke","Butt Strike (SS)","Disarm","Entangle","Grapple","Second Strike","Strike","Throw","Thrust","Trip"]
+        +optionValue(val)   
+
+datalist(id="forms_list1")
+    each val in ["Strike","Grapple","Throw"]
+        +optionValue(val)
+
+datalist(id="forms_list2")
+    each val in ["Strike","Bash"]
+        +optionValue(val)
+
+datalist(id="forms_list3")
+    each val in ["Strike","Butt Stroke","Butt Strike (SS)","Thrust"]
+        +optionValue(val)    
+
+datalist(id="forms_list4")
+    each val in ["Strike","Butt Stroke","Butt Strike (SS)","Disarm"]
+        +optionValue(val)            
+
+datalist(id="forms_list5")
+    each val in ["Strike","Disarm"]
+        +optionValue(val)
+
+datalist(id="forms_list6")
+    each val in ["Strike","Disarm","Thrust"]
+        +optionValue(val)        
+
+datalist(id="forms_list7")
+    each val in ["Strike","Entangle"]
+        +optionValue(val)
+
+datalist(id="forms_list8")
+    each val in ["Strike","Entangle","Trip"]
+        +optionValue(val)
+
+datalist(id="forms_list9")
+    each val in ["Strike","Second Strike"]
+        +optionValue(val)
+
+datalist(id="forms_list10")
+    each val in ["Strike","Throw"]
+        +optionValue(val)
+
+datalist(id="forms_list11")
+    each val in ["Strike","Thrust"]
+        +optionValue(val)
+
+datalist(id="forms_list12")
+    each val in ["Strike","Thrust","Butt Stroke","Butt Strike (SS)"]
+        +optionValue(val)
+
+
+
