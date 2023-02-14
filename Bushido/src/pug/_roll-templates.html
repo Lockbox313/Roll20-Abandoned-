@@ -1,0 +1,164 @@
+<rolltemplate class="sheet-rolltemplate-roll">
+	<div class="sheet-header">
+		<div><b>{{name}}</b></div>
+		
+		{{#rollTotal() combat 1}}
+			<div><b>{{attack_name}}
+				{{#rollTotal() is_bow 1}}
+					({{arrow_type}})
+				{{/rollTotal() is_bow 1}}
+				{{#^rollTotal() is_bow 1}}
+					({{form_type}})
+				{{/^rollTotal() is_bow 1}}
+				
+			</b></div>
+		{{/rollTotal() combat 1}}	
+		<div><b><span>{{#rollTotal() do_raw 1}}<span  data-i18n="Raw"> Raw</span>{{/rollTotal() do_raw 1}}{{roll_for}}<span>{{#rollTotal() raw_roll 1}} <span  data-i18n="raw-roll">Raw Roll</span>{{/rollTotal() raw_roll 1}}</span></b></div>
+		<!--</div>Raw used: {{computed::raw_used}}</div>-->
+	</div>	
+	<div class="sheet-details">
+   
+		<div>Roll: {{roll}} BCS: {{adjusted_bcs_target}} {{#rollTotal() show_multiplier 1}} ({{multiplier_str}}) {{/rollTotal() show_multiplier 1}}  Modifiers: {{modifiers}} </div>
+		{{#rollTotal() computed::raw_used 1}}
+			<div>Raw Roll: {{raw_roll}} BCS: {{raw_target}}</div>
+		{{/rollTotal() computed::raw_used 1}}
+		{{#rollTotal() computed::avg_with 1}}
+			<div>Averaged with: {{computed::avg_with_str}}</div>
+		{{/rollTotal() computed::avg_with 1}}		
+		<div>Result: {{computed::result}} Effect: {{computed::effect}}</div>	
+		{{#rollTotal() computed::roll_success 1}}
+			{{#rollTotal() show_damage 1}}
+				<div>Damage: {{computed::damage_roll}}<b>{{damage_type}}</b></div>
+			{{/rollTotal() show_damage 1}}
+ 			{{#rollTotal() spell 1}}
+				<div>{{computed::duration_str}}</div>
+                <div>{{#rollGreater() spell_level 0}}<span style="font-weight:bold" data-i18n="level_of_spell" >Spell Level</span>:{{spell_level}} {{/rollGreater() spell_level 0}} {{computed::cost_str}}</div>
+			{{/rollTotal() spell 1}}           
+		{{/rollTotal() computed::roll_success 1}}
+			{{#rollTotal() computed::was_crit 1}}
+					{{#^rollTotal() computed::critical_str 0}}
+						<div class="sheet-roll-info" >{{computed::critical_str}}</div>
+					{{/^rollTotal() computed::critical_str 0}}
+					{{#^rollTotal() computed::critical_special_effect_str 0}}
+						<div class="sheet-roll-info" >{{computed::critical_special_effect_str}}</div>
+					{{/^rollTotal() computed::critical_special_effect_str 0}}
+					{{#^rollTotal() computed::critical_damage_str 0}}
+						<div class="sheet-roll-info" >{{computed::critical_damage_str }}</div>
+					{{/^rollTotal() computed::critical_damage_str 0}}
+					{{#^rollTotal() computed::critical_reduction_str 0}}
+						<div class="sheet-roll-info" >{{computed::critical_reduction_str }}</div>
+					{{/^rollTotal() computed::critical_reduction_str 0}}
+                    {{#rollTotal() spell 1}}
+                        <div>{{computed::duration_str}}</div>
+                        <div>{{#rollGreater() spell_level 0}}<span style="font-weight:bold"  data-i18n="level_of_spell" >Spell Level</span>:{{spell_level}} {{/rollGreater() spell_level 0}} {{computed::cost_str}}</div>                        
+                    {{/rollTotal() spell 1}}                      
+			{{/rollTotal() computed::was_crit 1}}
+		{{#rollTotal() computed::roll_success 1}}
+			{{#rollTotal() combat 1}}
+				{{#rollTotal() form 1}}
+					<div>Bash Special Effect {{bash_roll}}&#60;&#61;{{computed::bash_target}}</div>
+					{{#rollBetween() bash_roll 1 computed::bash_target}}
+						<div  class="sheet-roll-info" data-i18n="bash-effect">Target forced back 1 yard and loses Available Action Phase.  Target requires a Will Saving Throw to avoid a Stun Critical Effect</div>
+					{{/rollBetween() bash_roll 1 computed::bash_target}}
+					{{#^rollBetween() bash_roll 1 computed::bash_target}}
+					<div data-i18n="no-effect">NO EFFECT</div>
+					{{/^rollBetween() bash_roll 1 computed::bash_target}}
+				{{/rollTotal() form 1}}	
+				{{#rollTotal() form 3}}
+
+					{{#rollTotal() break 0}}
+						<div><b><span data-i18n="disarm-effect1">Target must make a Strength Saving Throw or his weapon will be thrown</span> {{thrown_distance}}  <span data-i18n="disarm-effect2"> yard(s) away</span></b></div>
+					{{/rollTotal() break 0}}
+					{{#rollTotal() break 1}}
+							<div><b><span data-i18n="weapon-breaks">Weapon Breaks</span> {{break_roll}} > {{break_target}}</b></div>
+							{{#rollGreater() break_roll break_target}}
+								<div><b><span  data-i18n="Success">Succcess</span></b></div>
+							{{/rollGreater() break_roll break_target}}
+							{{#^rollGreater() break_roll break_target}}
+								<div><b><span data-i18n="Failure">Failure</span></b></div>
+							{{/^rollGreater() break_roll break_target}}							
+					{{/rollTotal() break 1}}					
+
+				{{/rollTotal() form 3}}
+				{{#rollTotal() form 4}}
+					{{#rollTotal() computed::was_crit 1}}
+						<div class="sheet-roll-info"><b><span data-i18n="crit-entangle">Target subdued No Speed Saving Throw</span></b></div>
+					{{/rollTotal() computed::was_crit 1}}
+					{{#^rollTotal() computed::was_crit 1}}
+						<div class="sheet-roll-info"><b><span data-i18n="entangle1">Target must make Speed Saving Throw or be subduded. if the Saving Throw is made target suffers </span> {{computed::effect}} <span data-i18n="Restrictions">Restrictions</span></b></div>
+					{{/^rollTotal() computed::was_crit 1}}
+				{{/rollTotal() form 4}}
+				{{#rollTotal() form 9}}
+					<div class="sheet-roll-info"><b><span data-i18n="throw6">Target loses his next Available Action Phase</span></b></div>
+					<div class="sheet-roll-info"><b><span data-i18n="Throw">Throw</span> {{throw_roll}}  < =  {{computed::effect}}</b></div>
+					{{#^rollGreater() throw_roll computed::effect}}						
+						{{#rollTotal() throw 2}}
+							<div class="sheet-roll-info"><b><span data-i18n="throw1">Toss: Target tossed</span> {{throw_distance}} <span data-i18n="Yard(s)">Yard(s)</span></b></div>
+						{{/rollTotal() throw 2}}
+						<div class="sheet-roll-info"><b><span data-i18n="throw3">Target is on the ground and must make a Health Saving Throw.</span></b></div>
+						<div class="sheet-roll-info"><b><span data-i18n="throw4">Failure:Stun Critical Effect</span></b></div>						
+						<div class="sheet-roll-info"><b><span data-i18n="throw5">Critical:Failure:Unconsciousness.</span></b></div>						
+					{{/^rollGreater() throw_roll computed::effect}}
+					{{#rollGreater() throw_roll computed::effect}}
+							<div><b><span data-i18n="Failure">Failure</span></b></div>
+					{{/rollGreater() throw_roll computed::effect}}
+				{{/rollTotal() form 9}}
+				{{#rollTotal() form 10}}
+					<div>Thrust Special Effect {{thrust_roll}}&#60;&#61;{{computed::thrust_target}}</div>
+					{{#rollBetween() thrust_roll 1 computed::thrust_target}}
+						<div  class="sheet-roll-info" data-i18n="thrust-effect">Target forced back 1 yard and loses Available Action Phase.  Target requires a Will Saving Throw to avoid a Stun Critical Effect</div>
+					{{/rollBetween() thrust_roll 1 computed::thrust_target}}
+					{{#^rollBetween() thrust_roll 1 computed::thrust_target}}
+					<div data-i18n="no-effect">NO EFFECT</div>
+					{{/^rollBetween() thrust_roll 1 computed::thrust_target}}
+				{{/rollTotal() form 10}}
+				{{#rollTotal() form 11}}
+					<div class="sheet-roll-info"><b><span data-i18n="trip1">Target suffers</span>{{computed::effect}}<span data-i18n="Distractions">Distractions</span></b></div>
+					<div class="sheet-roll-info"><b><span data-i18n="trip2">Target must make a Speed Saving Throw or fall to the ground.</span></b></div>
+					<div class="sheet-roll-info"><b><span data-i18n="trip3">If target falls he must make a Health Saving Throw.</span></b></div>
+					<div class="sheet-roll-info"><b><span data-i18n="trip4">Failure:Lose next Available Action Phase</span></b></div>
+					<div class="sheet-roll-info"><b><span data-i18n="trip5">Critical Failure:Stun Critical Effect</span></b></div>
+				{{/rollTotal() form 11}}
+			{{/rollTotal() combat 1}}
+		{{/rollTotal() computed::roll_success 1}}			
+		{{#^rollTotal() computed::fumble_str 0}}
+		<div  class="sheet-roll-info">{{computed::fumble_str }}</div>
+		{{/^rollTotal() computed::fumble_str 0}}		
+	</div>
+ </rolltemplate>
+ 
+ <rolltemplate class="sheet-rolltemplate-backlash">
+ 	<div class="sheet-header">
+		<div><b>{{name}}</b></div>
+		<div><span  data-i18n="Backlash">BACKLASH</span></div>
+	</div>	
+ 	<div class="sheet-details">
+        {{#rollBetween() roll 1 2}}
+            <div><span  data-i18n="Backlash1">No effect on character. Shugenja may still use magic that day</span></div>          
+        {{/rollBetween() roll 1 2}}
+        {{#rollBetween() roll 3 7}}
+            <div><span  data-i18n="Backlash2">Shugenja takes Subdual damage equal to Overexpended Power total. If knocked out, may cast no more Spells until Power is regained.</span></div>
+        {{/rollBetween() roll 3 7}} 
+        {{#rollBetween() roll 8 9}}
+            <div><span  data-i18n="Backlash3a">Shugenja knocked out for</span> {{hours}} <span  data-i18n="Backlash3b">hour(s). May cast no more Spells until Power is regained</span></div>
+        {{/rollBetween() roll 8 9}}
+        {{#rollBetween() roll 10 12}} 
+            <div><span  data-i18n="Backlash3a">Shugenja knocked out for</span> {{hours}} <span  data-i18n="Backlash4">hour(s). Shugenja regains only 50% of normal Power at next dawn's ritual. Next ritual after that restores full Power.</span></div> 
+        {{/rollBetween() roll 10 12}}
+        {{#rollBetween() roll 13 18}} 
+            <div><span  data-i18n="Backlash3a">Shugenja knocked out for</span> {{hours}} <span  data-i18n="Backlash5">hour(s). 50% Power regained at every ritual until Shugenja can make a Will ST. First ritual regains only 50% in any case. Saving Throw is made at dawn</span></div>
+        {{/rollBetween() roll 13 18}}           
+        {{#rollTotal() roll 19}} 
+            <div><span  data-i18n="Backlash3a">Shugenja knocked out for</span> {{hours}} <span  data-i18n="Backlash6">hour(s). Shugenja regains NO Power until Will ST is made. Thereafter he regains 50% Power until a second Will ST is made.</span></div> 
+        {{/rollTotal() roll 19}}
+        {{#rollTotal() roll 20}}
+            <div><span  data-i18n="Backlash7a">Shugenja knocked out for</span> {{hours}} <span  data-i18n="Backlash7b">hour(s). Shugenja regains NO Power until Will ST is made. Thereafter he regains 50% Power until a second Will ST is made.  Shugenja must make Health ST. If this fails, he takes Lethal Damage equal to Overexpended Power total.</span></div>   
+       {{/rollTotal() roll 20}}        
+    </div>
+ </rolltemplate>  
+
+ <rolltemplate class="sheet-rolltemplate-freq">
+ 	<div class="sheet-header">
+        <span data-i18n="freq-roll">Frequency Roll</span>: {{d6}}
+	</div>
+ </rolltemplate> 
