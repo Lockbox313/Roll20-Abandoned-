@@ -1,0 +1,2333 @@
+
+<input class="sheet-hideIt" name="attr_show_npc" title="@{show_npc}" type="checkbox" value="1"/>
+<button class="sheet-hideIt" name="roll_serious1" type="roll" value="&amp;{template:serious1} {{wound_roll=[[1d100]]}}"></button>
+<button class="sheet-hideIt" name="roll_serious2" type="roll" value="&amp;{template:serious2} {{wound_roll=[[1d100]]}}"></button>
+<button class="sheet-hideIt" name="roll_critical1" type="roll" value="&amp;{template:critical1} {{wound_roll=[[1d100]]}}"></button>
+<button class="sheet-hideIt" name="roll_critical2" type="roll" value="&amp;{template:critical2} {{wound_roll=[[1d100]]}}"></button>
+<input type="number" style="display:none" name="attr_setup_done" value="0"/>
+<input class="sheet-hideIt" type="text" name="attr_targetselect" value="?{Target Speed|1}"/>
+<input type="text" style="display:none" name="attr_show_npc" value="1"/>
+<!-- - start pc sheet-->
+<div class="sheet-pc sheet-showIt" data-tab="sheet-pc">
+  <div>
+    <input class="sheet-text_input sheet-tabstoggle" name="attr_sheetMenu" type="hidden" value="character"/>
+    <button class="menu" data-i18n="CHARACTER" name="act_character" type="action">
+    </button>
+    <input class="sheet-text_input sheet-tabstoggle" name="attr_sheetMenu" type="hidden" value="character"/>
+    <button class="menu" data-i18n="BACKGROUND" name="act_background" type="action">
+    </button>
+    <input class="sheet-text_input sheet-tabstoggle" name="attr_sheetMenu" type="hidden" value="character"/>
+    <button class="menu" data-i18n="EQUIPMENT" name="act_EQUIPMENT" type="action">   
+    </button>
+    <input class="sheet-text_input sheet-tabstoggle" name="attr_sheetMenu" type="hidden" value="character"/>
+    <button class="menu" id="configButton" type="action" name="act_configuration">y</button>
+  </div>
+  <input class="sheet-text_input sheet-tabstoggle" name="attr_sheetMenu" type="hidden" value="character"/>
+  <!-- - Start Character-->
+  <div class="sheet-character">
+    <div class="sheet-header1">
+      <div class="sheet-max-1fr">
+        <div class="sheet-labels"><span class="sheet-labels" data-i18n="Name"></span>
+        </div>
+        <div>
+              <input class="sheet-text_input" name="attr_character_name" title="@{character_name}" type="text" value=""/>
+        </div>
+      </div>
+      <div class="sheet-max-1fr">
+        <div class="sheet-labels"><span class="sheet-labels" data-i18n="Gender"></span>
+        </div>
+        <div>
+              <input class="sheet-text_input sheet-centerIt" name="attr_gender" title="@{gender}" type="text" value=""/>
+        </div>
+      </div>
+    </div>
+    <div class="sheet-header2">
+      <div class="sheet-max-1fr">
+        <div class="sheet-labels"><span class="sheet-labels" data-i18n="Age"></span>
+        </div>
+        <div>
+              <input class="sheet-text_input" name="attr_age" title="@{age}" type="text" value=""/>
+        </div>
+      </div>
+      <div class="sheet-max-1fr">
+        <div class="sheet-labels"><span class="sheet-labels" data-i18n="Race"></span>
+        </div>
+        <div>
+              <input class="sheet-text_input" name="attr_race" title="@{race}" type="text" value=""/>
+        </div>
+      </div>
+      <div class="sheet-max-1fr">
+        <div class="sheet-labels"><span class="sheet-labels" data-i18n="Social"></span>
+        </div>
+        <div>
+              <input class="sheet-text_input" name="attr_Social" title="@{Social}" type="text" value=""/>
+        </div>
+      </div>
+    </div>
+    <div class="sheet-header3">
+      <div class="sheet-max-1fr">
+        <div class="sheet-labels"><span class="sheet-labels" data-i18n="Imbalance"></span>
+        </div>
+        <div>
+              <input class="sheet-text_input" name="attr_imbalance" title="@{imbalance}" type="text" value=""/>
+        </div>
+      </div>
+      <div class="sheet-max-1fr">
+        <div class="sheet-labels"><span class="sheet-labels" data-i18n="Favour"></span>
+        </div>
+        <div>
+              <input class="sheet-text_input" name="attr_favour" title="@{favour}" type="text" value=""/>
+        </div>
+      </div>
+      <div class="sheet-max-1fr">
+        <div class="sheet-labels"><span class="sheet-labels" data-i18n="Patron"></span>
+        </div>
+        <div>
+              <input class="sheet-text_input" name="attr_patron" title="@{patron}" type="text" value=""/>
+        </div>
+      </div>
+    </div><br/>
+    <div class="sheet-character-main">
+      <div class="sheet-left-col sheet-centerIt"><span class="sheet-labels" data-i18n="ATTRIBUTES"></span>
+        <div class="sheet-attribute-grid">
+          <div> </div>
+          <div><span class="sheet-labels sheet-attribute-header" data-i18n="Orig."></span>
+          </div>
+          <div><span class="sheet-labels sheet-attribute-header" data-i18n="Temp."></span>
+          </div>
+          <div><span class="sheet-labels sheet-attribute-header" data-i18n="Mod."></span>
+          </div>
+          <div><span class="sheet-labels sheet-attribute-header sheet-used" data-i18n="Used"></span>
+          </div>
+        </div>
+        <div class="sheet-attribute-grid">
+          <div>    
+                <button class="sheet-text_roll" name="act_attack_skill" type="action">              <span class="sheet-labels" data-i18n="attack_skill"></span>
+                </button>
+          </div>
+          <div>
+                <input class="sheet-text_input" name="attr_attack_skill_orig" title="@{attack_skill_orig}" type="text" value="0"/>
+          </div>
+          <div>
+                <input class="sheet-text_input" name="attr_attack_skill_temp" title="@{attack_skill_temp}" type="text" value="0"/>
+          </div>
+          <div>
+                <input class="sheet-text_input" name="attr_attack_skill_mod" title="@{attack_skill_mod}" type="text" value="0"/>
+          </div>
+          <div>
+                <input name="attr_attack_skill_used" title="@{attack_skill_used}" type="checkbox" value="attack_skill_used"/>
+          </div>
+          <div>    
+                <button class="sheet-text_roll" name="act_missile_skill" type="action">              <span class="sheet-labels" data-i18n="missile_skill"></span>
+                </button>
+          </div>
+          <div>
+                <input class="sheet-text_input" name="attr_missile_skill_orig" title="@{missile_skill_orig}" type="text" value="0"/>
+          </div>
+          <div>
+                <input class="sheet-text_input" name="attr_missile_skill_temp" title="@{missile_skill_temp}" type="text" value="0"/>
+          </div>
+          <div>
+                <input class="sheet-text_input" name="attr_missile_skill_mod" title="@{missile_skill_mod}" type="text" value="0"/>
+          </div>
+          <div>
+                <input name="attr_missile_skill_used" title="@{missile_skill_used}" type="checkbox" value="missile_skill_used"/>
+          </div>
+          <div>    
+                <button class="sheet-text_roll" name="act_defence_skill" type="action">              <span class="sheet-labels" data-i18n="defence_skill"></span>
+                </button>
+          </div>
+          <div>
+                <input class="sheet-text_input" name="attr_defence_skill_orig" title="@{defence_skill_orig}" type="text" value="0"/>
+          </div>
+          <div>
+                <input class="sheet-text_input" name="attr_defence_skill_temp" title="@{defence_skill_temp}" type="text" value="0"/>
+          </div>
+          <div>
+                <input class="sheet-text_input" name="attr_defence_skill_mod" title="@{defence_skill_mod}" type="text" value="0"/>
+          </div>
+          <div>
+                <input name="attr_defence_skill_used" title="@{defence_skill_used}" type="checkbox" value="defence_skill_used"/>
+          </div>
+          <div>    
+                <button class="sheet-text_roll" name="act_knowledge" type="action">              <span class="sheet-labels" data-i18n="knowledge"></span>
+                </button>
+          </div>
+          <div>
+                <input class="sheet-text_input" name="attr_knowledge_orig" title="@{knowledge_orig}" type="text" value="0"/>
+          </div>
+          <div>
+                <input class="sheet-text_input" name="attr_knowledge_temp" title="@{knowledge_temp}" type="text" value="0"/>
+          </div>
+          <div>
+                <input class="sheet-text_input" name="attr_knowledge_mod" title="@{knowledge_mod}" type="text" value="0"/>
+          </div>
+          <div>
+                <input name="attr_knowledge_used" title="@{knowledge_used}" type="checkbox" value="knowledge_used"/>
+          </div>
+          <div>    
+                <button class="sheet-text_roll" name="act_will" type="action">              <span class="sheet-labels" data-i18n="will"></span>
+                </button>
+          </div>
+          <div>
+                <input class="sheet-text_input" name="attr_will_orig" title="@{will_orig}" type="text" value="0"/>
+          </div>
+          <div>
+                <input class="sheet-text_input" name="attr_will_temp" title="@{will_temp}" type="text" value="0"/>
+          </div>
+          <div>
+                <input class="sheet-text_input" name="attr_will_mod" title="@{will_mod}" type="text" value="0"/>
+          </div>
+          <div>
+                <input name="attr_will_used" title="@{will_used}" type="checkbox" value="will_used"/>
+          </div>
+          <div>    
+                <button class="sheet-text_roll" name="act_endurance" type="action">              <span class="sheet-labels" data-i18n="endurance"></span>
+                </button>
+          </div>
+          <div>
+                <input class="sheet-text_input" name="attr_endurance_orig" title="@{endurance_orig}" type="text" value="0"/>
+          </div>
+          <div>
+                <input class="sheet-text_input" name="attr_endurance_temp" title="@{endurance_temp}" type="text" value="0"/>
+          </div>
+          <div>
+                <input class="sheet-text_input" name="attr_endurance_mod" title="@{endurance_mod}" type="text" value="0"/>
+          </div>
+          <div>
+                <input name="attr_endurance_used" title="@{endurance_used}" type="checkbox" value="endurance_used"/>
+          </div>
+          <div>    
+                <button class="sheet-text_roll" name="act_persuasion" type="action">              <span class="sheet-labels" data-i18n="persuasion"></span>
+                </button>
+          </div>
+          <div>
+                <input class="sheet-text_input" name="attr_persuasion_orig" title="@{persuasion_orig}" type="text" value="0"/>
+          </div>
+          <div>
+                <input class="sheet-text_input" name="attr_persuasion_temp" title="@{persuasion_temp}" type="text" value="0"/>
+          </div>
+          <div>
+                <input class="sheet-text_input" name="attr_persuasion_mod" title="@{persuasion_mod}" type="text" value="0"/>
+          </div>
+          <div>
+                <input name="attr_persuasion_used" title="@{persuasion_used}" type="checkbox" value="persuasion_used"/>
+          </div>
+          <div>    
+                <button class="sheet-text_roll" name="act_perception" type="action">              <span class="sheet-labels" data-i18n="perception"></span>
+                </button>
+          </div>
+          <div>
+                <input class="sheet-text_input" name="attr_perception_orig" title="@{perception_orig}" type="text" value="0"/>
+          </div>
+          <div>
+                <input class="sheet-text_input" name="attr_perception_temp" title="@{perception_temp}" type="text" value="0"/>
+          </div>
+          <div>
+                <input class="sheet-text_input" name="attr_perception_mod" title="@{perception_mod}" type="text" value="0"/>
+          </div>
+          <div>
+                <input name="attr_perception_used" title="@{perception_used}" type="checkbox" value="perception_used"/>
+          </div>
+          <div>    
+                <button class="sheet-text_roll" name="act_speed" type="action">              <span class="sheet-labels" data-i18n="speed"></span>
+                </button>
+          </div>
+          <div>
+                <input class="sheet-text_input" name="attr_speed_orig" title="@{speed_orig}" type="text" value="0"/>
+          </div>
+          <div>
+                <input class="sheet-text_input" name="attr_speed_temp" title="@{speed_temp}" type="text" value="0"/>
+          </div>
+          <div>
+                <input class="sheet-text_input" name="attr_speed_mod" title="@{speed_mod}" type="text" value="0"/>
+          </div>
+          <div>
+                <input name="attr_speed_used" title="@{speed_used}" type="checkbox" value="speed_used"/>
+          </div>
+          <div>    
+                <button class="sheet-text_roll" name="act_agility" type="action">              <span class="sheet-labels" data-i18n="agility"></span>
+                </button>
+          </div>
+          <div>
+                <input class="sheet-text_input" name="attr_agility_orig" title="@{agility_orig}" type="text" value="0"/>
+          </div>
+          <div>
+                <input class="sheet-text_input" name="attr_agility_temp" title="@{agility_temp}" type="text" value="0"/>
+          </div>
+          <div>
+                <input class="sheet-text_input" name="attr_agility_mod" title="@{agility_mod}" type="text" value="0"/>
+          </div>
+          <div>
+                <input name="attr_agility_used" title="@{agility_used}" type="checkbox" value="agility_used"/>
+          </div>
+        </div><br/><span class="sheet-labels" data-i18n="WOUNDS-AND-INJURIES"></span><br/><br/>
+        <div class="sheet-wounds-grid1">
+          <div>
+            <div class="sheet-wound-track">
+                  <input class="sheet-text_input" name="attr_wounds" title="@{wounds}" type="text" value="0/0/0/0"/>
+            </div>
+            <div class="sheet-bleeding-grid">
+              <div class="sheet-plus-sign">+</div>
+              <div>
+                    <input class="sheet-text_input" readonly="readonly" name="attr_bleeding_damage" title="@{bleeding_damage}" type="text" value="0" id="bleeding_damage"/>
+              </div>
+              <div>
+                    <button class="sheet-text_roll" data-i18n-title="apply-bleed" title="apply-bleed" name="act_bleed" type="action"> <img src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/blood_drop2.png"/>
+                    </button>
+              </div>
+              <div>
+                    <input class="sheet-text_input" name="attr_bleeding_wounds" title="@{bleeding_wounds}" type="text" value="0"/>
+              </div>
+            </div>
+          </div>
+          <div class="sheet-wounds-state">
+            <div class="sheet-total-wounds-heal-grid">
+              <div>
+                    <input class="sheet-text_input" readonly="readonly" name="attr_wounds_total" title="@{wounds_total}" type="text" value="0" id="wound_total"/>
+              </div>
+              <div>
+                    <button class="sheet-text_roll sheet-dice" data-i18n-title="apply-heal" title="apply-heal" name="act_heal" type="action" id="heal">
+                    </button>
+              </div>
+            </div>
+            <div>
+                  <input class="sheet-text_input sheet-unconsciousness-dead" readonly="readonly" name="attr_unconsciousness_or_dead" title="@{unconsciousness_or_dead}" type="text" value=""/>
+            </div>
+          </div>
+          <div class="sheet-max-1fr"></div>
+        </div>
+        <div class="sheet-injuries">  <span class="sheet-labels" data-i18n="Injuries"></span>
+          <textarea name="attr_injuries"></textarea>
+        </div>
+        <div class="sheet-injuries">  <span class="sheet-labels" data-i18n="Long Term"></span>
+          <textarea name="attr_long_term_injuries"></textarea>
+        </div><br/><span class="sheet-labels" data-i18n="ARMOUR"></span>
+        <div class="sheet-ar-penalty-grid">
+          <div class="sheet-ar-shield">
+            <div class="sheet-cur-ar">
+                  <input class="sheet-text_input" name="attr_cur_ar" title="@{cur_ar}" type="hidden" value="0"/><span class="sheet-display-attribute" name="attr_cur_ar"> </span>
+            </div>
+            <div class="sheet-ar-label"><span class="sheet-labels" data-i18n="AR"></span>
+            </div>
+          </div>
+          <div class="sheet-armor-penalty">
+            <div class="sheet-armor-penalty-wrapper"><span class="sheet-labels" data-i18n="Penalty"></span>
+                  <input class="sheet-text_input" name="attr_cur_armor_penalty" title="@{cur_armor_penalty}" type="hidden" value="0"/><span class="sheet-display-attribute sheet-armor-penalty-value" name="attr_cur_armor_penalty"></span>
+            </div>
+          </div>
+        </div><br/>
+        <div class="sheet-armorClothingGrid">              
+          <div class="sheet-gridName"><span class="sheet-labels" data-i18n="Armour"></span>
+          </div>
+          <div><span class="sheet-labels" data-i18n="AR"></span>
+          </div>
+          <div><span class="sheet-labels" data-i18n="Pen"></span>
+          </div>
+          <div><span class="sheet-labels" data-i18n="Worn"></span>
+          </div>
+        </div>
+        <fieldset class="repeating_armorClothing">
+          <div class="sheet-armorClothingGrid">
+            <div class="sheet-gridName">
+                  <input class="sheet-text_input sheet-gridName" name="attr_armor" title="@{armor}" type="text" value=""/>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_ar" title="@{ar}" type="text" value="0"/>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_armor_penalty" title="@{armor_penalty}" type="text" value="0"/>
+            </div>
+            <div class="div">
+                  <input name="attr_worn" title="@{worn}" type="checkbox" value="1"/>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="sheet-gutter"></div>
+      <div class="sheet-right-col sheet-centerIt"><span class="sheet-labels" data-i18n="CHARACTERISTICS"></span>
+        <div class="sheet-characteristics-grid">
+          <div>
+                <input class="sheet-text_input" name="attr_characteristic_1" title="@{characteristic_1}" type="text" value=""/>
+          </div>
+          <label class="sheet-hideCheckbox" title="Details" data-i18n-title="Details"> 
+            <input class="sheet-hideIt" type="checkbox" value="1" name="attr_toggle-section1"/><img class="sheet-feather" id="Quill1"/>
+          </label>
+          <input class="sheet-details-toggle1" type="hidden" name="attr_toggle-section1"/>
+          <div class="sheet-section-details1 sheet-borderBott"><textarea name="attr_characteristic_details_1"></textarea></div>
+          <div class="sheet-section-details1 sheet-borderBott"></div>
+          <div>
+                <input class="sheet-text_input" name="attr_characteristic_2" title="@{characteristic_2}" type="text" value=""/>
+          </div>
+          <label class="sheet-hideCheckbox" title="Details" data-i18n-title="Details"> 
+            <input class="sheet-hideIt" type="checkbox" value="1" name="attr_toggle-section2"/><img class="sheet-feather" id="Quill2"/>
+          </label>
+          <input class="sheet-details-toggle2" type="hidden" name="attr_toggle-section2"/>
+          <div class="sheet-section-details2 sheet-borderBott"><textarea name="attr_characteristic_details_2"></textarea></div>
+          <div class="sheet-section-details2 sheet-borderBott"></div>
+          <div>
+                <input class="sheet-text_input" name="attr_characteristic_3" title="@{characteristic_3}" type="text" value=""/>
+          </div>
+          <label class="sheet-hideCheckbox" title="Details" data-i18n-title="Details"> 
+            <input class="sheet-hideIt" type="checkbox" value="1" name="attr_toggle-section3"/><img class="sheet-feather" id="Quill3"/>
+          </label>
+          <input class="sheet-details-toggle3" type="hidden" name="attr_toggle-section3"/>
+          <div class="sheet-section-details3 sheet-borderBott"><textarea name="attr_characteristic_details_3"></textarea></div>
+          <div class="sheet-section-details3 sheet-borderBott"></div>
+        </div>
+        <div class="sheet-vicious-strong-grip-grid">
+          <div><span class="sheet-labels" data-i18n="has-strong-grip"></span>
+          </div>
+          <div> 
+                <input name="attr_strong_grip" title="@{strong_grip}" type="checkbox" value="1"/>
+          </div>
+          <div> <span class="sheet-labels" data-i18n="has-vicious"></span>
+          </div>
+          <div> 
+                <input name="attr_vicious" title="@{vicious}" type="checkbox" value="1"/>
+          </div>
+        </div><br/><span class="sheet-labels" data-i18n="ABILITIES"></span><br/><br/>
+        <div class="sheet-abilities-grid">
+          <div><span class="sheet-labels" data-i18n="Ability"></span>
+          </div>
+          <div><span class="sheet-labels" data-i18n="Grade"></span>
+          </div>
+          <div><span class="sheet-labels" data-i18n="Benefit"></span>
+          </div>
+          <div>               </div>
+        </div>
+        <fieldset class="repeating_abilities">
+          <div class="sheet-abilities-grid">
+            <div class="sheet-labels">
+                  <input class="sheet-text_input" name="attr_ability_name" title="@{ability_name}" type="text" value=""/>
+            </div>
+            <div class="sheet-labels">
+                  <select name="attr_ability_grade" title="@{ability_grade}">
+                        <option value="I" data-i18n="I"></option>
+                        <option value="II" data-i18n="II"></option>
+                        <option value="III" data-i18n="III"></option>
+                        <option value="IV" data-i18n="IV"></option>
+                        <option value="V" data-i18n="V"></option>
+                        <option value="VI" data-i18n="VI"></option>
+                  </select>
+            </div>
+            <div class="sheet-labels">
+                  <input class="sheet-text_input" name="attr_ability_benefit" title="@{ability_benefit}" type="text" value=""/>
+            </div>
+            <div>
+              <label class="sheet-hideCheckbox" title="Details" data-i18n-title="Details">              
+                <input class="sheet-hideIt" type="checkbox" value="1" name="attr_toggle-ability-details"/><img class="sheet-feather" id="Quill4"/>
+              </label>
+            </div>
+            <input class="sheet-details-toggle" type="hidden" name="attr_toggle-ability-details"/>
+            <div class="sheet-ability-details">
+              <textarea name="attr_ability_full_details"></textarea>
+            </div>
+          </div>
+        </fieldset><br/><br/><span class="sheet-labels" data-i18n="LANGUAGES"></span>
+        <fieldset class="repeating_languages">
+          <div class="sheet-language-grid">
+            <div>
+                  <input class="sheet-text_input" name="attr_langauge1" title="@{langauge1}" type="text" value=""/>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_langauge2" title="@{langauge2}" type="text" value=""/>
+            </div>
+          </div>
+        </fieldset><br/><br/><span class="sheet-labels" data-i18n="WEAPONS"></span><br/><br/>
+        <div class="sheet-mods-options-grid">
+          <div><span class="sheet-labels" data-i18n="Attack Skill Modifiers"></span>
+          </div>
+          <div>
+                <input class="sheet-text_input sheet-numeric" name="attr_general_attack_skill_mod" title="@{general_attack_skill_mod}" type="text" value="0"/>
+          </div>
+          <div></div>
+          <div><span class="sheet-labels" data-i18n="Defence Skill Modifiers"></span>
+          </div>
+          <div>
+                <input class="sheet-text_input sheet-numeric" name="attr_general_defence_skill_mod" title="@{general_defence_skill_mod}" type="text" value="0"/>
+          </div>
+        </div>
+        <div class="sheet-advanced-options-grid">
+          <div><span class="sheet-labels" data-i18n="Advanced Option"></span>
+          </div>
+          <div>
+                <select name="attr_advanced_option" title="@{advanced_option}">
+                      <option value="None" data-i18n="None"></option>
+                      <option value="All Out Attack" data-i18n="All Out Attack"></option>
+                      <option value="Heavy Blow" data-i18n="Heavy Blow"></option>
+                      <option value="Feint" data-i18n="Feint"></option>
+                      <option value="Piercing Strike" data-i18n="Piercing Strike"></option>
+                      <option value="Grapple" data-i18n="Grapple"></option>
+                      <option value="Defensive Stance" data-i18n="Defensive Stance"></option>
+                      <option value="Double Strike" data-i18n="Double Strike"></option>
+                      <option value="Whirlwind Strike" data-i18n="Whirlwind Strike"></option>
+                      <option value="Aimed Shot" data-i18n="Aimed Shot"></option>
+                      <option value="Rapid Strike" data-i18n="Rapid Strike"></option>
+                      <option value="Move Inside Shield" data-i18n="Move Inside Shield"></option>
+                      <option value="Bash" data-i18n="Bash"></option>
+                      <option value="Get Up" data-i18n="Get Up"></option>
+                </select>
+          </div>
+          <div>
+                <button class="sheet-text_roll" data-i18n="initiative-roll" name="act_initiative" type="action">initiative-roll
+                </button>
+          </div>
+        </div><br/><br/>
+        <div class="sheet-weapon-grid">
+          <div class="sheet-labels sheet-gridName"><span class="sheet-labels" data-i18n="Melee Weapon"></span>
+          </div>
+          <div class="sheet-labels sheet-AS"><span class="sheet-labels" data-i18n="AS"></span>
+          </div>
+          <div class="sheet-labels sheet-DS"><span class="sheet-labels" data-i18n="DS"></span>
+          </div>
+          <div class="sheet-labels sheet-damageRoll"><span class="sheet-labels" data-i18n="Damage"></span>
+          </div>
+          <div>  </div>
+        </div>
+        <fieldset class="repeating_weapons">       
+          <div class="sheet-weapon-grid">
+            <div>
+                  <input class="sheet-text_input sheet-gridName" name="attr_weapon_name" title="@{weapon_name}" type="text" value=""/>
+            </div>
+            <div>
+                  <input class="sheet-text_input sheet-numeric" name="attr_weapon_as_mod" title="@{weapon_as_mod}" type="text" value="0"/>
+            </div>
+            <div>                   
+                  <button class="sheet-text_roll" data-i18n-title="as-roll" title="as-roll" name="act_weapon-as-roll" type="action">                   <img class="sheet-dice" src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d10s_small2.png"/>
+                  </button>
+            </div>
+            <div>
+                  <input class="sheet-text_input sheet-numeric" name="attr_weapon_ds_mod" title="@{weapon_ds_mod}" type="text" value="0"/>
+            </div>
+            <div>
+                  <button class="sheet-text_roll" data-i18n-title="ds-roll" title="ds-roll" name="act_weapon-ds-roll" type="action"><img class="sheet-dice" src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d10s_small2.png"/>
+                  </button>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_weapon_damage" title="@{weapon_damage}" type="text" value=""/>
+            </div>
+            <div>
+                  <button class="sheet-text_roll" data-i18n-title="damage-roll" title="damage-roll" name="act_weapon-damage-roll" type="action"><img class="sheet-dice" src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d6s_small2.png"/>
+                  </button>
+            </div>
+          </div>
+        </fieldset><br/><br/>
+        <div class="sheet-missile-grid">
+          <div class="sheet-labels sheet-gridName"><span class="sheet-labels" data-i18n="Missile Weapon"></span>
+          </div>
+          <div class="sheet-labels sheet-MS"><span class="sheet-labels" data-i18n="MS"></span>
+          </div>
+          <div class="sheet-labels sheet-DS"><span class="sheet-labels" data-i18n="DS"></span>
+          </div>
+          <div class="sheet-labels sheet-damageRoll"><span class="sheet-labels" data-i18n="Damage"></span>
+          </div>
+          <div class="sheet-labels"><span class="sheet-labels" data-i18n="Range"></span>
+          </div>
+          <div class="sheet-labels"><span class="sheet-labels" data-i18n="#"></span>
+          </div>
+        </div>
+        <fieldset class="repeating_missiles">      
+          <div class="sheet-missile-grid">
+            <div>
+                  <input class="sheet-text_input sheet-gridName" name="attr_weapon_name" title="@{weapon_name}" type="text" value=""/>
+            </div>
+            <div>
+                  <input class="sheet-text_input sheet-numeric" name="attr_weapon_ms_mod" title="@{weapon_ms_mod}" type="text" value="0"/>
+            </div>
+            <div>                   
+                  <button class="sheet-text_roll" data-i18n-title="as-roll" title="as-roll" name="act_missile-ms-roll" type="action"><img class="sheet-dice" src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d10s_small2.png"/>
+                  </button>
+            </div>
+            <div>
+                  <input class="sheet-text_input sheet-numeric" name="attr_weapon_ds_mod" title="@{weapon_ds_mod}" type="text" value="0"/>
+            </div>
+            <div>
+                  <button class="sheet-text_roll" data-i18n-title="ds-roll" title="ds-roll" name="act_missile-ds-roll" type="action"><img class="sheet-dice" src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d10s_small2.png"/>
+                  </button>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_weapon_damage" title="@{weapon_damage}" type="text" value=""/>
+            </div>
+            <div>
+                  <button class="sheet-text_roll" data-i18n-title="damage-roll" title="damage-roll" name="act_weapon-damage-roll" type="action"><img class="sheet-dice" src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d6s_small2.png"/>
+                  </button>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_weapon_range" title="@{weapon_range}" type="text" value=""/>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_number" title="@{number}" type="text" value=""/>
+            </div>
+          </div>
+        </fieldset><br/><span class="sheet-labels" data-i18n="NOTES"></span><textarea name="attr_character_notes"></textarea>
+      </div>
+    </div>
+  </div>
+  <!-- -- End character --->
+  <!-- start background  --->
+  <div class="sheet-background">
+    <div class="sheet-max-1fr">
+      <div class="sheet-labels"><span class="sheet-labels" data-i18n="Supernatural"></span>
+      </div>
+      <div>
+            <input class="sheet-text_input" name="attr_Supernatural_event" title="@{Supernatural_event}" type="text" value=""/>
+      </div>
+    </div><br/>
+    <div class="sheet-description-lifepath-grid">
+      <div class="sheet-centerIt"><span class="sheet-labels" data-i18n="Description"></span><br/><textarea  name="attr_description"></textarea>
+      </div>
+      <div class="sheet-centerIt"><span class="sheet-labels" data-i18n="Lifepath"></span><br/>
+        <div class="sheet-lifepath-grid">
+          <div><span class="sheet-labels" data-i18n="Living"></span>
+          </div>
+          <div><span class="sheet-labels" data-i18n="Years"></span>
+          </div>
+          <div><span class="sheet-labels" data-i18n="Event"></span>
+          </div>
+        </div>
+        <fieldset class="repeating_lifepath">
+          <div class="sheet-lifepath-grid">
+            <div>
+                  <input class="sheet-text_input" name="attr_living" title="@{living}" type="text" value=""/>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_years" title="@{years}" type="text" value=""/>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_event" title="@{event}" type="text" value=""/>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+  <!-- End background  --->
+  <!-- start equipment  --->
+  <div class="sheet-equipment"><br/>
+    <div class="sheet-equipment-main">
+      <div class="sheet-left-col sheet-centerIt"><span class="sheet-labels" data-i18n="Money"></span><textarea name="attr_money"></textarea>    <span class="sheet-labels" data-i18n="Equipment"></span><textarea name="attr_equipment"></textarea><br/><span class="sheet-labels" data-i18n="Holdings"></span><textarea name="attr_holdings"></textarea>        
+      </div>
+      <div class="sheet-gutter sheet-centerIt"></div>
+      <div class="sheet-right-col sheet-centerIt"><span class="sheet-labels" data-i18n="Notes"></span><textarea name="attr_equipment_notes"></textarea><br/><span class="sheet-labels" data-i18n="COMPANION-HORSE"></span><br/>
+        <fieldset class="repeating_companions">
+          <div class="sheet-companion-wrapper">
+            <div class="sheet-1fr sheet-borderBot">
+                  <input class="sheet-text_input" name="attr_companion_name" title="@{companion_name}" type="text" value=""/>
+            </div>
+            <div class="sheet-companion-attributes sheet-borderBot">
+              <div class="sheet-borderRight"><span class="sheet-companion-label"><span class="sheet-labels" data-i18n="AS"></span></span><span>
+                      <input class="sheet-text_input" name="attr_as" title="@{as}" type="text" value="0"/></span></div>
+              <div class="sheet-borderRight"><span class="sheet-companion-label"><span class="sheet-labels" data-i18n="MS"></span></span><span>
+                      <input class="sheet-text_input" name="attr_ms" title="@{ms}" type="text" value="0"/></span></div>
+              <div class="sheet-borderRight"><span class="sheet-companion-label"><span class="sheet-labels" data-i18n="DS"></span></span><span>
+                      <input class="sheet-text_input" name="attr_ds" title="@{ds}" type="text" value="0"/></span></div>
+              <div class="sheet-borderRight"><span class="sheet-companion-label"><span class="sheet-labels" data-i18n="END"></span></span><span>
+                      <input class="sheet-text_input" name="attr_end" title="@{end}" type="text" value="0"/></span></div>
+              <div class="sheet-borderRight"><span class="sheet-companion-label"><span class="sheet-labels" data-i18n="SPD"></span></span><span>
+                      <input class="sheet-text_input" name="attr_spd" title="@{spd}" type="text" value="0"/></span></div>
+              <div></div>
+            </div>
+            <div class="sheet-companions-weapon-armor">
+              <div>
+                <div class="sheet-companions-weapons">
+                  <div class="sheet-borderBot"><span class="sheet-labels" data-i18n="Weapon"></span>
+                  </div>
+                  <div class="sheet-as-span sheet-borderBot"><span class="sheet-labels" data-i18n="AS"></span>
+                  </div>
+                  <div class="sheet-ds-span sheet-borderBot"><span class="sheet-labels" data-i18n="DS"></span>
+                  </div>
+                  <div class="sheet-damage-span sheet-borderBot sheet-borderRight"><span class="sheet-labels" data-i18n="Damage"></span>
+                  </div>
+                </div>
+                <div class="sheet-companions-weapons">
+                  <div class="sheet-borderBot sheet-borderRight">
+                        <input class="sheet-text_input" name="attr_companion_weapon_1" title="@{companion_weapon_1}" type="text" value=""/>
+                  </div>
+                  <div class="sheet-borderBot">
+                        <input class="sheet-text_input" name="attr_companion_as_1" title="@{companion_as_1}" type="text" value="0"/>
+                  </div>
+                  <div class="sheet-borderBot">
+                        <input class="sheet-text_input" name="attr_companion_as_mod_1" title="@{companion_as_mod_1}" type="text" value="0"/>
+                  </div>
+                  <div class="sheet-borderBot sheet-borderRight">
+                        <button class="sheet-text_roll" data-i18n-title="as-roll1" title="as-roll1" name="act_companion-weapon-as-roll1" type="action"><img class="sheet-dice" src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d10s_small2.png"/>
+                        </button>
+                  </div>
+                  <div class="sheet-borderBot">
+                        <input class="sheet-text_input" name="attr_companion_ds_1" title="@{companion_ds_1}" type="text" value="0"/>
+                  </div>
+                  <div class="sheet-borderBot">
+                        <input class="sheet-text_input" name="attr_companion_ds_mod_1" title="@{companion_ds_mod_1}" type="text" value="0"/>
+                  </div>
+                  <div class="sheet-borderBot sheet-borderRight">
+                        <button class="sheet-text_roll" data-i18n-title="ds-roll1" title="ds-roll1" name="act_companion-weapon-ds-roll1" type="action"><img class="sheet-dice" src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d10s_small2.png"/>
+                        </button>
+                  </div>
+                  <div class="sheet-borderBot">
+                        <input class="sheet-text_input" name="attr_companion_weapon_damage_1" title="@{companion_weapon_damage_1}" type="text" value=""/>
+                  </div>
+                  <div class="sheet-borderBot sheet-borderRight">
+                        <button class="sheet-text_roll" data-i18n-title="damage-roll1" title="damage-roll1" name="act_companion-weapon-damage-roll1" type="action"><img class="sheet-dice" src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d6s_small2.png"/>
+                        </button>
+                  </div>
+                </div>
+                <div class="sheet-companions-weapons">
+                  <div class="sheet-borderBot sheet-borderRight">
+                        <input class="sheet-text_input" name="attr_companion_weapon_2" title="@{companion_weapon_2}" type="text" value=""/>
+                  </div>
+                  <div class="sheet-borderBot">
+                        <input class="sheet-text_input" name="attr_companion_as_2" title="@{companion_as_2}" type="text" value="0"/>
+                  </div>
+                  <div class="sheet-borderBot">
+                        <input class="sheet-text_input" name="attr_companion_as_mod_2" title="@{companion_as_mod_2}" type="text" value="0"/>
+                  </div>
+                  <div class="sheet-borderBot sheet-borderRight">
+                        <button class="sheet-text_roll" data-i18n-title="as-roll2" title="as-roll2" name="act_companion-weapon-as-roll2" type="action"><img class="sheet-dice" src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d10s_small2.png"/>
+                        </button>
+                  </div>
+                  <div class="sheet-borderBot">
+                        <input class="sheet-text_input" name="attr_companion_ds_2" title="@{companion_ds_2}" type="text" value="0"/>
+                  </div>
+                  <div class="sheet-borderBot">
+                        <input class="sheet-text_input" name="attr_companion_ds_mod_2" title="@{companion_ds_mod_2}" type="text" value="0"/>
+                  </div>
+                  <div class="sheet-borderBot sheet-borderRight">
+                        <button class="sheet-text_roll" data-i18n-title="ds-roll2" title="ds-roll2" name="act_companion-weapon-ds-roll2" type="action"><img class="sheet-dice" src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d10s_small2.png"/>
+                        </button>
+                  </div>
+                  <div class="sheet-borderBot">
+                        <input class="sheet-text_input" name="attr_companion_weapon_damage_2" title="@{companion_weapon_damage_2}" type="text" value=""/>
+                  </div>
+                  <div class="sheet-borderBot sheet-borderRight">
+                        <button class="sheet-text_roll" data-i18n-title="damage-roll2" title="damage-roll2" name="act_companion-weapon-damage-roll2" type="action"><img class="sheet-dice" src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d6s_small2.png"/>
+                        </button>
+                  </div>
+                </div>
+                <div class="sheet-companions-weapons">
+                  <div class="sheet-borderBot sheet-borderRight">
+                        <input class="sheet-text_input" name="attr_companion_weapon_3" title="@{companion_weapon_3}" type="text" value=""/>
+                  </div>
+                  <div class="sheet-borderBot">
+                        <input class="sheet-text_input" name="attr_companion_as_3" title="@{companion_as_3}" type="text" value="0"/>
+                  </div>
+                  <div class="sheet-borderBot">
+                        <input class="sheet-text_input" name="attr_companion_as_mod_3" title="@{companion_as_mod_3}" type="text" value="0"/>
+                  </div>
+                  <div class="sheet-borderBot sheet-borderRight">
+                        <button class="sheet-text_roll" data-i18n-title="as-roll3" title="as-roll3" name="act_companion-weapon-as-roll3" type="action"><img class="sheet-dice" src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d10s_small2.png"/>
+                        </button>
+                  </div>
+                  <div class="sheet-borderBot">
+                        <input class="sheet-text_input" name="attr_companion_ds_3" title="@{companion_ds_3}" type="text" value="0"/>
+                  </div>
+                  <div class="sheet-borderBot">
+                        <input class="sheet-text_input" name="attr_companion_ds_mod_3" title="@{companion_ds_mod_3}" type="text" value="0"/>
+                  </div>
+                  <div class="sheet-borderBot sheet-borderRight">
+                        <button class="sheet-text_roll" data-i18n-title="ds-roll3" title="ds-roll3" name="act_companion-weapon-ds-roll3" type="action"><img class="sheet-dice" src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d10s_small2.png"/>
+                        </button>
+                  </div>
+                  <div class="sheet-borderBot">
+                        <input class="sheet-text_input" name="attr_companion_weapon_damage_3" title="@{companion_weapon_damage_3}" type="text" value=""/>
+                  </div>
+                  <div class="sheet-borderBot sheet-borderRight">
+                        <button class="sheet-text_roll" data-i18n-title="damage-roll3" title="damage-roll3" name="act_companion-weapon-damage-roll3" type="action"><img class="sheet-dice" src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d6s_small2.png"/>
+                        </button>
+                  </div>
+                </div>
+              </div>
+              <div><span class="sheet-labels" data-i18n="Armour"></span>
+                <div class="sheet-fixPos">
+                      <input class="sheet-text_input" name="attr_armour_name" title="@{armour_name}" type="text" value=""/>
+                </div>
+                <div class="sheet-max-1fr sheet-borderBot">
+                  <div>
+                    <div><span class="sheet-labels" data-i18n="Penalty"></span>:
+                    </div>
+                  </div>
+                  <div>
+                        <input class="sheet-text_input" name="attr_companion_ar_penalty" title="@{companion_ar_penalty}" type="text" value="0"/>
+                  </div>
+                  <div>
+                    <div><span class="sheet-labels" data-i18n="Rating"></span>:
+                    </div>
+                  </div>
+                  <div>
+                        <input class="sheet-text_input" name="attr_companion_ar" title="@{companion_ar}" type="text" value="0"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="sheet-companion-wounds">
+              <div>
+                <div class="sheet-wound-track">
+                      <input class="sheet-text_input" name="attr_companion_wounds" title="@{companion_wounds}" type="text" value="0/0/0/0"/>
+                </div>
+                <div class="sheet-bleeding-total-grid">
+                  <div class="sheet-plus-sign">+</div>
+                  <div>
+                        <input class="sheet-text_input" name="attr_companion_bleeding_damage" title="@{companion_bleeding_damage}" type="text" value="0" id="bleeding_damage"/>
+                  </div>
+                  <div class="sheet-plus-sign">=</div>
+                  <div>
+                        <input class="sheet-text_input" readonly="readonly" name="attr_wounds_total" title="@{wounds_total}" type="text" value="0"/>
+                  </div>
+                  <div>
+                        <button class="sheet-text_roll" data-i18n-title="apply-bleed" title="apply-bleed" name="act_bleed" type="action"> <img src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/blood_drop2.png"/>
+                        </button>
+                  </div>
+                  <div> 
+                        <input class="sheet-text_input" name="attr_companion_bleeding_wounds" title="@{companion_bleeding_wounds}" type="text" value="0"/>
+                  </div>
+                  <div>
+                        <button class="sheet-text_roll sheet-companion-bleed sheet-dice" data-i18n-title="apply-heal" title="apply-heal" name="act_companion-heal" type="action">
+                        </button>
+                  </div>
+                </div>
+              </div>
+              <div>                           <span class="sheet-labels" data-i18n="Injuries"></span>
+                    <textarea name="attr_companion_injuries" title="@{companion_injuries}" value=""></textarea>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+  <!-- End background  -  -->
+  <!-- start config  --->
+  <div class="sheet-config">
+    <div class="sheet-mainWrapper">
+      <div class="sheet-SheetTitle" data-i18n="pc-configuration">PC CONFIGURATION</div>
+      <div>
+        <div>
+          <!-- <span style="position: relative;left: 20px;top: 18px;color: #ccd17d;display:inline;z-index: 99;">&#x029BF</span>-->
+          <input class="sheet-typeRadio" id="shownpc1" type="radio" checked="" name="attr_show_npc" value="1"/>
+          <label class="sheet-choiceLbl" for="shownpc1"><span class="sheet-detailsLabel" data-tab="showPC" data-i18n="show-PC">Show PC</span></label>
+        </div>
+        <div>
+          <input class="sheet-typeRadio" id="shownpc2" type="radio" name="attr_show_npc" value="2"/>
+          <label class="sheet-choiceLbl" for="shownpc2"><span class="sheet-detailsLabel" data-tab="showNPC" data-i18n="show-NPC">Show NPC Sheet</span></label>
+        </div>
+        <div>
+          <input class="sheet-typeRadio" id="shownpc3" type="radio" name="attr_show_npc" value="3"/>
+          <label class="sheet-choiceLbl" for="shownpc3"><span class="sheet-detailsLabel" data-tab="showSQUAD" data-i18n="show-squad">Show Squad Sheet</span></label>
+        </div>
+      </div>
+      <div class="sheet-configItem">
+        <div>
+          <label class="switch">
+            <input class="switch-input" type="checkbox" name="attr_targetselectswitch" value="1"/><span class="switch-label" data-on="On" data-off="Off"></span><span class="switch-handle"></span>
+          </label>
+        </div>
+        <div><span class="sheet-detailsLabel" data-i18n=""></span></div>
+      </div>
+    </div>
+  </div>
+  <!-- end config  --->
+</div>
+<!-- - end pc sheet-->
+<!-- - start npc sheet-->
+<div class="sheet-npc" data-tab="sheet-npc">
+  <div>
+    <button class="menu" type="action" name="act_npc2">NPC</button>
+    <button class="menu" id="configButton" type="action" name="act_configuration2">y</button>
+  </div>
+  <input class="sheet-tabstoggle" type="hidden" name="attr_sheetMenu2" value="npc2"/>
+  <div class="sheet-npc2"><!--  end pc sheet  -->
+    <div class="sheet-npc-Wrapper">
+          <input class="sheet-text_input" name="attr_character_name" title="@{character_name}" type="text" value=""/>
+          <input class="sheet-text_input" name="attr_npc_description" title="@{npc_description}" type="text" value=""/>
+      <div class="sheet-whisper-grid">
+        <div><span class="sheet-labels" data-i18n="whisper-rolls"></span>
+        </div>
+        <div>
+              <input name="attr_whisper_gm" title="@{whisper_gm}" type="checkbox" value="1"/>
+              <input class="sheet-text_input" name="attr_whisper_str" title="@{whisper_str}" type="hidden" value=""/>
+        </div>
+      </div><br/><br/>
+      <div class="sheet-npc-stat-weapon-grid">
+        <!-- Start of left column-->
+        <div class="sheet-npc-attributes">
+          <div class="sheet-npc-attribute-grid">
+            <div> </div>
+            <div><span class="sheet-labels sheet-attribute-header" data-i18n="Orig."></span>
+            </div>
+            <div><span class="sheet-labels sheet-attribute-header" data-i18n="Temp."></span>
+            </div>
+            <div><span class="sheet-labels sheet-attribute-header" data-i18n="Mod."></span>
+            </div>
+          </div>
+          <div class="sheet-npc-attribute-grid">
+            <div>    
+                  <button class="sheet-text_roll" name="act_attack_skill" type="action">              <span class="sheet-labels" data-i18n="attack_skill"></span>
+                  </button>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_attack_skill_orig" title="@{attack_skill_orig}" type="text" value="0"/>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_attack_skill_temp" title="@{attack_skill_temp}" type="text" value="0"/>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_attack_skill_mod" title="@{attack_skill_mod}" type="text" value="0"/>
+            </div>
+            <div>    
+                  <button class="sheet-text_roll" name="act_missile_skill" type="action">              <span class="sheet-labels" data-i18n="missile_skill"></span>
+                  </button>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_missile_skill_orig" title="@{missile_skill_orig}" type="text" value="0"/>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_missile_skill_temp" title="@{missile_skill_temp}" type="text" value="0"/>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_missile_skill_mod" title="@{missile_skill_mod}" type="text" value="0"/>
+            </div>
+            <div>    
+                  <button class="sheet-text_roll" name="act_defence_skill" type="action">              <span class="sheet-labels" data-i18n="defence_skill"></span>
+                  </button>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_defence_skill_orig" title="@{defence_skill_orig}" type="text" value="0"/>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_defence_skill_temp" title="@{defence_skill_temp}" type="text" value="0"/>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_defence_skill_mod" title="@{defence_skill_mod}" type="text" value="0"/>
+            </div>
+            <div>    
+                  <button class="sheet-text_roll" name="act_knowledge" type="action">              <span class="sheet-labels" data-i18n="knowledge"></span>
+                  </button>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_knowledge_orig" title="@{knowledge_orig}" type="text" value="0"/>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_knowledge_temp" title="@{knowledge_temp}" type="text" value="0"/>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_knowledge_mod" title="@{knowledge_mod}" type="text" value="0"/>
+            </div>
+            <div>    
+                  <button class="sheet-text_roll" name="act_will" type="action">              <span class="sheet-labels" data-i18n="will"></span>
+                  </button>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_will_orig" title="@{will_orig}" type="text" value="0"/>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_will_temp" title="@{will_temp}" type="text" value="0"/>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_will_mod" title="@{will_mod}" type="text" value="0"/>
+            </div>
+            <div>    
+                  <button class="sheet-text_roll" name="act_endurance" type="action">              <span class="sheet-labels" data-i18n="endurance"></span>
+                  </button>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_endurance_orig" title="@{endurance_orig}" type="text" value="0"/>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_endurance_temp" title="@{endurance_temp}" type="text" value="0"/>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_endurance_mod" title="@{endurance_mod}" type="text" value="0"/>
+            </div>
+            <div>    
+                  <button class="sheet-text_roll" name="act_persuasion" type="action">              <span class="sheet-labels" data-i18n="persuasion"></span>
+                  </button>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_persuasion_orig" title="@{persuasion_orig}" type="text" value="0"/>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_persuasion_temp" title="@{persuasion_temp}" type="text" value="0"/>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_persuasion_mod" title="@{persuasion_mod}" type="text" value="0"/>
+            </div>
+            <div>    
+                  <button class="sheet-text_roll" name="act_perception" type="action">              <span class="sheet-labels" data-i18n="perception"></span>
+                  </button>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_perception_orig" title="@{perception_orig}" type="text" value="0"/>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_perception_temp" title="@{perception_temp}" type="text" value="0"/>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_perception_mod" title="@{perception_mod}" type="text" value="0"/>
+            </div>
+            <div>    
+                  <button class="sheet-text_roll" name="act_speed" type="action">              <span class="sheet-labels" data-i18n="speed"></span>
+                  </button>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_speed_orig" title="@{speed_orig}" type="text" value="0"/>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_speed_temp" title="@{speed_temp}" type="text" value="0"/>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_speed_mod" title="@{speed_mod}" type="text" value="0"/>
+            </div>
+            <div>    
+                  <button class="sheet-text_roll" name="act_agility" type="action">              <span class="sheet-labels" data-i18n="agility"></span>
+                  </button>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_agility_orig" title="@{agility_orig}" type="text" value="0"/>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_agility_temp" title="@{agility_temp}" type="text" value="0"/>
+            </div>
+            <div>
+                  <input class="sheet-text_input" name="attr_agility_mod" title="@{agility_mod}" type="text" value="0"/>
+            </div>
+          </div>
+          <div class="sheet-wounds-grid1">
+            <div>
+              <div class="sheet-wound-track">
+                    <input class="sheet-text_input" name="attr_wounds" title="@{wounds}" type="text" value="0/0/0/0"/>
+              </div>
+              <div class="sheet-bleeding-grid">
+                <div class="sheet-plus-sign">+</div>
+                <div>
+                      <input class="sheet-text_input" readonly="readonly" name="attr_bleeding_damage" title="@{bleeding_damage}" type="text" value="0" id="bleeding_damage"/>
+                </div>
+                <div>
+                      <button class="sheet-text_roll" data-i18n-title="apply-bleed" title="apply-bleed" name="act_bleed" type="action"> <img src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/blood_drop2.png"/>
+                      </button>
+                </div>
+                <div>
+                      <input class="sheet-text_input" name="attr_bleeding_wounds" title="@{bleeding_wounds}" type="text" value="0"/>
+                </div>
+              </div>
+            </div>
+            <div class="sheet-wounds-state">
+              <div class="sheet-total-wounds-heal-grid">
+                <div>
+                      <input class="sheet-text_input" readonly="readonly" name="attr_wounds_total" title="@{wounds_total}" type="text" value="0" id="wound_total"/>
+                </div>
+                <div>
+                      <button class="sheet-text_roll sheet-dice" data-i18n-title="apply-heal" title="apply-heal" name="act_heal" type="action" id="heal">
+                      </button>
+                </div>
+              </div>
+              <div>
+                    <input class="sheet-text_input sheet-unconsciousness-dead" readonly="readonly" name="attr_unconsciousness_or_dead" title="@{unconsciousness_or_dead}" type="text" value=""/>
+              </div>
+            </div>
+            <div class="sheet-max-1fr"></div>
+          </div>
+          <div class="sheet-npc-armor"><span class="sheet-labels" data-i18n="Armour"></span>
+            <div class="sheet-fixPos">
+                  <input class="sheet-text_input" name="attr_armour_name" title="@{armour_name}" type="text" value=""/>
+            </div>
+            <div class="sheet-armor-penalty-grid">
+              <div>
+                <div><span class="sheet-labels" data-i18n="Penalty"></span>:
+                </div>
+              </div>
+              <div>
+                    <input class="sheet-text_input" name="attr_companion_ar_penalty" title="@{companion_ar_penalty}" type="text" value="0"/>
+              </div>
+              <div>
+                <div><span class="sheet-labels" data-i18n="Rating"></span>:
+                </div>
+              </div>
+              <div>
+                    <input class="sheet-text_input" name="attr_companion_ar" title="@{companion_ar}" type="text" value="0"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End fo left Column-->
+        <!-- Start of righ column-->
+        <div class="sheet-npc-weapons">
+          <div class="sheet-mods-options-grid">
+            <div><span class="sheet-labels" data-i18n="Attack Skill Modifiers"></span>
+            </div>
+            <div>
+                  <input class="sheet-text_input sheet-numeric" name="attr_general_attack_skill_mod" title="@{general_attack_skill_mod}" type="text" value="0"/>
+            </div>
+            <div></div>
+            <div><span class="sheet-labels" data-i18n="Defence Skill Modifiers"></span>
+            </div>
+            <div>
+                  <input class="sheet-text_input sheet-numeric" name="attr_general_defence_skill_mod" title="@{general_defence_skill_mod}" type="text" value="0"/>
+            </div>
+          </div>
+          <div class="sheet-advanced-options-grid">
+            <div><span class="sheet-labels" data-i18n="Advanced Option"></span>
+            </div>
+            <div>
+                  <select name="attr_advanced_option" title="@{advanced_option}">
+                        <option value="None" data-i18n="None"></option>
+                        <option value="All Out Attack" data-i18n="All Out Attack"></option>
+                        <option value="Heavy Blow" data-i18n="Heavy Blow"></option>
+                        <option value="Feint" data-i18n="Feint"></option>
+                        <option value="Piercing Strike" data-i18n="Piercing Strike"></option>
+                        <option value="Grapple" data-i18n="Grapple"></option>
+                        <option value="Defensive Stance" data-i18n="Defensive Stance"></option>
+                        <option value="Double Strike" data-i18n="Double Strike"></option>
+                        <option value="Whirlwind Strike" data-i18n="Whirlwind Strike"></option>
+                        <option value="Aimed Shot" data-i18n="Aimed Shot"></option>
+                        <option value="Rapid Strike" data-i18n="Rapid Strike"></option>
+                        <option value="Move Inside Shield" data-i18n="Move Inside Shield"></option>
+                        <option value="Bash" data-i18n="Bash"></option>
+                        <option value="Get Up" data-i18n="Get Up"></option>
+                  </select>
+            </div>
+            <div>
+                  <button class="sheet-text_roll" data-i18n="initiative-roll" name="act_initiative" type="action">initiative-roll
+                  </button>
+            </div>
+          </div>
+          <div class="sheet-vicious-strong-grip-grid">
+            <div><span class="sheet-labels" data-i18n="has-strong-grip"></span>
+            </div>
+            <div> 
+                  <input name="attr_strong_grip" title="@{strong_grip}" type="checkbox" value="1"/>
+            </div>
+            <div><span class="sheet-labels" data-i18n="crit-value"></span>
+            </div>
+            <div>
+                  <select name="attr_critical_percentage" title="@{critical_percentage}">
+                        <option value="0.1" data-i18n="10%"></option>
+                        <option value="0.13" data-i18n="13%"></option>
+                        <option value="0.2" data-i18n="20%"></option>
+                        <option value="0.26" data-i18n="26%"></option>
+                  </select>
+            </div>
+            <!--div -->
+            <!--    +inputLabel("has-vicious")-->
+            <!--div -->
+            <!--    +checkboxInputWithValue("vicious","1")                     -->
+          </div><br/><br/>
+          <div class="sheet-weapon-grid">
+            <div class="sheet-labels sheet-gridName"><span class="sheet-labels" data-i18n="Melee Weapon"></span>
+            </div>
+            <div class="sheet-labels sheet-AS"><span class="sheet-labels" data-i18n="AS"></span>
+            </div>
+            <div class="sheet-labels sheet-DS"><span class="sheet-labels" data-i18n="DS"></span>
+            </div>
+            <div class="sheet-labels sheet-damageRoll"><span class="sheet-labels" data-i18n="Damage"></span>
+            </div>
+            <div>  </div>
+          </div>
+          <fieldset class="repeating_npc-weapons">       
+            <div class="sheet-weapon-grid">
+              <div>
+                    <input class="sheet-text_input sheet-gridName" name="attr_weapon_name" title="@{weapon_name}" type="text" value=""/>
+              </div>
+              <div>
+                    <input class="sheet-text_input sheet-numeric" name="attr_weapon_as" title="@{weapon_as}" type="text" value="0"/>
+              </div>
+              <div>                   
+                    <button class="sheet-text_roll" data-i18n-title="as-roll" title="as-roll" name="act_weapon-as-roll" type="action">                   <img class="sheet-dice" src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d10s_small2.png"/>
+                    </button>
+              </div>
+              <div>
+                    <input class="sheet-text_input sheet-numeric" name="attr_weapon_ds" title="@{weapon_ds}" type="text" value="0"/>
+              </div>
+              <div>
+                    <button class="sheet-text_roll" data-i18n-title="ds-roll" title="ds-roll" name="act_weapon-ds-roll" type="action"><img class="sheet-dice" src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d10s_small2.png"/>
+                    </button>
+              </div>
+              <div>
+                    <input class="sheet-text_input" name="attr_weapon_damage" title="@{weapon_damage}" type="text" value=""/>
+              </div>
+              <div>
+                    <button class="sheet-text_roll" data-i18n-title="damage-roll" title="damage-roll" name="act_weapon-damage-roll" type="action"><img class="sheet-dice" src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d6s_small2.png"/>
+                    </button>
+              </div>
+            </div>
+          </fieldset><br/><br/>
+          <div class="sheet-missile-grid">
+            <div class="sheet-labels sheet-gridName"><span class="sheet-labels" data-i18n="Missile Weapon"></span>
+            </div>
+            <div class="sheet-labels sheet-MS"><span class="sheet-labels" data-i18n="MS"></span>
+            </div>
+            <div class="sheet-labels sheet-DS"><span class="sheet-labels" data-i18n="DS"></span>
+            </div>
+            <div class="sheet-labels sheet-damageRoll"><span class="sheet-labels" data-i18n="Damage"></span>
+            </div>
+            <div class="sheet-labels"><span class="sheet-labels" data-i18n="Range"></span>
+            </div>
+            <div class="sheet-labels"><span class="sheet-labels" data-i18n="#"></span>
+            </div>
+          </div>
+          <fieldset class="repeating_npc-missiles">      
+            <div class="sheet-missile-grid">
+              <div>
+                    <input class="sheet-text_input sheet-gridName" name="attr_weapon_name" title="@{weapon_name}" type="text" value=""/>
+              </div>
+              <div>
+                    <input class="sheet-text_input sheet-numeric" name="attr_weapon_as" title="@{weapon_as}" type="text" value="0"/>
+              </div>
+              <div>                   
+                    <button class="sheet-text_roll" data-i18n-title="as-roll" title="as-roll" name="act_weapon-as-roll" type="action"><img class="sheet-dice" src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d10s_small2.png"/>
+                    </button>
+              </div>
+              <div>
+                    <input class="sheet-text_input sheet-numeric" name="attr_weapon_ds" title="@{weapon_ds}" type="text" value="0"/>
+              </div>
+              <div>
+                    <button class="sheet-text_roll" data-i18n-title="ds-roll" title="ds-roll" name="act_weapon-ds-roll" type="action"><img class="sheet-dice" src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d10s_small2.png"/>
+                    </button>
+              </div>
+              <div>
+                    <input class="sheet-text_input" name="attr_weapon_damage" title="@{weapon_damage}" type="text" value=""/>
+              </div>
+              <div>
+                    <button class="sheet-text_roll" data-i18n-title="damage-roll" title="damage-roll" name="act_weapon-damage-roll" type="action"><img class="sheet-dice" src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d6s_small2.png"/>
+                    </button>
+              </div>
+              <div>
+                    <input class="sheet-text_input" name="attr_weapon_range" title="@{weapon_range}" type="text" value=""/>
+              </div>
+              <div>
+                    <input class="sheet-text_input" name="attr_number" title="@{number}" type="text" value=""/>
+              </div>
+            </div>
+          </fieldset><br/><br/><span class="sheet-labels" data-i18n="npc-notes-abilities-characteristics"></span>
+          <textarea name="attr_notes-abilities-characteristics"></textarea>
+        </div>
+        <!--End of right column-->
+      </div>
+    </div><!--  end pc sheet  -->
+  </div>
+  <div class="sheet-config2">
+    <div class="sheet-mainWrapper">
+      <div class="sheet-SheetTitle" data-i18n="npc-configuration">NPC CONFIGURATION</div>
+      <div>
+        <div>
+          <input class="sheet-typeRadio" id="shownpc4" type="radio" checked="" name="attr_show_npc" value="1"/>
+          <label class="sheet-choiceLbl" for="shownpc4"><span class="sheet-detailsLabel" data-tab="showPC" data-i18n="show-PC">Show PC</span></label>
+        </div>
+        <div>
+          <input class="sheet-typeRadio" id="shownpc5" type="radio" name="attr_show_npc" value="2"/>
+          <label class="sheet-choiceLbl" for="shownpc5"><span class="sheet-detailsLabel" data-tab="showNPC" data-i18n="show-NPC">Show NPC Sheet</span></label>
+        </div>
+        <div>
+          <input class="sheet-typeRadio" id="shownpc6" type="radio" name="attr_show_npc" value="3"/>
+          <label class="sheet-choiceLbl" for="shownpc6"><span class="sheet-detailsLabel" data-tab="showSQUAD" data-i18n="show-squad">Show Squad Sheet</span></label>
+        </div>
+      </div>
+      <div class="sheet-configItem">
+        <div>
+          <label class="switch">
+            <input class="switch-input" type="checkbox" name="attr_targetselectswitch" value="1"/><span class="switch-label" data-on="On" data-off="Off"></span><span class="switch-handle"></span>
+          </label>
+        </div>
+        <div><span class="sheet-detailsLabel" data-i18n=""></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- - end npc sheet-->
+<!-- - start squad sheet-->
+<div class="sheet-squad" data-tab="sheet-squad">
+  <div>
+    <button class="menu" type="action" name="act_npc2">SQUAD</button>
+    <button class="menu" id="configButton" type="action" name="act_configuration2">y</button>
+  </div>
+  <input class="sheet-tabstoggle" type="hidden" name="attr_sheetMenu2" value="npc2"/>
+  <div class="sheet-npc2"></div>
+  <div class="sheet-config2">
+    <div class="sheet-mainWrapper">
+      <div class="sheet-SheetTitle" data-i18n="squad-configuration">SQUAD CONFIGURATION</div>
+      <div>
+        <div>
+          <input class="sheet-typeRadio" id="shownpc7" type="radio" checked="" name="attr_show_npc" value="1"/>
+          <label class="sheet-choiceLbl" for="shownpc7"><span class="sheet-detailsLabel" data-tab="showPC" data-i18n="show-PC">Show PC</span></label>
+        </div>
+        <div>
+          <input class="sheet-typeRadio" id="shownpc8" type="radio" name="attr_show_npc" value="2"/>
+          <label class="sheet-choiceLbl" for="shownpc8"><span class="sheet-detailsLabel" data-tab="showNPC" data-i18n="show-NPC">Show NPC Sheet</span></label>
+        </div>
+        <div>
+          <input class="sheet-typeRadio" id="shownpc9" type="radio" name="attr_show_npc" value="3"/>
+          <label class="sheet-choiceLbl" for="shownpc9"><span class="sheet-detailsLabel" data-tab="showSQUAD" data-i18n="show-squad">Show Squad Sheet</span></label>
+        </div>
+      </div>
+      <div class="sheet-configItem">
+        <div>
+          <label class="switch">
+            <input class="switch-input" type="checkbox" name="attr_targetselectswitch" value="1"/><span class="switch-label" data-on="On" data-off="Off"></span><span class="switch-handle"></span>
+          </label>
+        </div>
+        <div><span class="sheet-detailsLabel" data-i18n=""></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- - end squad sheet--><script type="text/worker">
+	const physical_attributes = ["attack_skill","missile_skill","defence_skill","endurance","perception","speed","agility"];
+  on("sheet:opened", function() {
+  
+        getAttrs(["show_npc","setup_done","profession"], function (values) {
+            setSheet(values.show_npc);
+			console.log("check profession");
+			if (values.profession=="Ninja"){													
+				$20("div[data-tab=gimmickry]").removeClass("sheet-hideIt");
+			}
+			else {
+				console.log("add hideIt");												
+				$20("div[data-tab=gimmickry]").addClass("sheet-hideIt");		
+			}			
+
+        });
+  
+    });
+
+	on("change:show_npc", function() {
+		getAttrs(["show_npc"], function (values) {
+				console.log("show_npc: "+values.show_npc);
+                setSheet(values.show_npc);
+		});          
+	
+	});	
+
+
+    function  setSheet(show_npc){
+          if (parseInt(show_npc)===1){
+            console.log("marker 1");                    
+            $20('div[data-tab=sheet-pc]').addClass("sheet-showIt");
+            $20('button[data-tab=pc-secondary-attributes]').addClass('active');
+            $20('div[data-tab=sheet-npc]').removeClass("sheet-showIt"); 
+            $20('div[data-tab=sheet-squad]').removeClass("sheet-showIt"); 
+            
+            $20('span[data-tab=showPC]').addClass("sheet-redText");
+            $20('span[data-tab=showNPC]').removeClass("sheet-redText");
+            $20('span[data-tab=showSQUAD]').removeClass("sheet-redText");				
+  
+  
+          } else if (parseInt(show_npc)===2) {
+            console.log("marker 2");
+            $20('div[data-tab=sheet-npc]').addClass("sheet-showIt");  					                    
+            $20('div[data-tab=sheet-pc]').removeClass("sheet-showIt");
+            $20('div[data-tab=sheet-squad]').removeClass("sheet-showIt");    
+            
+            $20('span[data-tab=showNPC]').addClass("sheet-redText");
+            $20('span[data-tab=showPC]').removeClass("sheet-redText");					
+            $20('span[data-tab=showSQUAD]').removeClass("sheet-redText");				
+  
+            
+          } else if (parseInt(show_npc)===3) {
+            console.log("marker 3");
+            $20('div[data-tab=sheet-squad]').addClass("sheet-showIt");                      
+            $20('div[data-tab=sheet-pc]').removeClass("sheet-showIt");
+            $20('div[data-tab=sheet-npc]').removeClass("sheet-showIt");	
+            
+            $20('span[data-tab=showSQUAD]').addClass("sheet-redText");
+            $20('span[data-tab=showNPC]').removeClass("sheet-redText");
+            $20('span[data-tab=showPC]').removeClass("sheet-redText");					
+  
+          }
+    }
+  
+
+	const menulist = ["character","background","equipment","configuration"];
+   		 menulist.forEach(button => {
+        on(`clicked:${button}`, function() {
+			console.log("button pressed");
+            setAttrs({
+                sheetMenu: button
+            });
+        });
+    });
+   
+	const menulist2 = ["npc2","configuration2"];
+		menulist2.forEach(button => {
+		on(`clicked:${button}`, function() {
+			console.log("button pressed");
+			setAttrs({
+				sheetMenu2: button
+			});
+		});
+	}); 
+      	
+	String.prototype.toProperCase = function () {
+		return this.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+	};
+	
+	
+		on("change:whisper_gm", function(values) {
+			console.log(JSON.stringify(values));
+			console.log("newValue: "+values.newValue);
+			console.log(typeof  values.newValue);
+			let wstr ="" 
+
+			if (parseInt(values.newValue)===1){
+				 wstr = "/w gm "	
+			} 
+			console.log("wstr:" +wstr);
+			setAttrs({whisper_str: wstr});
+
+		});
+	
+	//// ROLLS  SHEET WORKERS ////
+	
+   on("clicked:initiative", function(eventInfo) {
+		console.log("!!!!!! repeating section weapon roll "+JSON.stringify(eventInfo));
+		getAttrs(["speed_orig","speed_temp","speed_mod","character_name"], function(values) {
+			let init_base = values.speed_orig;
+			let speed_temp = values.speed_temp;
+			let speed_mod = values.speed_mod;
+
+			if (speed_temp > 0){
+				init_base=speed_temp;
+			}
+			init_base = init_base - speed_mod;
+			init_tie = (init_base/100);
+			roll_str = "&{template:initiative} {{name="+values.character_name+"}} {{source=Initiative}} {{initiative=[[2d10+"+init_base+"+[["+init_tie+"]]"+" &{tracker}]]}}";
+			console.log("roll_str : "+roll_str);
+			startRoll(roll_str, (results) => {finishRoll(results.rollId);});
+			//[[2D10+@{selected|speed_orig}+[[@{selected|speed_orig}/100]] &{tracker}]]
+				
+		});	
+		
+	});
+
+
+	on("clicked:repeating_npc-weapons:weapon-damage-roll clicked:repeating_npc-missiles:weapon-damage-roll", function(eventInfo) {
+            console.log("!!!!!! companion weapon damage roll "+JSON.stringify(eventInfo));
+			roll_source = getRowID(eventInfo.sourceAttribute);
+			console.log("roll_source: "+roll_source);
+			console.log("eventInfo.htmlAttributes..name: "+eventInfo.htmlAttributes.name);
+            damageRoll("repeating_npc-weapons","npc_combat",eventInfo.htmlAttributes.name);
+    });
+
+	
+	
+	on("clicked:repeating_companions:companion-weapon-damage-roll1 clicked:repeating_companions:companion-weapon-damage-roll2 clicked:repeating_companions:companion-weapon-damage-roll3", function(eventInfo) {
+            console.log("!!!!!! companion weapon damage roll "+JSON.stringify(eventInfo));
+			roll_source = getRowID(eventInfo.sourceAttribute);
+			console.log("roll_source: "+roll_source);
+			console.log("eventInfo.htmlAttributes..name: "+eventInfo.htmlAttributes.name);
+            damageRoll("repeating_companions","companion_combat",eventInfo.htmlAttributes.name);
+    });
+	
+	on("clicked:repeating_weapons:weapon-damage-roll clicked:repeating_missiles:weapon-damage-roll", function(eventInfo) {
+            console.log("!!!!!! repeating section weapon damage roll "+JSON.stringify(eventInfo));
+			roll_source = getRowID(eventInfo.sourceAttribute);
+			console.log("roll_source: "+roll_source);
+			console.log("eventInfo.htmlAttributes..name: "+eventInfo.htmlAttributes.name);
+            damageRoll(roll_source,"combat",eventInfo.htmlAttributes.name);
+    });
+	
+	function damageRoll(roll_origin,type,weapon_button){
+		console.log("damage roll_origin: "+roll_origin)
+		console.log("^^^^^^ type: "+type);
+		if (type=="combat"){
+			var getArray = [roll_origin+"_weapon_damage",roll_origin+"_weapon_name","character_name"];
+		} else if (type=="companion_combat"){
+					
+				if (weapon_button=="act_companion-weapon-damage-roll1"){
+					var getArray = [roll_origin+"_companion_weapon_damage_1",roll_origin+"_companion_weapon_1","character_name"];
+				} else if (weapon_button=="act_companion-weapon-damage-roll2"){
+					var getArray = [roll_origin+"_companion_weapon_damage_2",roll_origin+"_companion_weapon_2","character_name"];
+				} else if  (weapon_button=="act_companion-weapon-damage-roll3"){
+					var getArray = [roll_origin+"_companion_weapon_damage_3",roll_origin+"_companion_weapon_3","character_name"];
+				}			
+		} else if (type=="npc_combat"){
+			var getArray = [roll_origin+"_weapon_damage",roll_origin+"_weapon_name","character_name"];
+		}
+	
+		getAttrs(getArray, function(values) {	
+			var getStr=""
+			console.log("************ type: "+type);
+			
+			if (type=="combat" || type=="npc_combat"){
+				console.log("^damage rolls values "+JSON.stringify(values));
+				let weapon_name = values[roll_origin+"_weapon_name"]
+				console.log("weapon_name : "+weapon_name);
+				rollStr="&{template:damageRoll} {{name="+values.character_name+"}} {{weapon_name="+weapon_name+"}} {{weapon_damage=[["+values[roll_origin+"_weapon_damage"]+"]]}}  {{half_damage=[[0]]}}  {{double_damage=[[0]]}} "
+			} else if (type=="companion_combat"){
+				if (weapon_button=="act_companion-weapon-damage-roll1"){
+					rollStr="&{template:damageRoll} {{name="+values.character_name+"}} {{weapon_name="+values[roll_origin+"_companion_weapon_1"]+"}} {{weapon_damage=[["+values[roll_origin+"_companion_weapon_damage_1"]+"]]}}  {{half_damage=[[0]]}}  {{double_damage=[[0]]}} "										
+				} else if (weapon_button=="act_companion-weapon-damage-roll2"){
+					rollStr="&{template:damageRoll} {{name="+values.character_name+"}} {{weapon_name="+values[roll_origin+"_companion_weapon_2"]+"}} {{weapon_damage=[["+values[roll_origin+"_companion_weapon_damage_2"]+"]]}}  {{half_damage=[[0]]}}  {{double_damage=[[0]]}} "						
+				} else if  (weapon_button=="act_companion-weapon-damage-roll3"){
+					rollStr="&{template:damageRoll} {{name="+values.character_name+"}} {{weapon_name="+values[roll_origin+"_companion_weapon_3"]+"}} {{weapon_damage=[["+values[roll_origin+"_companion_weapon_damage_3"]+"]]}}  {{half_damage=[[0]]}}  {{double_damage=[[0]]}} "						
+				}										
+			} 
+			
+	       console.log("rollStr: "+rollStr);
+		   startRoll(rollStr, (results) => {
+			console.log("!!!!!!  damage startRoll "+JSON.stringify(results));
+			
+			let weapon_damage = parseInt(results.results.weapon_damage.result);
+			let half_damage = Math.ceil(weapon_damage*0.5);
+			console.log("***********half_damage: "+half_damage)
+			let double_damage = weapon_damage*2;
+			console.log("**********double_damage: "+double_damage)
+			
+            finishRoll(
+                results.rollId,
+                {
+					half_damage:half_damage,
+					double_damage:double_damage
+					
+                }
+            );
+        });		
+		})				
+	}
+	
+	    on("clicked:repeating_companions:companion-weapon-as-roll1 clicked:repeating_companions:companion-weapon-ds-roll1 clicked:repeating_companions:companion-weapon-as-roll2 clicked:repeating_companions:companion-weapon-ds-roll2 clicked:repeating_companions:companion-weapon-as-roll3 clicked:repeating_companions:companion-weapon-ds-roll3   ", function(eventInfo) {
+            console.log("!!!!!! repeating section weapon roll "+JSON.stringify(eventInfo));
+			roll_source = getRowID(eventInfo.sourceAttribute);
+			console.log("roll_source: "+roll_source);
+			console.log("eventInfo.htmlAttributes..name: "+eventInfo.htmlAttributes.name);
+			attributeRoll(roll_source,"companion_combat",eventInfo.htmlAttributes.name);
+        });
+	
+	const attributteButtons  = ["attack_skill","missile_skill","defence_skill","knowledge","will","endurance","persuasion","perception","speed","agility"];
+	 attributteButtons.forEach(button => {
+        on(`clicked:${button}`, function(eventInfo) {
+            console.log("button pressed: "+button);
+            attributeRoll(button,"attribute","");
+        });
+      });
+
+        on("clicked:repeating_weapons:weapon-as-roll clicked:repeating_weapons:weapon-ds-roll clicked:repeating_missiles:missile-ms-roll clicked:repeating_missiles:missile-ds-roll", function(eventInfo) {
+            console.log("!!!!!! repeating section weapon roll "+JSON.stringify(eventInfo));
+			roll_source = getRowID(eventInfo.sourceAttribute);
+			console.log("roll_source: "+roll_source);
+			console.log("eventInfo.htmlAttributes..name: "+eventInfo.htmlAttributes.name);
+            attributeRoll(roll_source,"combat",eventInfo.htmlAttributes.name);
+        });
+		
+		on("clicked:repeating_npc-weapons:weapon-as-roll clicked:repeating_npc-weapons:weapon-ds-roll clicked:repeating_npc-missiles:weapon-as-roll clicked:repeating_npc-missiles:weapon-ds-roll", function(eventInfo) {
+            console.log("!!!!!! repeating section weapon roll "+JSON.stringify(eventInfo));
+			roll_source = getRowID(eventInfo.sourceAttribute);
+			console.log("roll_source: "+roll_source);
+			console.log("eventInfo.htmlAttributes..name: "+eventInfo.htmlAttributes.name);
+            attributeRoll(roll_source,"npc_combat",eventInfo.htmlAttributes.name);
+        });
+		
+		
+		
+	  
+	  function attributeRoll(roll_origin,type,weapon_button){
+		let getStr = "";  
+		if (type=="attribute"){
+			getArray = [roll_origin+"_orig",roll_origin+"_temp",roll_origin+"_mod","cur_armor_penalty","whisper_str","show_npc","companion_ar_penalty"];
+		} else if(type=="npc_combat"){
+			console.log("weapon_button: "+weapon_button);
+			var attribute_used = ""
+			var weapon_mod = ""
+			var base_mod = ""
+								
+			getArray = ["strong_grip","vicious",roll_origin+"_weapon_name",roll_origin+"_weapon_as",roll_origin+"_weapon_ds",roll_origin+"_weapon_damage","general_attack_skill_mod","general_defence_skill_mod","advanced_option","cur_armor_penalty","whisper_str","critical_percentage","show_npc","companion_ar_penalty"];
+
+			console.log("getArray: "+getArray);								
+
+		}  
+		else if(type=="combat"){
+			console.log("weapon_button: "+weapon_button);
+			var attribute_used = ""
+			var weapon_mod = ""
+			var base_mod = ""
+			
+			if (weapon_button=="act_weapon-as-roll"){
+				attribute_used = "attack_skill";
+			} else if (weapon_button=="act_weapon-ds-roll"){
+				attribute_used = "defence_skill";
+			}  else if (weapon_button=="act_missile-ms-roll"){
+				attribute_used = "missile_skill";
+			}  else if (weapon_button=="act_missile-ds-roll"){
+				attribute_used = "defence_skill";
+			} else {
+				console.log("Error weapon roll type 1");
+			}
+
+
+								
+			getArray = ["strong_grip","vicious",roll_origin+"_weapon_name",roll_origin+"_weapon_as_mod",roll_origin+"_weapon_damage","general_attack_skill_mod","general_defence_skill_mod","advanced_option","cur_armor_penalty","show_npc","companion_ar_penalty"];
+
+			console.log("getArray 1: "+getArray);					
+			
+			if (weapon_button=="act_weapon-as-roll"){
+				getArray.push(roll_origin+"_weapon_as_mod","attack_skill_orig","attack_skill_temp","attack_skill_mod")
+			} else if (weapon_button=="act_weapon-ds-roll"){
+				getArray.push(roll_origin+"_weapon_ds_mod","defence_skill_orig","defence_skill_temp","defence_skill_mod")
+			}  else if (weapon_button=="act_missile-ms-roll"){
+				getArray.push(roll_origin+"_weapon_ms_mod","missile_skill_orig","missile_skill_temp","missile_skill_mod");
+			}  else if (weapon_button=="act_missile-ds-roll"){
+				getArray.push(roll_origin+"_weapon_ds_mod","defence_skill_orig","defence_skill_temp","defence_skill_mod");
+			} else {
+				console.log("Error weapon roll type 2");
+			}		
+			console.log("attribute_used: "+attribute_used);			
+			console.log("getArray 2: "+getArray);		
+
+		} else if(type=="companion_combat"){
+			
+			var attribute_used = ""
+			var weapon_mod = ""
+			var base_mod = ""
+			
+		
+			if (weapon_button=="act_companion-weapon-as-roll1"){
+				var getArray = [roll_origin+"_strong_grip",roll_origin+"vicious",roll_origin+"_companion_weapon_1",roll_origin+"_companion_as_1",roll_origin+"_companion_as_mod_1",roll_origin+"_companion_weapon_damage_1",roll_origin+"_companion_ar_penalty"];
+				console.log("getArray companion as weapon 1: "+getArray);
+				attribute_used = "companion-weapon-as-roll1"				
+			} else if (weapon_button=="act_companion-weapon-ds-roll1"){		
+				var getArray = [roll_origin+"_strong_grip",roll_origin+"vicious",roll_origin+"_companion_weapon_1",roll_origin+"_companion_ds_1",roll_origin+"_companion_ds_mod_1",roll_origin+"_companion_weapon_damage_1",roll_origin+"_companion_ar_penalty"];
+				console.log("getArray companion ds weapon 1: "+getArray);
+				attribute_used = "companion-weapon-ds-roll1"												
+			} else  if (weapon_button=="act_companion-weapon-as-roll2"){
+				var getArray = [roll_origin+"_strong_grip",roll_origin+"vicious",roll_origin+"_companion_weapon_2",roll_origin+"_companion_as_2",roll_origin+"_companion_as_mod_2",roll_origin+"_companion_weapon_damage_2",roll_origin+"_companion_ar_penalty"];
+				console.log("getArray companion as weapon 2: "+getArray);
+				attribute_used = "companion-weapon-as-roll2"									
+			} else if (weapon_button=="act_companion-weapon-ds-roll2"){
+				var getArray = [roll_origin+"_strong_grip",roll_origin+"vicious",roll_origin+"_companion_weapon_2",roll_origin+"_companion_ds_2",roll_origin+"_companion_ds_mod_2",roll_origin+"_companion_weapon_damage_2",roll_origin+"_companion_ar_penalty"];
+				console.log("getArray companion ds weapon 1: "+getArray);
+				attribute_used = "companion-weapon-ds-roll2"									
+			} else  if (weapon_button=="act_companion-weapon-as-roll3"){
+				var getArray = [roll_origin+"_strong_grip",roll_origin+"vicious",roll_origin+"_companion_weapon_3",roll_origin+"_companion_as_3",roll_origin+"_companion_as_mod_3",roll_origin+"_companion_weapon_damage_3",roll_origin+"_companion_ar_penalty"];
+				console.log("getArray companion as weapon 3: "+getArray);
+				attribute_used = "companion-weapon-as-roll2"								
+			} else if (weapon_button=="act_companion-weapon-ds-roll3"){
+				var getArray = [roll_origin+"_strong_grip",roll_origin+"vicious",roll_origin+"_companion_weapon_3",roll_origin+"_companion_ds_3",roll_origin+"_companion_ds_mod_3",roll_origin+"_companion_weapon_damage_3",roll_origin+"_companion_ar_penalty"];
+				console.log("getArray companion ds weapon 3: "+getArray);
+				attribute_used = "companion-weapon-ds-roll3"					
+			} 
+				
+		} else if(type=="companion_attribute"){
+		}			
+		getAttrs(getArray, function(values) {
+			//setAttrs({"cur_ar":ar,"cur_armor_penalty":pen});
+			console.log("!!!!!! attributte button pressed getattrs values "+JSON.stringify(values));
+			console.log("type: "+type)
+			var is_defence_roll = 0;
+			var strong_grip = 0;
+            var vicious = 0;
+            var show_npc = parseInt(values.show_npc);
+			if (type=="combat"){
+				console.log("marker1");
+				console.log("roll_origin: "+roll_origin);
+				var combat =1;
+				var roll_source=values[roll_origin+"_weapon_name"];
+			
+				var  orig = parseInt(values[attribute_used+"_orig"]);
+				console.log("orig: "+orig);
+				var temp = (isNaN(parseInt(values[attribute_used+"_temp"])) ? 0 :  parseInt(values[attribute_used+"_temp"]) );
+				console.log("temp: "+temp);
+				var mod  = parseInt(values[attribute_used+"_mod"]);
+
+				if (values.vicious == "1"){
+					vicious = 1; 
+				}	                
+				if (values.strong_grip == "1"){
+					strong_grip = 1; 
+				}	
+				if (weapon_button=="act_weapon-as-roll"){
+					var general_mod = parseInt(values.general_attack_skill_mod)
+					var general_str = "["+getTranslationByKey("Attack Skill Modifier")+"]";
+					var weapon_skill_mod = values[roll_origin+"_weapon_as_mod"];
+					roll_source = roll_source +" "+getTranslationByKey("Attack");
+				} else if (weapon_button=="act_weapon-ds-roll"){
+					var general_mod = parseInt(values.general_defence_skill_mod)
+					var general_str = "["+getTranslationByKey("Defence Skill Modifier")+"]";
+					var weapon_skill_mod = values[roll_origin+"_weapon_ds_mod"];
+					is_defence_roll = 1;
+					roll_source = roll_source +" "+getTranslationByKey("Defence");
+				}  else if (weapon_button=="act_missile-ms-roll"){
+					var general_mod = parseInt(values.general_attack_skill_mod)
+					var general_str = "["+getTranslationByKey("Attack Skill Modifier")+"]";
+					roll_source = roll_source +" "+getTranslationByKey("Attack");
+					var weapon_skill_mod = values[roll_origin+"_weapon_ms_mod"];
+				}  else if (weapon_button=="act_missile-ds-roll"){
+					var general_mod = parseInt(values.general_defence_skill_mod)
+					var general_str = "["+getTranslationByKey("Defence Skill Modifier")+"]";
+					var weapon_skill_mod = values[roll_origin+"_weapon_ds_mod"];
+					is_defence_roll = 1;
+					roll_source = roll_source +" "+getTranslationByKey("Defence");
+				} else {
+					console.log("Error weapon roll type 3");
+				}				
+				console.log("general_str: "+general_str);
+				console.log("weapon_skill_mod: "+weapon_skill_mod);
+				
+				//// generate advanced option modifiers
+				adv_option_mod=0;
+				adv_options_str = "["+getTranslationByKey("Advanced Option Modifier")+"]"
+				var armor_penalty = parseInt(values.cur_armor_penalty);
+				var target = ( temp != "0" && temp != "NaN" ? temp : orig );
+				console.log("target: "+target);	
+				var target_str = " {{target=[["+target+"+"+weapon_skill_mod+"["+getTranslationByKey("weapon-mod")+"]+"+mod+"["+getTranslationByKey("modifier")+"]+"+general_mod+general_str+"+"+armor_penalty+"["+getTranslationByKey("armor-penalty-modifier")+"]+"+adv_option_mod+adv_options_str+"]]}} " 
+				console.log("general_str: "+general_str)
+				var weapon_damage=values[roll_origin+"_weapon_damage"] ;
+				console.log("weapon_damage:"+weapon_damage);
+				var modded_target = target+mod+parseInt(weapon_skill_mod)+armor_penalty+general_mod;
+				console.log("marker4");
+				/// NEEDS DONE Aimed shot to crit and crit calculated before advanced option mods
+				/// NEEDS DONE account for the combat options modifier weapon modifier and other modifiers
+				var crit = ( values.vicsious=="1" ?  Math.floor(modded_target*0.13) : Math.floor(modded_target*0.1))
+				console.log("crit: "+crit);	
+				var fumble_possible = (modded_target > 90 ? 0 : 1)	;
+				
+				roll_str = "&{template:roll} {{name=@{character_name}}} {{source="+roll_source+"}} {{roll=[[1d100]]}} "+target_str+" {{result=[[0]]}} {{show_damage=[[0]]}} {{combat=[[1]]}} {{weapon_damage=[["+weapon_damage+"]]}}  {{half_damage=[[0]]}}  {{double_damage=[[0]]}} {{fumble_roll=[[1D00]]}}  {{isCrit=[[0]]}} {{isFumble=[[0]]}} {{fumble_critical_roll=[[1d100]]}}  {{serious_str=[[0]]}} {{critical_str=[[0]]}} {{fumble_str=[[0]]}}";
+			} else if (type=="npc_combat") {
+				console.log("marker 3a");
+				console.log("roll_origin: "+roll_origin);
+				var combat =1;
+				if (values[roll_origin+"_strong_grip"] == "1"){
+					strong_grip = 1; 
+				}	
+
+				//get the skill value and mod				
+				if (weapon_button=="act_weapon-as-roll"){
+					var  target = parseInt(values[roll_origin+"_weapon_as"]);
+					console.log("target: "+target);
+					var mod  = parseInt(values["general_attack_skill_mod"]);
+					var roll_source=values[roll_origin+"_weapon_name"]+" "+getTranslationByKey("Attack");	
+					var weapon_damage=values[roll_origin+"_weapon_damage"] ;					
+				} else if (weapon_button=="act_weapon-ds-roll"){
+					var  target = parseInt(values[roll_origin+"_weapon_ds"]);
+					console.log("target: "+target);
+					var mod  = parseInt(values["general_defence_skill_mod"]);
+					var roll_source=values[roll_origin+"_weapon_name"]+" "+getTranslationByKey("Attack");	
+					var weapon_damage=values[roll_origin+"_weapon_damage"] ;
+					is_defence_roll = 1;					
+				} 
+				else {
+					console.log("Error weapon roll type 3");
+				}				
+					
+				var target_str = " {{target=[["+target+"+"+mod+"["+getTranslationByKey("modifier")+"] ]]}} " 
+				console.log("weapon_damage:"+weapon_damage);
+				var modded_target = target+mod;
+				console.log("marker4");
+                /// NEEDS DONE Aimed shot to crit and crit calculated before advanced option mods				/// NEEDS DONE account for the combat options modifier weapon modifier and other modifiers
+				var crit = Math.floor(modded_target*values.critical_percentage);
+				console.log("crit: "+crit);	
+				var fumble_possible = (modded_target > 90 ? 0 : 1)	;
+				roll_str = values.whisper_str+" "+"&{template:roll} {{name=@{character_name}}} {{source="+roll_source+"}} {{roll=[[1d100]]}} "+target_str+" {{result=[[0]]}} {{show_damage=[[0]]}} {{combat=[[1]]}} {{weapon_damage=[["+weapon_damage+"]]}}  {{half_damage=[[0]]}}  {{double_damage=[[0]]}} {{fumble_roll=[[1D00]]}}  {{isCrit=[[0]]}} {{isFumble=[[0]]}} {{fumble_critical_roll=[[1d100]]}}  {{serious_str=[[0]]}} {{critical_str=[[0]]}} {{fumble_str=[[0]]}}";	
+				console.log("roll_str: "+roll_str);				
+			}
+			else if (type=="attribute") {
+				console.log("marker2");
+				var combat =0;
+				var roll_source= getTranslationByKey(roll_origin);
+				console.log("roll_origin: "+roll_origin);
+				var orig = parseInt(values[roll_origin+"_orig"]);
+				console.log("orig: "+orig);
+				var temp = (isNaN(parseInt(values[roll_origin+"_temp"])) ? 0 :  parseInt(values[roll_origin+"_temp"]) );
+				console.log("temp: "+temp);
+				var mod  = parseInt(values[roll_origin+"_mod"]);
+				console.log("temp: "+temp);				
+				
+				var armor_penalty = 0
+				if (show_npc==2 && physical_attributes.includes(roll_origin)){				    
+					armor_penalty = parseInt(values.companion_ar_penalty);				    
+                }  else if (physical_attributes.includes(roll_origin)){
+                    armor_penalty = parseInt(values.cur_armor_penalty)
+                }   
+				console.log("armor_penalty: "+armor_penalty);
+
+				var target = ( temp != "0" && temp != "NaN" ? temp : orig );
+				console.log("target: "+target);	
+				var target_str = " {{target=[["+target+"+"+mod+"[modifier] "+"+"+armor_penalty+"["+getTranslationByKey("armor-penalty-modifier")+"] "+ "]]}} " 
+				var modded_target = target+mod+armor_penalty;
+                console.log("modded_target: "+modded_target);	
+				console.log("marker4");
+				/// NEEDS DONE to check if this is a combat roll and check the checkboxes for vicious and iron grip
+				/// NEEDS DONE account for the combat options modifier weapon modifier and other modifiers
+				var crit = Math.floor(modded_target*0.1)
+				console.log("crit: "+crit);	
+				var fumble_possible = (modded_target > 90 ? 0 : 1)	;
+				roll_str = values.whisper_str+" "+"&{template:roll} {{name=@{character_name}}} {{source="+roll_source+"}} {{roll=[[1d100]]}} "+target_str+" {{result=[[0]]}} {{combat=[[0]]}} {{show_damage=[[0]]}} {{isCrit=[[0]]}} {{isFumble=[[0]]}}";				
+			} else 	if (type=="companion_combat"){
+				console.log("marker 3a");
+				console.log("roll_origin: "+roll_origin);
+				var combat =1;
+				if (values[roll_origin+"_strong_grip"] == "1"){
+					strong_grip = 1; 
+				}	
+
+				//get the skill value and mod				
+				if (weapon_button=="act_companion-weapon-as-roll1"){
+					var  target = parseInt(values[roll_origin+"_companion_as_1"]);
+					console.log("target: "+target);
+					var mod  = parseInt(values[roll_origin+"_companion_as_mod_1"]);
+					var roll_source=values[roll_origin+"_companion_weapon_1"]+" "+getTranslationByKey("Attack");	
+					var weapon_damage=values[roll_origin+"_companion_weapon_damage_1"] ;					
+				} else if (weapon_button=="act_companion-weapon-ds-roll1"){
+					var  target = parseInt(values[roll_origin+"_companion_ds_1"]);
+					console.log("target: "+target);
+					var mod  = parseInt(values[roll_origin+"_companion_ds_mod_1"]);
+					console.log("mod: "+mod);
+					var roll_source=values[roll_origin+"_companion_weapon_1"]+" "+getTranslationByKey("Defence");
+					console.log("roll_source: "+roll_source);
+					var weapon_damage=values[roll_origin+"_companion_weapon_damage_1"] ;
+					console.log("weapon_damage: "+weapon_damage);
+					is_defence_roll = 1;					
+				} if (weapon_button=="act_companion-weapon-as-roll2"){
+					var  target = parseInt(values[roll_origin+"_companion_as_2"]);
+					console.log("target: "+target);
+					var mod  = parseInt(values[roll_origin+"_companion_as_mod_2"]);
+					var roll_source=values[roll_origin+"_companion_weapon_2"]+" "+getTranslationByKey("Attack");	
+					var weapon_damage=values[roll_origin+"_companion_weapon_damage_2"] ;					
+				} else if (weapon_button=="act_companion-weapon-ds-roll2"){
+					var  target = parseInt(values[roll_origin+"_companion_ds_2"]);
+					console.log("target: "+target);
+					var mod  = parseInt(values[roll_origin+"_companion_ds_mod_2"]);
+					console.log("mod: "+mod);
+					var roll_source=values[roll_origin+"_companion_weapon_2"]+" "+getTranslationByKey("Defence");
+					console.log("roll_source: "+roll_source);
+					var weapon_damage=values[roll_origin+"_companion_weapon_damage_2"] ;
+					console.log("weapon_damage: "+weapon_damage);
+					is_defence_roll = 1;					
+				} if (weapon_button=="act_companion-weapon-as-roll3"){
+					var  target = parseInt(values[roll_origin+"_companion_as_3"]);
+					console.log("target: "+target);
+					var mod  = parseInt(values[roll_origin+"_companion_as_mod_3"]);
+					var roll_source=values[roll_origin+"_companion_weapon_3"]+" "+getTranslationByKey("Attack");	
+					var weapon_damage=values[roll_origin+"_companion_weapon_damage_3"] ;					
+				} else if (weapon_button=="act_companion-weapon-ds-roll3"){
+					var  target = parseInt(values[roll_origin+"_companion_ds_3"]);
+					console.log("target: "+target);
+					var mod  = parseInt(values[roll_origin+"_companion_ds_mod_3"]);
+					console.log("mod: "+mod);
+					var roll_source=values[roll_origin+"_companion_weapon_3"]+" "+getTranslationByKey("Defence");
+					console.log("roll_source: "+roll_source);
+					var weapon_damage=values[roll_origin+"_companion_weapon_damage_3"] ;
+					console.log("weapon_damage: "+weapon_damage);
+					is_defence_roll = 1;					
+				}
+				else {
+					console.log("Error weapon roll type 3");
+				}				
+					
+				var armor_penalty = parseInt(values[roll_origin+"_companion_ar_penalty"]);
+				console.log("armor_penalty: "+armor_penalty);
+				var target_str = " {{target=[["+target+"+"+mod+"["+getTranslationByKey("modifier")+"]"+armor_penalty+"["+getTranslationByKey("armor-penalty-modifier")+"] ]]}} " 
+				console.log("weapon_damage:"+weapon_damage);
+				var modded_target = target+mod;
+				console.log("marker4");
+				/// NEEDS DONE to check if this is a combat roll and check the checkboxes for vicious and iron grip
+				/// NEEDS DONE account for the combat options modifier weapon modifier and other modifiers
+				//var crit = ( values.vicsious=="1" ?  Math.floor(modded_target*0.13) : Math.floor(modded_target*0.1))
+				crit = Math.floor(modded_target*0.1)
+				console.log("crit: "+crit);	
+				var fumble_possible = (modded_target > 90 ? 0 : 1)	;
+				roll_str = "&{template:roll} {{name=@{character_name}}} {{source="+roll_source+"}} {{roll=[[1d100]]}} "+target_str+" {{result=[[0]]}} {{show_damage=[[0]]}} {{combat=[[1]]}} {{weapon_damage=[["+weapon_damage+"]]}}  {{half_damage=[[0]]}}  {{double_damage=[[0]]}} {{fumble_crit_roll=[[1D00]]}}  {{isCrit=[[0]]}} {{isFumble=[[0]]}} {{fumble_critical_roll=[[1d100]]}} {{serious_str=[[0]]}} {{critical_str=[[0]]}} {{fumble_str=[[0]]}}";	
+				console.log("roll_str: "+roll_str);			
+			}
+			console.log("marker3");
+
+			console.log("roll_str: "+roll_str);
+			startRoll(roll_str, (results) => {
+				console.log("!!!!!! aroll lresults "+JSON.stringify(results));
+				const roll  = results.results.roll.result;        
+				let weapon_dmage = 0;
+				let half_damage =0 ;
+				let double_damage=0;
+				let isCrit=0;
+				let isFumble=0;
+                let fumble_str= "";
+                let critical_str = ""
+				if (combat==1){
+					weapon_damage = parseInt(results.results.weapon_damage.result);
+					half_damage = Math.ceil(weapon_damage*0.5);
+					console.log("***********half_damage: "+half_damage)
+					double_damage = weapon_damage*2;
+					console.log("**********double_damage: "+double_damage)
+				} 
+				let show_damage = 0;
+				let resultx = "";
+				if (roll > 95){
+					if (fumble_possible==1){
+						if (type=="combat" || type=="companion_combat"){
+							console.log("what is this strong_grip:"+strong_grip);
+							if (strong_grip != 1){
+								resultx = getTranslationByKey("fumble");
+								isFumble=1
+							} else if (strong_grip==1 && roll >= 99){
+								resultx = getTranslationByKey("fumble");
+								isFumble=1								
+							} else {
+								resultx = getTranslationByKey("failure");
+							}								
+						} else {
+							resultx = getTranslationByKey("critical-failure");
+						}
+					} else {
+						resultx = getTranslationByKey("failure");
+					}						
+				} else {
+					
+					if (roll <= crit) {
+						if (combat==1 && is_defence_roll==0){
+							show_damage =1;
+						}
+						resultx = getTranslationByKey("critical");
+						isCrit=1;
+					} else {
+                        console.log("modded_target: "+modded_target)
+						if (roll <= modded_target ){
+							resultx = getTranslationByKey("success");
+							if (combat==1  && is_defence_roll==0){
+								show_damage =1;
+							}
+						} else {
+							resultx = getTranslationByKey("failure");
+						}
+					}	
+
+				}
+                
+                
+                if (isFumble==1 && combat==1){
+                    const fumble_critical_roll = parseInt(results.results.fumble_critical_roll.result);       
+                    let fumble_result="01-20";
+                    if (fumble_critical_roll >= 21 && fumble_critical_roll <= 40){
+                      fumble_result="21-40";  
+                    } else if (fumble_critical_roll >= 41 && fumble_critical_roll <= 60){
+                      fumble_result="41-60";
+                    } else if (fumble_critical_roll >= 61 && fumble_critical_roll <= 80){
+                       fumble_result="61-80";
+                    } else if (fumble_critical_roll >= 81 && fumble_critical_roll <= 95) {
+                        fumble_result="81-95";
+                    } else if (fumble_critical_roll >= 96 && fumble_critical_roll <= 99) {
+                        fumble_result="96-99";
+                    } else if (fumble_critical_roll > 99) {
+                        fumble_result="100";
+                    }
+                    if (roll_origin.includes("repeating_npc-missiles") || roll_origin.includes("repeating_missiles")){
+                       fumble_result = "FumbleMiss"+fumble_result
+                    } else if (roll_origin.includes("repeating_npc-weapons") || roll_origin.includes("repeating_weapons")){
+                       fumble_result = "Fumbleh2h"+fumble_result
+                    }
+                    fumble_str=getTranslationByKey(fumble_result);
+                }
+                console.log("fumble_str "+fumble_str)                    
+				console.log("what is the result "+resultx)
+				finishRoll(
+					results.rollId,
+					{				
+                        fumble_str:fumble_str,			
+						result:resultx,
+						isCrit:isCrit,
+						isFumble:isFumble,
+						show_damage:show_damage,
+						half_damage:half_damage,
+						double_damage:double_damage
+					}
+				);
+			});			
+		});	  		  
+	  }
+	  
+		const attributteResetSuffix = ["_orig","_temp","_mod"];
+	  	const attributteResetBase = ["attack_skill","missle_skill","defence_Skill","knowledge","will","endurance","persuasion","speed","agility"];
+		attributteResetBase.forEach(attributeBase => {
+			
+			attributteResetSuffix.forEach(attributeSuffix => {
+				let changeStr = attributeBase+attributeSuffix
+				on(`change:${changeStr}`, function(eventInfo) {
+					if (isNaN(parseInt(eventInfo.newValue))){
+						setAttrs({[eventInfo.sourceAttribute]:0});	
+					}
+				});						
+			});	
+			
+      });	
+	
+
+
+
+	
+	//// END ROLLS  SHEET WORKERS ////
+	//// ARMOR SHEET WORKERS ///////////////
+	on("change:repeating_armorClothing:worn", function(eventInfo) {
+			//console.log("!!!!!! eventinfo "+JSON.stringify(eventInfo));
+			//console.log("!!!!!! eventinfo worn checkbox  "+JSON.stringify(eventInfo.sourceAttribute));
+			let source = eventInfo.sourceAttribute;
+			//console.log("!!!!!! source attribute for worn checkbox  "+source);
+			let rowID = getRowID(source);
+			//console.log("row id: "+rowID);
+			
+			if (eventInfo.newValue=="1"){
+				getAttrs([rowID+"_ar",rowID+"_armor_penalty"], function(values) {
+          //console.log("*****getattrs values  "+JSON.stringify(values));			
+					let ar = values[rowID+"_ar"];
+					let pen = values[rowID+"_armor_penalty"];
+					//console.log("ar: "+ar)
+					//console.log("pen: "+pen)
+					setAttrs({"cur_ar":ar,"cur_armor_penalty":pen});
+				    
+				});
+				resetWorn(rowID.replace("repeating_armorclothing_",""));
+			} else if (eventInfo.newValue=="0")
+			{
+				console.log("What is this: "+eventInfo.newValue)
+				setAttrs({"cur_ar":0,"cur_armor_penalty":0},{silent:true});				    
+			}
+				
+		});	
+		
+		
+		
+		
+		
+		function resetWorn(selectedID){
+			 getSectionIDs("repeating_armorClothing", function(idArray) {
+				if (idArray.length > 0) {
+		
+					_.each(idArray, function(currentID, i) {
+										
+						if (currentID != selectedID){
+								console.log(currentID+" = "+selectedID)		
+								let attrsToSet = {["repeating_armorClothing_" + idArray[i] +'_worn']:0};								
+								console.log("attrs to set "+JSON.stringify(attrsToSet));
+								setAttrs(attrsToSet,{silent:true});
+						}						
+					});
+				}
+				
+			});	
+		}
+
+	// event listener for worn armor checkbox
+		on("change:repeating_armorClothing:ar change:repeating_armorClothing:armor_penalty", function(eventInfo) {
+			console.log("!!!!!! eventinfo "+JSON.stringify(eventInfo));
+				getAttrs(["repeating_armorClothing_ar","repeating_armorClothing_armor_penalty","repeating_armorClothing_worn"], function(values) {	
+					console.log("^^^^^ values "+JSON.stringify(values));	
+					if (values.repeating_armorClothing_worn=="1"){
+						let ar = values.repeating_armorClothing_ar;
+						let pen = values.repeating_armorClothing_armor_penalty; 
+						setAttrs({"cur_ar":ar,"cur_armor_penalty":pen});
+					}	
+				});
+		});	
+		
+//// END ARMOR SHEET WORKERS ///////////////
+/// TOTAL WOUNDS SHEET WORKER /////
+on("change:wounds change:bleeding_damage change:endurance_temp change:endurance_orig change:endurance_mod", function(eventInfo) {
+	console.log("!!!!!! blah eventinfo "+JSON.stringify(eventInfo));
+		getAttrs(["wounds","bleeding_damage","endurance_temp","endurance_orig","endurance_mod"], function(values) {	
+			console.log("!!!!!! values"+JSON.stringify(values));
+			setWoundTotal(values.wounds,values.bleeding_damage,parseInt(values.endurance_temp),parseInt(values.endurance_orig),parseInt(values.endurance_mod),"")
+		});
+});
+
+
+on("change:repeating_companions:companion_wounds change:repeating_companions:companion_bleeding_damage change:repeating:companions_end", function(eventInfo) {
+	console.log("!!!!!! blah 2 eventinfo "+JSON.stringify(eventInfo));
+		getAttrs(["repeating_companions_companion_wounds","repeating_companions_companion_bleeding_damage","repeating_companions_end"], function(values) {	
+			console.log("!!!!!! repeating_companions:companion_wounds values"+JSON.stringify(values));
+			setWoundTotal(values.repeating_companions_companion_wounds,values.repeating_companions_companion_bleeding_damage,parseInt(values.repeating_companions_end),0,0,"repeating_companions_")
+		});
+});	
+
+function setWoundTotal(wounds,bleeding_damage,endurance_temp,endurance_orig,endurance_mod,source){
+	
+			let tot =0;
+			let wounds_array=wounds.split("/");
+			console.log("^^^^^ wounds array "+JSON.stringify(wounds_array));	
+			wounds_array.forEach(function(wound){
+					tot += parseInt(wound);
+				}
+			);
+			tot=tot+parseInt(bleeding_damage);
+			let wounds_result=""
+			
+			let endurance = endurance_orig
+			
+			if (endurance_temp > 0){
+				endurance =endurance_temp
+			}
+			
+			endurance = endurance+endurance_mod
+			console.log("endurance: "+endurance);
+			
+
+			if (tot > endurance && tot <= endurance + 20){
+				 wounds_result = getTranslationByKey("Unconcious");
+			} else if (tot > endurance + 20) {
+				wounds_result = getTranslationByKey("Dead");
+			}
+			
+			console.log("tot: "+tot);
+			console.log("wounds_result: "+wounds_result);
+				
+			//setAttrs({attrsToSet});
+			 setAttrs({[source+"wounds_total"]:tot,[source+"unconsciousness_or_dead"]:wounds_result});
+} 
+
+/// END WOUNDS SHEET WORKER /////
+
+//// APPLY ONE ROUND OF BLEEDING ////
+on("clicked:bleed", function(eventInfo) {
+	console.log("!!!!!! bleed eventinfo "+JSON.stringify(eventInfo));
+	getAttrs(["bleeding_damage","bleeding_wounds"], function(values) {
+		applyBleeding(values.bleeding_damage,values.bleeding_wounds,"")
+	});
+});	
+
+on("clicked:repeating_companions:bleed", function(eventInfo) {
+	console.log("!!!!!! companion bleed eventinfo "+JSON.stringify(eventInfo));
+	getAttrs(["repeating_companions_companion_bleeding_damage","repeating_companions_bleeding_wounds"], function(values) {
+		console.log("!!!!!! companion bleed values "+JSON.stringify(values));
+		console.log("WTF");
+		applyBleeding(values.repeating_companions_companion_bleeding_damage,values.repeating_companions_bleeding_wounds,"repeating_companions_companion_")
+	});
+});
+
+
+function applyBleeding(bleeding_damage,bleeding_wounds,source){
+	let tot = parseInt(bleeding_damage)+parseInt(bleeding_wounds);
+	console.log("argghhhh tot:"+tot);
+	setAttrs({[source+"bleeding_damage"]:tot});
+}
+
+
+//// END APPLY ONE ROUND OF BLEEDING ////
+
+//// APPLY ONE POINT OF HEALING ////
+on("clicked:heal", function(eventInfo) {
+	console.log("!!!!!! heal eventinfo "+JSON.stringify(eventInfo));
+	getAttrs(["wounds","bleeding_damage"], function(values) {
+			console.log("^^^^^ values "+JSON.stringify(values));	
+			applyHealing(values.wounds,parseInt(values.bleeding_damage),"")
+	});
+});	
+
+
+
+on("clicked:repeating_companions:companion-heal", function(eventInfo) {
+	console.log("!!!!!! heal eventinfo "+JSON.stringify(eventInfo));
+	getAttrs(["repeating_companions_companion_wounds","repeating_companions_companion_bleeding_damage"], function(values) {
+			console.log("^^^^^ values "+JSON.stringify(values));	
+			applyHealing(values.repeating_companions_companion_wounds,parseInt(values.repeating_companions_companion_bleeding_damage),"repeating_companions_companion_")
+	});
+});	
+
+function applyHealing(wounds,bleeding_damage,source){
+			let wound_str = "";
+			let wounds_array=wounds.split("/");
+			console.log("^^^^^ wounds array "+JSON.stringify(wounds_array));	
+			wounds_array.forEach(function(wound){
+					if (wound_str.length>0){
+						wound_str=wound_str+"/";
+					}
+					wound_str = wound_str + Math.max(parseInt(wound)-1,0);
+					
+				}
+			);
+			let tot = Math.max(--bleeding_damage,0);
+			setAttrs({[source+"wounds"]:wound_str,[source+"bleeding_damage"]:tot});		
+		
+}
+
+//// END APPLY ONE POUNT OF HEALING ////
+
+/// REPEATINg ROW FUNCTIONS
+    function getRowID(source){
+		const row_arr	= source.split("_");
+		console.log("row arr:"+JSON.stringify(row_arr));
+		return row_arr[0]+"_"+row_arr[1]+"_"+row_arr[2];
+    }
+/// END REPEATIN ROW FUNCTIONS
+</script>	
+<rolltemplate class="sheet-rolltemplate-roll">
+  <div class="sheet-header">
+    <div>{{name}}</div>
+    <div>{{source}}</div>
+  </div>
+  <div class="sheet-detail">
+     {{roll}}&#60;&#61;{{computed::target}}    {{computed::result}} {{#rollTotal() computed::isCrit 1}}
+    {{fumble_critical_roll}}
+    {{/rollTotal() computed::isCrit 1}}
+    {{#rollTotal() computed::isFumble 1}}
+        {{#rollTotal() combat 1}}
+            <div> {{computed::fumble_str}} </div>
+        {{/rollTotal() combat 1}}
+    {{/rollTotal() computed::isFumble 1}}        
+    {{#rollTotal() computed::show_damage 1}}
+    <div><span data-i18n="half-damage"></span>{{computed::half_damage}}<span data-i18n="damage"></span>{{weapon_damage}}<span data-i18n="double-damage"></span>{{computed::double_damage}}</div>
+    <div>
+         {{#rollTotal() computed::isCrit 1}}                
+          [Critical Blunt](~{{name}}|critical1) [Critical Other](~{{name}}|critical2)
+      {{/rollTotal() computed::isCrit 1}} 
+      {{#rollTotal() computed::isCrit 0}}                
+          [Serious Blunt](~{{name}}|serious1) [Serious Other](~{{name}}|serious2)
+      {{/rollTotal() computed::isCrit 0}}                            
+    </div>{{/rollTotal() computed::show_damage 1}}
+  </div>
+</rolltemplate>
+<rolltemplate class="sheet-rolltemplate-damageRoll">
+  <div class="sheet-header">
+    <div>{{name}}</div>
+    <div>{{weapon_name}} &nbsp;<span class="sheet-labels" data-i18n="Damage"></span>
+    </div>
+  </div>
+  <div class="sheet-detail">
+    <div><span data-i18n="half-damage"></span>{{computed::half_damage}}<span data-i18n="damage"></span>{{weapon_damage}}<span data-i18n="double-damage"></span>{{computed::double_damage}}</div>
+    <div>
+         {{#rollTotal() computed::isCrit 1}}                
+          [Critical Blunt](~{{name}}|critical1) [Critical Other](~{{name}}|critical2)
+      {{/rollTotal() computed::isCrit 1}} 
+      {{#rollTotal() computed::isCrit 0}}                
+          [Serious Blunt](~{{name}}|serious1) [Serious Other](~{{name}}|serious2)
+      {{/rollTotal() computed::isCrit 0}}                            
+    </div>
+  </div>
+</rolltemplate>
+<rolltemplate class="sheet-rolltemplate-initiative">
+  <div class="sheet-header">
+    <div>{{name}}</div>
+    <div>{{source}}</div>
+  </div>
+  <div class="sheet-detail">
+    <div> <span class="sheet-labels" data-i18n="initiative"></span>&nbsp;{{initiative}}
+      
+    </div>
+  </div>
+</rolltemplate>
+<rolltemplate class="sheet-rolltemplate-serious1">
+  <div class="sheet-header">
+    <div data-i18n="serious1-header"></div>{{wound_roll}}
+  </div>
+  <div class="sheet-detail">
+    {{#rollBetween() wound_roll 1 5}}
+        <div data-i18n="serious01-05"></div>
+    {{/rollBetween() wound_roll 1 5}}
+    {{#rollBetween() wound_roll 6 30}}
+        <div data-i18n="serious06-30"></div>
+    {{/rollBetween() wound_roll 6 30}}
+    {{#rollBetween() wound_roll 31 40}}
+        <div data-i18n="serious31-40"></div>
+    {{/rollBetween() wound_roll 31 40}}    
+    {{#rollBetween() wound_roll 41 65}}
+        <div data-i18n="serious41-65"></div>
+    {{/rollBetween() wound_roll 41 65}}
+    {{#rollBetween() wound_roll 66 82}}
+        <div data-i18n="serious66-82"></div>
+    {{/rollBetween() wound_roll 66 82}}
+    {{#rollBetween() wound_roll 83 89}}
+        <div data-i18n="serious83-89"></div>
+    {{/rollBetween() wound_roll 83 89}}
+    {{#rollBetween() wound_roll 90 95}}
+        <div data-i18n="serious90-95"></div>
+    {{/rollBetween() wound_roll 90 95}}
+    {{#rollBetween() wound_roll 96 100}}
+        <div data-i18n="serious96-100"></div>
+    {{/rollBetween() wound_roll 96 100}}
+    
+  </div>
+</rolltemplate>
+<rolltemplate class="sheet-rolltemplate-serious2">
+  <div class="sheet-header">
+    <div data-i18n="serious2-header"></div>{{wound_roll}}
+  </div>
+  <div class="sheet-detail">
+    {{#rollBetween() wound_roll 1 5}}
+        <div data-i18n="seriousOther01-05"></div>
+    {{/rollBetween() wound_roll 1 5}}
+    {{#rollBetween() wound_roll 6 30}}
+        <div data-i18n="seriousOther06-30"></div>
+    {{/rollBetween() wound_roll 6 30}}
+    {{#rollBetween() wound_roll 31 40}}
+        <div data-i18n="seriousOther31-40"></div>
+    {{/rollBetween() wound_roll 31 40}}    
+    {{#rollBetween() wound_roll 41 65}}
+        <div data-i18n="seriousOther41-65"></div>
+    {{/rollBetween() wound_roll 41 65}}
+    {{#rollBetween() wound_roll 66 82}}
+        <div data-i18n="seriousOther66-82"></div>
+    {{/rollBetween() wound_roll 66 82}}
+    {{#rollBetween() wound_roll 83 89}}
+        <div data-i18n="seriousOther83-89"></div>
+    {{/rollBetween() wound_roll 83 89}}
+    {{#rollBetween() wound_roll 90 95}}
+        <div data-i18n="seriousOther90-95"></div>
+    {{/rollBetween() wound_roll 90 95}}
+    {{#rollBetween() wound_roll 96 100}}
+        <div data-i18n="seriousOther96-100"></div>
+    {{/rollBetween() wound_roll 96 100}}
+    
+  </div>
+</rolltemplate>
+<rolltemplate class="sheet-rolltemplate-critical1">
+  <div class="sheet-header">
+    <div data-i18n="critical1-header"></div>{{wound_roll}}
+  </div>
+  <div class="sheet-detail">
+    {{#rollBetween() wound_roll 1 5}}
+        <div data-i18n="criticalBlunt01-05"></div>
+    {{/rollBetween() wound_roll 1 5}}
+    {{#rollBetween() wound_roll 6 30}}
+        <div data-i18n="criticalBlunt06-30"></div>
+    {{/rollBetween() wound_roll 6 30}}
+    {{#rollBetween() wound_roll 31 40}}
+        <div data-i18n="criticalBlunt31-40"></div>
+    {{/rollBetween() wound_roll 31 40}}    
+    {{#rollBetween() wound_roll 41 65}}
+        <div data-i18n="criticalBlunt41-65"></div>
+    {{/rollBetween() wound_roll 41 65}}
+    {{#rollBetween() wound_roll 66 82}}
+        <div data-i18n="criticalBlunt66-82"></div>
+    {{/rollBetween() wound_roll 66 82}}
+    {{#rollBetween() wound_roll 83 89}}
+        <div data-i18n="criticalBlunt83-89"></div>
+    {{/rollBetween() wound_roll 83 89}}
+    {{#rollBetween() wound_roll 90 95}}
+        <div data-i18n="criticalBlunt90-95"></div>
+    {{/rollBetween() wound_roll 90 95}}
+    {{#rollBetween() wound_roll 96 98}}
+        <div data-i18n="criticalBlunt96-98"></div>
+    {{/rollBetween() wound_roll 96 98}}                
+    {{#rollBetween() wound_roll 99 100}}
+        <div data-i18n="criticalBlunt96-100"></div>
+    {{/rollBetween() wound_roll 99 100}}
+    
+  </div>
+</rolltemplate>
+<rolltemplate class="sheet-rolltemplate-critical2">
+  <div class="sheet-header">
+    <div data-i18n="critical2-header"></div>{{wound_roll}}
+  </div>
+  <div class="sheet-detail">
+    {{#rollBetween() wound_roll 1 5}}
+        <div data-i18n="criticalOther01-05"></div>
+    {{/rollBetween() wound_roll 1 5}}
+    {{#rollBetween() wound_roll 6 30}}
+        <div data-i18n="criticalOther06-30"></div>
+    {{/rollBetween() wound_roll 6 30}}
+    {{#rollBetween() wound_roll 31 40}}
+        <div data-i18n="criticalOther31-40"></div>
+    {{/rollBetween() wound_roll 31 40}}    
+    {{#rollBetween() wound_roll 41 65}}
+        <div data-i18n="criticalOther41-65"></div>
+    {{/rollBetween() wound_roll 41 65}}
+    {{#rollBetween() wound_roll 66 82}}
+        <div data-i18n="criticalOther66-82"></div>
+    {{/rollBetween() wound_roll 66 82}}
+    {{#rollBetween() wound_roll 83 89}}
+        <div data-i18n="criticalOther83-89"></div>
+    {{/rollBetween() wound_roll 83 89}}
+    {{#rollBetween() wound_roll 90 95}}
+        <div data-i18n="criticalOther90-95")></div>
+    {{/rollBetween() wound_roll 90 95}}
+    {{#rollBetween() wound_roll 96 98}}
+        <div data-i18n="criticalOther96-98")></div>
+    {{/rollBetween() wound_roll 96 98}}                
+    {{#rollBetween() wound_roll 99 100}}
+        <div data-i18n="criticalOther99-100"></div>
+    {{/rollBetween() wound_roll 99 100}}                
+  </div>
+</rolltemplate>

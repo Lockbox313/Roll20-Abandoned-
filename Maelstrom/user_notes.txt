@@ -1,0 +1,3 @@
+Damage is different in the original Maelstrom rules e.g blunt weapons and bleeding. 
+
+For NPCS and Companions put the modified AS and DS for weapons as it speeds up setting them up.
