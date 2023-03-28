@@ -1,0 +1,168 @@
+rolltemplate.sheet-rolltemplate-roll
+    .sheet-header
+        div {{name}}
+        div {{source}}
+    .sheet-detail 
+        .
+            {{roll}}&#60;&#61;{{computed::target}}    {{computed::result}} {{#rollTotal() computed::isCrit 1}}
+            {{fumble_critical_roll}}
+            {{/rollTotal() computed::isCrit 1}}
+            {{#rollTotal() computed::isFumble 1}}
+                {{#rollTotal() combat 1}}
+                    <div> {{computed::fumble_str}} </div>
+                {{/rollTotal() combat 1}}
+            {{/rollTotal() computed::isFumble 1}}        
+            {{#rollTotal() computed::show_damage 1}}
+        include roll_template_damage_roll.pug
+        .    
+            {{/rollTotal() computed::show_damage 1}}
+rolltemplate.sheet-rolltemplate-damageRoll
+    .sheet-header
+        div {{name}}
+        div {{weapon_name}} &nbsp;
+            +inputLabel("Damage")
+    .sheet-detail
+        include roll_template_damage_roll.pug
+rolltemplate.sheet-rolltemplate-initiative
+    .sheet-header
+        div {{name}}
+        div {{source}}
+    .sheet-detail
+        div 
+            +inputLabel("initiative") 
+            .
+                &nbsp;{{initiative}}
+
+rolltemplate.sheet-rolltemplate-serious1
+        .sheet-header
+            div(data-i18n="serious1-header")
+            .
+                {{wound_roll}}
+        .sheet-detail
+            .
+                {{#rollBetween() wound_roll 1 5}}
+                    <div data-i18n="serious01-05"></div>
+                {{/rollBetween() wound_roll 1 5}}
+                {{#rollBetween() wound_roll 6 30}}
+                    <div data-i18n="serious06-30"></div>
+                {{/rollBetween() wound_roll 6 30}}
+                {{#rollBetween() wound_roll 31 40}}
+                    <div data-i18n="serious31-40"></div>
+                {{/rollBetween() wound_roll 31 40}}    
+                {{#rollBetween() wound_roll 41 65}}
+                    <div data-i18n="serious41-65"></div>
+                {{/rollBetween() wound_roll 41 65}}
+                {{#rollBetween() wound_roll 66 82}}
+                    <div data-i18n="serious66-82"></div>
+                {{/rollBetween() wound_roll 66 82}}
+                {{#rollBetween() wound_roll 83 89}}
+                    <div data-i18n="serious83-89"></div>
+                {{/rollBetween() wound_roll 83 89}}
+                {{#rollBetween() wound_roll 90 95}}
+                    <div data-i18n="serious90-95"></div>
+                {{/rollBetween() wound_roll 90 95}}
+                {{#rollBetween() wound_roll 96 100}}
+                    <div data-i18n="serious96-100"></div>
+                {{/rollBetween() wound_roll 96 100}}
+
+rolltemplate.sheet-rolltemplate-serious2
+        .sheet-header
+            div(data-i18n="serious2-header")
+            .
+                {{wound_roll}}
+        .sheet-detail
+            .
+                {{#rollBetween() wound_roll 1 5}}
+                    <div data-i18n="seriousOther01-05"></div>
+                {{/rollBetween() wound_roll 1 5}}
+                {{#rollBetween() wound_roll 6 30}}
+                    <div data-i18n="seriousOther06-30"></div>
+                {{/rollBetween() wound_roll 6 30}}
+                {{#rollBetween() wound_roll 31 40}}
+                    <div data-i18n="seriousOther31-40"></div>
+                {{/rollBetween() wound_roll 31 40}}    
+                {{#rollBetween() wound_roll 41 65}}
+                    <div data-i18n="seriousOther41-65"></div>
+                {{/rollBetween() wound_roll 41 65}}
+                {{#rollBetween() wound_roll 66 82}}
+                    <div data-i18n="seriousOther66-82"></div>
+                {{/rollBetween() wound_roll 66 82}}
+                {{#rollBetween() wound_roll 83 89}}
+                    <div data-i18n="seriousOther83-89"></div>
+                {{/rollBetween() wound_roll 83 89}}
+                {{#rollBetween() wound_roll 90 95}}
+                    <div data-i18n="seriousOther90-95"></div>
+                {{/rollBetween() wound_roll 90 95}}
+                {{#rollBetween() wound_roll 96 100}}
+                    <div data-i18n="seriousOther96-100"></div>
+                {{/rollBetween() wound_roll 96 100}}
+
+rolltemplate.sheet-rolltemplate-critical1
+        .sheet-header
+            div(data-i18n="critical1-header")
+            .
+                {{wound_roll}}
+        .sheet-detail
+            .
+                {{#rollBetween() wound_roll 1 5}}
+                    <div data-i18n="criticalBlunt01-05"></div>
+                {{/rollBetween() wound_roll 1 5}}
+                {{#rollBetween() wound_roll 6 30}}
+                    <div data-i18n="criticalBlunt06-30"></div>
+                {{/rollBetween() wound_roll 6 30}}
+                {{#rollBetween() wound_roll 31 40}}
+                    <div data-i18n="criticalBlunt31-40"></div>
+                {{/rollBetween() wound_roll 31 40}}    
+                {{#rollBetween() wound_roll 41 65}}
+                    <div data-i18n="criticalBlunt41-65"></div>
+                {{/rollBetween() wound_roll 41 65}}
+                {{#rollBetween() wound_roll 66 82}}
+                    <div data-i18n="criticalBlunt66-82"></div>
+                {{/rollBetween() wound_roll 66 82}}
+                {{#rollBetween() wound_roll 83 89}}
+                    <div data-i18n="criticalBlunt83-89"></div>
+                {{/rollBetween() wound_roll 83 89}}
+                {{#rollBetween() wound_roll 90 95}}
+                    <div data-i18n="criticalBlunt90-95"></div>
+                {{/rollBetween() wound_roll 90 95}}
+                {{#rollBetween() wound_roll 96 98}}
+                    <div data-i18n="criticalBlunt96-98"></div>
+                {{/rollBetween() wound_roll 96 98}}                
+                {{#rollBetween() wound_roll 99 100}}
+                    <div data-i18n="criticalBlunt96-100"></div>
+                {{/rollBetween() wound_roll 99 100}}
+
+rolltemplate.sheet-rolltemplate-critical2
+        .sheet-header
+            div(data-i18n="critical2-header")
+            .
+                {{wound_roll}}
+        .sheet-detail
+            .
+                {{#rollBetween() wound_roll 1 5}}
+                    <div data-i18n="criticalOther01-05"></div>
+                {{/rollBetween() wound_roll 1 5}}
+                {{#rollBetween() wound_roll 6 30}}
+                    <div data-i18n="criticalOther06-30"></div>
+                {{/rollBetween() wound_roll 6 30}}
+                {{#rollBetween() wound_roll 31 40}}
+                    <div data-i18n="criticalOther31-40"></div>
+                {{/rollBetween() wound_roll 31 40}}    
+                {{#rollBetween() wound_roll 41 65}}
+                    <div data-i18n="criticalOther41-65"></div>
+                {{/rollBetween() wound_roll 41 65}}
+                {{#rollBetween() wound_roll 66 82}}
+                    <div data-i18n="criticalOther66-82"></div>
+                {{/rollBetween() wound_roll 66 82}}
+                {{#rollBetween() wound_roll 83 89}}
+                    <div data-i18n="criticalOther83-89"></div>
+                {{/rollBetween() wound_roll 83 89}}
+                {{#rollBetween() wound_roll 90 95}}
+                    <div data-i18n="criticalOther90-95")></div>
+                {{/rollBetween() wound_roll 90 95}}
+                {{#rollBetween() wound_roll 96 98}}
+                    <div data-i18n="criticalOther96-98")></div>
+                {{/rollBetween() wound_roll 96 98}}                
+                {{#rollBetween() wound_roll 99 100}}
+                    <div data-i18n="criticalOther99-100"></div>
+                {{/rollBetween() wound_roll 99 100}}                

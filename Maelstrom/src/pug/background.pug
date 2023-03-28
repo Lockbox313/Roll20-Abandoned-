@@ -1,0 +1,30 @@
+include _mixins
+.sheet-max-1fr
+    .sheet-labels
+        +inputLabel("Supernatural")    
+    div
+        +textInput("Supernatural_event")
+br
+.sheet-description-lifepath-grid
+    .sheet-centerIt
+        +inputLabel("Description")
+        br         
+        <textarea  name="attr_description"></textarea>
+    .sheet-centerIt
+        +inputLabel("Lifepath")
+        br
+        .sheet-lifepath-grid
+            div
+                +inputLabel("Living")
+            div
+                +inputLabel("Years")  
+            div
+                +inputLabel("Event")
+        fieldset.repeating_lifepath
+            .sheet-lifepath-grid
+                div
+                    +textInput("living")
+                div
+                    +textInput("years")
+                div
+                    +textInput("event")

@@ -1,0 +1,19 @@
+div
+    span(data-i18n="half-damage")
+    . 
+        {{computed::half_damage}}
+    span(data-i18n="damage")
+    .
+        {{weapon_damage}}
+    span(data-i18n="double-damage")
+    .
+        {{computed::double_damage}}
+div    
+    .    
+        {{#rollTotal() computed::isCrit 1}}                
+            [Critical Blunt](~{{name}}|critical1) [Critical Other](~{{name}}|critical2)
+        {{/rollTotal() computed::isCrit 1}} 
+        {{#rollTotal() computed::isCrit 0}}                
+            [Serious Blunt](~{{name}}|serious1) [Serious Other](~{{name}}|serious2)
+        {{/rollTotal() computed::isCrit 0}}                            
+

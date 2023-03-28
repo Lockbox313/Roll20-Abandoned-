@@ -1,0 +1,188 @@
+.sheet-npc-Wrapper
+    +textInput("character_name")
+    +textInput("npc_description")
+    .sheet-whisper-grid
+        div
+            +inputLabel("whisper-rolls")
+        div
+            +checkboxInputWithValue("whisper_gm","1")
+            +textInputWithValue("whisper_str","")(type="hidden")      
+    br
+    br                 
+    .sheet-npc-stat-weapon-grid
+        // Start of left column
+        .sheet-npc-attributes
+            .sheet-npc-attribute-grid
+                div 
+                div
+                    +inputLabel("Orig.")(class="sheet-attribute-header")
+                div
+                    +inputLabel("Temp.")(class="sheet-attribute-header")
+                div
+                    +inputLabel("Mod.")(class="sheet-attribute-header")  
+            .sheet-npc-attribute-grid
+                - var attributes = ["attack_skill","missile_skill","defence_skill","knowledge","will","endurance","persuasion","perception","speed","agility"]
+                each attributte in attributes
+                    div     
+                        +actionTexTButton(`${attributte}`)               
+                            +inputLabel(`${attributte}`)
+                    div
+                        +textInputWithValue(`${attributte}_orig`,"0")
+                    div
+                        +textInputWithValue(`${attributte}_temp`,"0")
+                    div
+                        +textInputWithValue(`${attributte}_mod`,"0")
+
+            .sheet-wounds-grid1
+                div
+                    .sheet-wound-track
+                        +textInputWithValue("wounds","0/0/0/0")    
+                    .sheet-bleeding-grid
+                        .sheet-plus-sign +
+                        div
+                            +textInputWithValue("bleeding_damage","0")(id="bleeding_damage" readonly="readonly")
+                        div
+                            +actionImageButton("bleed","apply-bleed") 
+                                img(src='https://raw.githubusercontent.com/Lockbox313/imagedump/master/blood_drop2.png')    
+                        div
+                            +textInputWithValue("bleeding_wounds","0")
+                .sheet-wounds-state
+                    .sheet-total-wounds-heal-grid
+                        div
+                            +textInputWithValue("wounds_total","0")(readonly="readonly" id="wound_total")
+                        div
+                            +actionImageButton("heal","apply-heal")(class="sheet-dice" id="heal")
+                    div
+                        +textInputWithValue("unconsciousness_or_dead","")(readonly="readonly" class="sheet-unconsciousness-dead")
+                .sheet-max-1fr
+            .sheet-npc-armor
+                +inputLabel("Armour")
+                .sheet-fixPos
+                    +textInput("armour_name")
+                .sheet-armor-penalty-grid
+                    div
+                        div
+                            +inputLabel("Penalty")
+                            |:
+                    div
+                        +textInputWithValue("companion_ar_penalty","0")
+                    div
+                        div
+                            +inputLabel("Rating")
+                            |:
+                    div
+                        +textInputWithValue("companion_ar","0")                
+        // End fo left Column
+        // Start of righ column
+        .sheet-npc-weapons
+            .sheet-mods-options-grid
+                div
+                    +inputLabel("Attack Skill Modifiers")
+                div
+                    +textInputWithValue("general_attack_skill_mod","0")(class="sheet-numeric")
+                div
+                div
+                    +inputLabel("Defence Skill Modifiers")
+                div
+                    +textInputWithValue("general_defence_skill_mod","0")(class="sheet-numeric")
+            .sheet-advanced-options-grid
+                div
+                    +inputLabel("Advanced Option")
+                div
+                    +select("advanced_option")
+                        - var options_list = ["None","All Out Attack","Heavy Blow","Feint","Piercing Strike","Grapple","Defensive Stance","Double Strike","Whirlwind Strike","Aimed Shot","Rapid Strike","Move Inside Shield","Bash","Get Up"]
+                        each advanced_option in options_list
+                            +option2(advanced_option)
+                div
+                    +actionButton("initiative","initiative-roll")
+            .sheet-vicious-strong-grip-grid
+                div
+                    +inputLabel("has-strong-grip")
+                div 
+                    +checkboxInputWithValue("strong_grip","1")
+                div
+                    +inputLabel("crit-value")
+                div
+                    +select("critical_percentage")
+                        +option4("0.1","10%")(selected="selected")
+                        +option4("0.13","13%")
+                        +option4("0.2","20%")
+                        +option4("0.26","26%")
+                //div 
+                //    +inputLabel("has-vicious")
+                //div 
+                //    +checkboxInputWithValue("vicious","1")                     
+            br
+            br    
+            .sheet-weapon-grid
+                .sheet-labels.sheet-gridName
+                    +inputLabel("Melee Weapon")
+                .sheet-labels.sheet-AS
+                    +inputLabel("AS")
+                .sheet-labels.sheet-DS
+                    +inputLabel("DS")
+                .sheet-labels.sheet-damageRoll
+                    +inputLabel("Damage")
+                div   
+            fieldset.repeating_npc-weapons        
+                .sheet-weapon-grid
+                    div
+                        +textInput("weapon_name")(class="sheet-gridName")
+                    div
+                        +textInputWithValue("weapon_as","0")(class="sheet-numeric")                     
+                    div                    
+                        +actionImageButton("weapon-as-roll","as-roll")                    
+                            img(  class="sheet-dice"  src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d10s_small2.png")
+                    div
+                        +textInputWithValue("weapon_ds","0")(class="sheet-numeric")                      
+                    div
+                        +actionImageButton("weapon-ds-roll","ds-roll")
+                            img(class="sheet-dice" src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d10s_small2.png") 
+                    div
+                        +textInputWithValue("weapon_damage","")                                          
+                    div
+                        +actionImageButton("weapon-damage-roll","damage-roll")
+                            img(class="sheet-dice" src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d6s_small2.png")                    
+            br
+            br
+            .sheet-missile-grid
+                .sheet-labels.sheet-gridName
+                    +inputLabel("Missile Weapon")
+                .sheet-labels.sheet-MS
+                    +inputLabel("MS")
+                .sheet-labels.sheet-DS
+                    +inputLabel("DS")
+                .sheet-labels.sheet-damageRoll
+                    +inputLabel("Damage")
+                .sheet-labels
+                    +inputLabel("Range")
+                .sheet-labels
+                    +inputLabel("#")                
+            fieldset.repeating_npc-missiles       
+                .sheet-missile-grid
+                    div
+                        +textInput("weapon_name")(class="sheet-gridName")
+                    div
+                        +textInputWithValue("weapon_as","0")(class="sheet-numeric")                   
+                    div                    
+                        +actionImageButton("weapon-as-roll","as-roll")
+                            img(  class="sheet-dice"  src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d10s_small2.png")
+                    div
+                        +textInputWithValue("weapon_ds","0")(class="sheet-numeric")                   
+                    div
+                        +actionImageButton("weapon-ds-roll","ds-roll")
+                            img(class="sheet-dice" src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d10s_small2.png")                   
+                    div
+                        +textInput("weapon_damage")
+                    div
+                        +actionImageButton("weapon-damage-roll","damage-roll")
+                            img(class="sheet-dice" src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d6s_small2.png")                         
+                    div
+                        +textInput("weapon_range")
+                    div
+                        +textInput("number")                    
+            br
+            br
+            +inputLabel("npc-notes-abilities-characteristics")
+            textarea(name="attr_notes-abilities-characteristics")
+        //End of right column

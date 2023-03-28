@@ -1,0 +1,322 @@
+include _mixins
+.sheet-header1
+    .sheet-max-1fr
+        .sheet-labels
+            +inputLabel("Name")    
+        div
+            +textInput("character_name")
+    .sheet-max-1fr
+        .sheet-labels
+            +inputLabel("Gender")
+        div
+            +textInput("gender")(class="sheet-centerIt")
+.sheet-header2
+    .sheet-max-1fr
+        .sheet-labels
+            +inputLabel("Age")
+        div
+            +textInput("age")
+    .sheet-max-1fr
+        .sheet-labels
+            +inputLabel("Race")
+        div
+            +textInput("race")
+    .sheet-max-1fr
+        .sheet-labels
+            +inputLabel("Social")
+        div
+            +textInput("Social")
+.sheet-header3
+    .sheet-max-1fr
+        .sheet-labels
+            +inputLabel("Imbalance")
+        div
+            +textInput("imbalance")
+    .sheet-max-1fr
+        .sheet-labels
+            +inputLabel("Favour")
+        div
+            +textInput("favour")
+    .sheet-max-1fr
+        .sheet-labels
+            +inputLabel("Patron")
+        div
+            +textInput("patron")    
+br            
+.sheet-character-main
+    .sheet-left-col.sheet-centerIt
+        +inputLabel("ATTRIBUTES")
+        .sheet-attribute-grid
+            div 
+            div
+                +inputLabel("Orig.")(class="sheet-attribute-header")
+            div
+                +inputLabel("Temp.")(class="sheet-attribute-header")
+            div
+                +inputLabel("Mod.")(class="sheet-attribute-header")                
+            div
+                +inputLabel("Used")(class="sheet-attribute-header sheet-used")
+        .sheet-attribute-grid
+            - var attributes = ["attack_skill","missile_skill","defence_skill","knowledge","will","endurance","persuasion","perception","speed","agility"]
+            each attributte in attributes
+                div     
+                    +actionTexTButton(`${attributte}`)               
+                        +inputLabel(`${attributte}`)
+                div
+                    +textInputWithValue(`${attributte}_orig`,"0")
+                div
+                    +textInputWithValue(`${attributte}_temp`,"0")
+                div
+                    +textInputWithValue(`${attributte}_mod`,"0")                    
+                div
+                    +checkboxInput(`${attributte}_used`)
+        br
+        +inputLabel("WOUNDS-AND-INJURIES")
+        br
+        br
+        .sheet-wounds-grid1
+            div
+                .sheet-wound-track
+                    +textInputWithValue("wounds","0/0/0/0")    
+                .sheet-bleeding-grid
+                    .sheet-plus-sign +
+                    div
+                        +textInputWithValue("bleeding_damage","0")(id="bleeding_damage" readonly="readonly")
+                    div
+                        +actionImageButton("bleed","apply-bleed") 
+                            img(src='https://raw.githubusercontent.com/Lockbox313/imagedump/master/blood_drop2.png')    
+                    div
+                         +textInputWithValue("bleeding_wounds","0")
+            .sheet-wounds-state
+                .sheet-total-wounds-heal-grid
+                    div
+                        +textInputWithValue("wounds_total","0")(readonly="readonly" id="wound_total")
+                    div
+                        +actionImageButton("heal","apply-heal")(class="sheet-dice" id="heal")
+                div
+                    +textInputWithValue("unconsciousness_or_dead","")(readonly="readonly" class="sheet-unconsciousness-dead")
+            .sheet-max-1fr
+        .sheet-injuries   
+            +inputLabel("Injuries")    
+            textarea(name="attr_injuries")
+        .sheet-injuries   
+            +inputLabel("Long Term")    
+            textarea(name="attr_long_term_injuries")
+        br
+        +inputLabel("ARMOUR")
+        .sheet-ar-penalty-grid
+            .sheet-ar-shield
+                .sheet-cur-ar
+                     +textInputWithValue("cur_ar","0")(type="hidden")           
+                     span.sheet-display-attribute(name="attr_cur_ar") 
+                .sheet-ar-label
+                    +inputLabel("AR")
+            .sheet-armor-penalty
+                .sheet-armor-penalty-wrapper
+                    +inputLabel("Penalty")
+                    +textInputWithValue("cur_armor_penalty","0")(type="hidden")
+                    span.sheet-display-attribute(class="sheet-armor-penalty-value" name="attr_cur_armor_penalty")
+        br
+        .sheet-armorClothingGrid               
+            .sheet-gridName
+                +inputLabel("Armour")
+            div
+                +inputLabel("AR")
+            div
+                +inputLabel("Pen")                             
+            div
+                +inputLabel("Worn")                
+        fieldset.repeating_armorClothing
+            .sheet-armorClothingGrid
+                .sheet-gridName
+                    +textInput("armor")(class="sheet-gridName")             
+                div
+                    +textInputWithValue("ar","0")
+                div
+                    +textInputWithValue("armor_penalty","0")                    
+                .div
+                    +checkboxInputWithValue("worn","1")                    
+    .sheet-gutter
+    .sheet-right-col.sheet-centerIt
+        +inputLabel("CHARACTERISTICS")
+        .sheet-characteristics-grid
+            div
+                +textInput("characteristic_1")
+            label.sheet-hideCheckbox(title='Details' data-i18n-title='Details') 
+                input(type='checkbox' class="sheet-hideIt"  value='1' name='attr_toggle-section1')              
+                img.sheet-feather(id="Quill1") 
+            input.sheet-details-toggle1(type='hidden'  name='attr_toggle-section1')
+            .sheet-section-details1.sheet-borderBott
+                <textarea name="attr_characteristic_details_1"></textarea>
+            div.sheet-section-details1.sheet-borderBott
+            div
+                +textInput("characteristic_2")
+            label.sheet-hideCheckbox(title='Details' data-i18n-title='Details') 
+                input(type='checkbox' class="sheet-hideIt"  value='1' name='attr_toggle-section2')              
+                img.sheet-feather(id="Quill2") 
+            input.sheet-details-toggle2(type='hidden'  name='attr_toggle-section2')
+            .sheet-section-details2.sheet-borderBott
+                <textarea name="attr_characteristic_details_2"></textarea>
+            div.sheet-section-details2.sheet-borderBott
+            div
+                +textInput("characteristic_3")
+            label.sheet-hideCheckbox(title='Details' data-i18n-title='Details') 
+                input(type='checkbox' class="sheet-hideIt"  value='1' name='attr_toggle-section3')              
+                img.sheet-feather(id="Quill3") 
+            input.sheet-details-toggle3(type='hidden'  name='attr_toggle-section3')
+            .sheet-section-details3.sheet-borderBott
+                <textarea name="attr_characteristic_details_3"></textarea>
+            div.sheet-section-details3.sheet-borderBott
+        .sheet-vicious-strong-grip-grid
+            div
+                +inputLabel("has-strong-grip")
+            div 
+                +checkboxInputWithValue("strong_grip","1")
+            div 
+                +inputLabel("has-vicious")
+            div 
+                +checkboxInputWithValue("vicious","1")                                
+
+        br
+        +inputLabel("ABILITIES")
+        br
+        br
+        .sheet-abilities-grid
+            div
+                +inputLabel("Ability")
+            div
+                +inputLabel("Grade")
+            div
+                +inputLabel("Benefit")
+            div                
+        fieldset.repeating_abilities
+            .sheet-abilities-grid
+                .sheet-labels
+                    +textInput("ability_name")
+                .sheet-labels
+                    +select("ability_grade")
+                        +option2("I")
+                        +option2("II")
+                        +option2("III")
+                        +option2("IV")
+                        +option2("V")
+                        +option2("VI")                        
+                .sheet-labels
+                    +textInput("ability_benefit")
+                div
+                    label.sheet-hideCheckbox(title='Details' data-i18n-title='Details')               
+                        input(type='checkbox' class="sheet-hideIt"  value='1' name='attr_toggle-ability-details')
+                        img.sheet-feather(id="Quill4") 
+                input.sheet-details-toggle(type='hidden'  name='attr_toggle-ability-details')
+                div.sheet-ability-details
+                    textarea(name="attr_ability_full_details")
+        br
+        br
+        +inputLabel("LANGUAGES")
+        fieldset.repeating_languages
+            .sheet-language-grid
+                div
+                     +textInput("langauge1")
+                div
+                     +textInput("langauge2")                     
+            
+
+        br
+        br
+        +inputLabel("WEAPONS")
+        br
+        br
+        .sheet-mods-options-grid
+            div
+                +inputLabel("Attack Skill Modifiers")
+            div
+                +textInputWithValue("general_attack_skill_mod","0")(class="sheet-numeric")
+            div
+            div
+                +inputLabel("Defence Skill Modifiers")
+            div
+                +textInputWithValue("general_defence_skill_mod","0")(class="sheet-numeric")
+        .sheet-advanced-options-grid
+            div
+                +inputLabel("Advanced Option")
+            div
+                +select("advanced_option")
+                    - var options_list = ["None","All Out Attack","Heavy Blow","Feint","Piercing Strike","Grapple","Defensive Stance","Double Strike","Whirlwind Strike","Aimed Shot","Rapid Strike","Move Inside Shield","Bash","Get Up"]
+                    each advanced_option in options_list
+                        +option2(advanced_option)
+            div
+                +actionButton("initiative","initiative-roll")
+        br
+        br
+        .sheet-weapon-grid
+            .sheet-labels.sheet-gridName
+                +inputLabel("Melee Weapon")
+            .sheet-labels.sheet-AS
+                +inputLabel("AS")
+            .sheet-labels.sheet-DS
+                +inputLabel("DS")
+            .sheet-labels.sheet-damageRoll
+                +inputLabel("Damage")
+            div   
+        fieldset.repeating_weapons        
+            .sheet-weapon-grid
+                div
+                    +textInput("weapon_name")(class="sheet-gridName")
+                div
+                    +textInputWithValue("weapon_as_mod","0")(class="sheet-numeric")                     
+                div                    
+                    +actionImageButton("weapon-as-roll","as-roll")                    
+                        img(  class="sheet-dice"  src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d10s_small2.png")
+                div
+                    +textInputWithValue("weapon_ds_mod","0")(class="sheet-numeric")                      
+                div
+                    +actionImageButton("weapon-ds-roll","ds-roll")
+                        img(class="sheet-dice" src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d10s_small2.png") 
+                div
+                    +textInputWithValue("weapon_damage","")                                          
+                div
+                    +actionImageButton("weapon-damage-roll","damage-roll")
+                        img(class="sheet-dice" src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d6s_small2.png")                    
+        br
+        br
+        .sheet-missile-grid
+            .sheet-labels.sheet-gridName
+                +inputLabel("Missile Weapon")
+            .sheet-labels.sheet-MS
+                +inputLabel("MS")
+            .sheet-labels.sheet-DS
+                +inputLabel("DS")
+            .sheet-labels.sheet-damageRoll
+                +inputLabel("Damage")
+            .sheet-labels
+                +inputLabel("Range")
+            .sheet-labels
+                +inputLabel("#")                
+        fieldset.repeating_missiles       
+            .sheet-missile-grid
+                div
+                    +textInput("weapon_name")(class="sheet-gridName")
+                div
+                    +textInputWithValue("weapon_ms_mod","0")(class="sheet-numeric")                   
+                div                    
+                    +actionImageButton("missile-ms-roll","as-roll")
+                        img(  class="sheet-dice"  src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d10s_small2.png")
+                div
+                    +textInputWithValue("weapon_ds_mod","0")(class="sheet-numeric")                   
+                div
+                    +actionImageButton("missile-ds-roll","ds-roll")
+                        img(class="sheet-dice" src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d10s_small2.png")                   
+                div
+                    +textInput("weapon_damage")
+                div
+                        +actionImageButton("weapon-damage-roll","damage-roll")
+                            img(class="sheet-dice" src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d6s_small2.png")                     
+                div
+                    +textInput("weapon_range")
+                div
+                    +textInput("number")                    
+        br 
+        +inputLabel("NOTES")
+        <textarea name="attr_character_notes"></textarea>
+
+

@@ -1,0 +1,125 @@
+include _mixins
+br
+.sheet-equipment-main
+    .sheet-left-col.sheet-centerIt
+        +inputLabel("Money")
+        <textarea name="attr_money"></textarea>    
+        +inputLabel("Equipment")
+        <textarea name="attr_equipment"></textarea>
+        br
+        +inputLabel("Holdings")
+        <textarea name="attr_holdings"></textarea>        
+    .sheet-gutter.sheet-centerIt
+    .sheet-right-col.sheet-centerIt
+        +inputLabel("Notes")
+        <textarea name="attr_equipment_notes"></textarea>
+        br
+        +inputLabel("COMPANION-HORSE")
+        br
+        fieldset.repeating_companions
+            .sheet-companion-wrapper
+                .sheet-1fr.sheet-borderBot
+                    +textInput("companion_name")
+                .sheet-companion-attributes.sheet-borderBot
+                    .sheet-borderRight
+                        span.sheet-companion-label
+                            +inputLabel("AS")
+                        span
+                            +textInputWithValue("as","0")
+                    .sheet-borderRight
+                        span.sheet-companion-label
+                            +inputLabel("MS")
+                        span
+                            +textInputWithValue("ms","0")                    
+                    .sheet-borderRight
+                        span.sheet-companion-label
+                            +inputLabel("DS")
+                        span
+                            +textInputWithValue("ds","0")                       
+                    .sheet-borderRight
+                        span.sheet-companion-label
+                            +inputLabel("END")
+                        span
+                            +textInputWithValue("end","0")
+                    .sheet-borderRight
+                        span.sheet-companion-label
+                            +inputLabel("SPD")
+                        span
+                            +textInputWithValue("spd","0")
+                    div
+                .sheet-companions-weapon-armor
+                                                                                    
+                    div
+                        .sheet-companions-weapons
+                            .sheet-borderBot
+                                +inputLabel("Weapon")
+                            .sheet-as-span.sheet-borderBot
+                                +inputLabel("AS")
+                            .sheet-ds-span.sheet-borderBot
+                                +inputLabel("DS")
+                            .sheet-damage-span.sheet-borderBot.sheet-borderRight
+                                +inputLabel("Damage")   
+                        each val in [1, 2, 3]
+                            .sheet-companions-weapons
+                                .sheet-borderBot.sheet-borderRight
+                                    +textInput(`companion_weapon_${val}`)
+                                .sheet-borderBot
+                                    +textInputWithValue(`companion_as_${val}`,"0")
+                                .sheet-borderBot
+                                    +textInputWithValue(`companion_as_mod_${val}`,"0")                                    
+                                .sheet-borderBot.sheet-borderRight
+                                    +actionImageButton(`companion-weapon-as-roll${val}`,`as-roll${val}`)
+                                        img(class="sheet-dice" src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d10s_small2.png")                            
+                                .sheet-borderBot
+                                    +textInputWithValue(`companion_ds_${val}`,"0")
+                                .sheet-borderBot
+                                    +textInputWithValue(`companion_ds_mod_${val}`,"0")                                             
+                                .sheet-borderBot.sheet-borderRight
+                                    +actionImageButton(`companion-weapon-ds-roll${val}`,`ds-roll${val}`)
+                                        img(class="sheet-dice" src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d10s_small2.png")
+                                .sheet-borderBot
+                                    +textInput(`companion_weapon_damage_${val}`) 
+                                .sheet-borderBot.sheet-borderRight
+                                    +actionImageButton(`companion-weapon-damage-roll${val}`,`damage-roll${val}`)
+                                        img(class="sheet-dice" src="https://raw.githubusercontent.com/Lockbox313/imagedump/master/d6s_small2.png")                            
+                                                                                            
+                    div
+                        +inputLabel("Armour")
+                        .sheet-fixPos
+                            +textInput("armour_name")
+                        .sheet-max-1fr.sheet-borderBot
+                            div
+                                div
+                                    +inputLabel("Penalty")
+                                    |:
+                            div
+                                +textInputWithValue("companion_ar_penalty","0")
+                            div
+                                div
+                                    +inputLabel("Rating")
+                                    |:
+                            div
+                                +textInputWithValue("companion_ar","0")
+                .sheet-companion-wounds
+                    div
+                        .sheet-wound-track
+                            +textInputWithValue("companion_wounds","0/0/0/0") 
+                        .sheet-bleeding-total-grid
+                            .sheet-plus-sign +
+                            div
+                                +textInputWithValue("companion_bleeding_damage","0")(id="bleeding_damage")
+                            .sheet-plus-sign =
+                            div
+                                +textInputWithValue("wounds_total","0")(readonly="readonly")                                   
+                            div
+                                +actionImageButton("bleed","apply-bleed") 
+                                    img(src='https://raw.githubusercontent.com/Lockbox313/imagedump/master/blood_drop2.png')    
+                            div  
+                                +textInputWithValue("companion_bleeding_wounds","0")
+                            div
+                                +actionImageButton("companion-heal","apply-heal")(class="sheet-companion-bleed sheet-dice")
+                 
+                    div                            
+                        +inputLabel("Injuries")
+                        +textArea("companion_injuries")
+     

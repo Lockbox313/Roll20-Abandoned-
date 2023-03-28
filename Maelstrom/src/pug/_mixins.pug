@@ -1,0 +1,163 @@
+
+
+
+mixin inputLabel(name)
+	- const attrName = name.replace(/ /g, '_');
+	span.sheet-labels(data-i18n=name)&attributes(attributes)
+=name
+
+
+mixin inputLabel2(name)
+	- const attrName = name.replace(/ /g, '_');
+	span(data-i18n=name)&attributes(attributes)
+=name
+
+mixin textInput(name)
+	- const attrName = name.replace(/ /g, '_');
+	input.sheet-text_input(readonly!=attributes.readonly name=`attr_${attrName}` title=`@{${attrName}}` type='text' value='' )&attributes(attributes)
+
+mixin textInputWithValue(name,value)
+	- const attrName = name.replace(/ /g, '_')
+	- const attrValue = value
+	input.sheet-text_input(readonly!=attributes.readonly name=`attr_${attrName}` title=`@{${attrName}}` type='text' value=`${attrValue}`)&attributes(attributes)
+
+
+mixin hiddenInputWithValue(name,value)
+	- const attrName = name.replace(/ /g, '_')
+	- const attrValue = value
+	input.sheet-text_input(name=`attr_${attrName}` type='hidden' value=`${attrValue}`)&attributes(attributes)
+
+mixin hiddenInput(name)
+	- const attrName = name.replace(/ /g, '_')
+	input.sheet-text_input(name=`attr_${attrName}` type='hidden')&attributes(attributes)
+
+
+mixin textInputWithList(name,list)
+	- const attrName = name.replace(/ /g, '_')
+	- const listv = list
+	input.sheet-text_input(name=`attr_${attrName}` title=`@{${attrName}}` type='text' list=`${list}`)&attributes(attributes)
+
+mixin textInputValueTitle(name,value,title)
+	- const attrName = name.replace(/ /g, '_')
+	- const attrValue = value
+	- const attrTitle = title
+	- const attrTransTitle = title.replace(/ /g, '-')
+	input.sheet-text_input(readonly!=attributes.readonly name=`attr_${attrName}` data-i18n-title=`${attrTransTitle}` title=`${attrTitle}` type='text' value=`${attrValue}`)&attributes(attributes)
+
+mixin Label()
+	label()&attributes(attributes)
+		block
+
+mixin numberInput(name)
+	- const attrName = name.replace(/ /g, '_')
+	label(data-i18n-title=`enter ${name}` title=`enter ${name}`)
+		input(name=`attr_${attrName}` placeholder='#' title=`@{${attrName}}` type='number' value='0')
+
+mixin checkboxInput(name)
+	- const attrName = name.replace(/ /g, '_');
+	input(name=`attr_${attrName}` title=`@{${attrName}}` type='checkbox' value=name)&attributes(attributes)
+	
+
+mixin checkboxInputWithValue(name,value)
+	- const attrName = name.replace(/ /g, '_')
+	- const attrValue = value
+	input(name=`attr_${attrName}` title=`@{${attrName}}` type='checkbox' value=value)&attributes(attributes)
+	
+
+
+mixin attributeButton(name)
+	- const buttonName = name.replace(/ /g, '-');
+	- const attrName = name.replace(/ /g, '_');
+	button.text-uppercase(data-i18n=`${name.slice(0, 3)}` name=`roll_${buttonName}` type='roll' value!=`&{template:rolls} {{header=^{${name}}}} {{dice=[[{1d20+({@{${attrName}}+?{Mod.|0}-20,0}kh1),1d0+20}kl1 [Roll]]]}} {{threshold=[[{@{${attrName}}+?{Mod.|0},20}kl1[Threshold]]]}} {{fumbleVal=[[20+({@{${attrName}}+?{Mod.|0},0}kl1)]]}}`)
+
+mixin select(name)
+	- const attrName = name.replace(/ /g, '_');
+	select(name=`attr_${attrName}` title=`@{${attrName}}` )&attributes(attributes)
+		block
+	
+mixin option2(name)
+	option(value=name data-i18n=name)&attributes(attributes)
+
+mixin option3(name)
+	option(value=name data-i18n=name)
+
+mixin optionValue(value)
+	option(value=value)=value
+
+mixin option4(name,i18n)
+	option(value=name data-i18n=i18n)
+
+mixin optionValue2(value)
+	- const transTag = value.replace(/ /g, '-');		
+	option(value=value data-i18n=`${transTag}`)=value
+	
+
+mixin optionSelected(name) 
+	option(value=name selected=`selected` data-i18n=name)&attributes(attributes)
+
+
+	
+
+mixin optionValueSelected(value,name) 
+	option(value=value selected=`selected` data-i18n=name)&attributes(attributes)
+
+
+	
+
+mixin rollButton(name)
+	button(name=`roll_${name}` type='roll' )&attributes(attributes)
+
+
+mixin menuButton(name,i18n)
+	button.menu(data-i18n=i18n name=`act_${name}` type='action')&attributes(attributes)
+		block
+
+mixin actionTexTButton(name)
+	- const buttonName = name.replace(/ /g, '-');
+	- const attrName = name.replace(/ /g, '_');
+	button.sheet-text_roll(data-i18n=buttText name=`act_${buttonName}` type='action')&attributes(attributes)
+		block
+
+mixin actionButton(name,text)
+	- const buttonName = name.replace(/ /g, '-');
+	- const attrName = name.replace(/ /g, '_');
+	- const buttText  = text
+	button.sheet-text_roll(data-i18n=buttText name=`act_${buttonName}` type='action')=buttText
+		block
+
+
+mixin actionRollButton(name,buttText)
+	button.sheet-action_roll(name=`act_${name}` type='action')&attributes(attributes)=buttText
+		block		
+
+mixin actionImageButton(name,text)
+	- const buttonName = name.replace(/ /g, '-');
+	- const attrName = name.replace(/ /g, '_');
+	- const buttText  = text
+	button.sheet-text_roll(data-i18n-title=buttText title=`${buttText}` name=`act_${buttonName}` type='action')&attributes(attributes)
+		block		
+
+
+mixin actionSTButton(name,text)
+	- const buttonName = name.replace(/ /g, '-');
+	- const attrName = name.replace(/ /g, '_');
+	- const buttText  = text
+	button.sheet-text_roll.sheet-attribST(data-i18n=buttText name=`act_${buttonName}` type='action')=buttText	
+
+
+mixin textAttributeSpan(name)
+	- const attrName = name.replace(/ /g, '_');
+	span(name=`attr_${attrName}`)&attributes(attributes)
+
+mixin textDiv(text)
+	- const i18n = text.replace(/ /g, '-');
+	span(data-i18n=`${i18n}`)= text 	
+
+mixin repeatingRollButton(name)
+	- const buttonName = name.replace(/ /g, '-');
+	- const attrName = name.replace(/ /g, '_');
+	button.d20(name=`roll_${buttonName}` type='roll' value!=`&{template:rolls}{{header=@{name}}}{{dice=[[{1d20+({@{${attrName}}+?{Mod.|0}-20,0}kh1),1d0+20}kl1 [Roll]]]}} {{threshold=[[{@{${attrName}}+?{Mod.|0},20}kl1[Threshold]]]}} {{fumbleVal=[[20+({@{${attrName}}+?{Mod.|0},0}kl1)]]}}`) t
+
+mixin textArea(name)
+	- const attrName = name.replace(/ /g, '_');
+	textarea(name=`attr_${attrName}` title=`@{${attrName}}` value='' )&attributes(attributes)
