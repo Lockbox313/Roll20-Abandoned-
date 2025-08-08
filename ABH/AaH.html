@@ -1,0 +1,708 @@
+<div>
+    <button type="action" name="act_character" >Character</button>
+    <button type="action" name="act_psych" >Psych</button>
+    <button type="action" name="act_gear" >Gear</button>
+</div>
+<input type='hidden' class='sheet-tabstoggle' name='attr_sheetTab'  value='character'  />
+<div class='sheet-character'>
+	<div class="tab-content">
+		<div class="grid1"> <!-- Grid 1 details and stats -->
+			<div class="details col1 row1"><!-- Details--> 
+				<div class="dtlsLine">
+					<div class="charLabel prisonRecordOf centerText " data-i18n="PRISON-RECORD-OF">PRISON RECORD OF</div>
+				</div>
+				<div class="dtlsLine">
+					<span class="charLabel" data-i18n="NAME">NAME</span><span><input name="attr_character_name" class="text_input name" type="text"></span>
+				</div>
+				<div class="dtlsLine">
+					<span class="charLabel" data-i18n="CIN">C.I.N</span><span><input name="attr_CIN" class="text_input cin" type="text"></span>
+				</div>
+				<div class="dtlsLine">
+					<span class="charLabel" data-i18n="PRISON-STATUS">PRISON STATUS</span><span><input name="attr_prisonStatus" class="text_input prisonStatus" type="text"></span>
+				</div>
+				<div class="dtlsLine">
+					<span class="charLabel" data-i18n="CONVICTION">CONVICTION</span><span><input name="attr_conviction" class="text_input conviction" type="text"></span>
+				</div>
+				<div class="dtlsLine">
+					<span class="charLabel" data-i18n="INDENTIFYING-FEATURES">INDENTIFYING FEATURES</span><span><input name="attr_idFeatures" class="text_input idFeatures" type="text"></span>
+				</div>
+				<div class="dtlsLine">
+					<span class="charLabel" data-i18n="SENTENCE">SENTENCE:</span>
+					<div class="charLabel sentenceText centerText" data-i18n="SENTENCE-TEXT">LIFE IMPRISONMENT ABOARD PRISON SHIP <I>GEHENNA</I></div>
+				</div>
+			</div><!-- Deatails End-->
+
+			<div class="attributes col1 row2 span2Col" ><!-- Attributes 1-->
+				<div class="charLabel prisonRecordOf centerText " data-i18n="ATTRIBUTES">ATTRIBUTES</div>
+				<div class="grid2 marginT10">
+					<div class="col1 row1">
+						<span class="circle1 circle">	
+							<input name="attr_prowess" class="attribValues" type="text" value="0">
+						</span>
+					</div>
+					<div class="col2 row1 centerCell">
+						<span class="charLabel" data-i18n="PROWESS">PROWESS</span>
+					</div>
+					<div class="col3 row1 centerCell">
+						
+						<span>
+							<div class="sheet-container">
+								<div class="sheet-child">
+									<input type="radio" name="attr_radioP" class="sheet-select-radio sheet-d4" value="1D4"/>
+									<label class="dieLabel">D4</label>
+									<input type="radio" name="attr_radioP" class="sheet-select-radio sheet-d6" value="1D6" />
+									<label class="dieLabel">D6</label>								
+									<input type="radio" name="attr_radioP" class="sheet-select-radio sheet-d8" value="1D8" />
+									<label class="dieLabel">D8</label>
+									<input type="radio" name="attr_radioP" class="sheet-select-radio sheet-d10" value="1D10" />
+									<label class="dieLabel">D10</label>
+									<input type="radio" name="attr_radioP" class="sheet-select-radio sheet-d12" checked="true" value="1D12" />
+									<label class="dieLabel">D12</label>
+									<input type="radio" name="attr_radioP" class="sheet-select-radio sheet-d20" value="1D20" />
+									<label class="dieLabel">D20</label>
+									<div class="sheet-d4"></div>
+									<div class="sheet-d6"></div>
+									<div class="sheet-d8"></div>
+									<div class="sheet-d10"></div>
+									<div class="sheet-d12"></div>
+									<div class="sheet-d20"></div>								
+								</div>
+							</div>					
+						</span><button class="text_roll" type="roll" value="&{template:Roll} {{title=Prowess}} {{roll=[[@{radioP}+?{Mod.|0}]]}}  {{target=[[@{prowess}]]}}">&#60;</button><button class="text_roll" type="roll" value="&{template:Roll2} {{title=Opposed Prowess}} {{result=[[@{radioP}+@{prowess}+?{Mod.|0}]]}}">+</button>
+					</div>
+					<div class="col4 row1">
+						<span class="circle2 circle">	
+							<input name="attr_willpower" class="attribValues" type="text" value="0">
+						</span>
+					</div>
+					<div class="col5 row1 centerCell">
+						<span class="charLabel" data-i18n="WILLPOWER">WILLPOWER</span>
+					</div>
+					<div class="col6 row1 centerCell">
+						
+						<span>
+							<div class="sheet-container">
+								<div class="sheet-child">
+									<input type="radio" name="attr_radioW" class="sheet-select-radio sheet-d4" value="1D4" />
+									<label class="dieLabel">D4</label>
+									<input type="radio" name="attr_radioW" class="sheet-select-radio sheet-d6" value="1D6" />
+									<label class="dieLabel">D6</label>								
+									<input type="radio" name="attr_radioW" class="sheet-select-radio sheet-d8" value="1D8" />
+									<label class="dieLabel">D8</label>
+									<input type="radio" name="attr_radioW" class="sheet-select-radio sheet-d10" value="1D10" />
+									<label class="dieLabel">D10</label>
+									<input type="radio" name="attr_radioW" class="sheet-select-radio sheet-d12" checked="true" value="1D12" />
+									<label class="dieLabel">D12</label>
+									<input type="radio" name="attr_radioW" class="sheet-select-radio sheet-d20" value="1D20" />
+									<label class="dieLabel">D20</label>
+									<div class="sheet-d4"></div>
+									<div class="sheet-d6"></div>
+									<div class="sheet-d8"></div>
+									<div class="sheet-d10"></div>
+									<div class="sheet-d12"></div>
+									<div class="sheet-d20"></div>								
+								</div>
+							</div>					
+						</span><button class="text_roll" type="roll" value="&{template:Roll} {{title=Willpower}} {{roll=[[@{radioW}+?{Mod.|0}]]}}  {{target=[[@{willpower}]]}}">&#60;</button><button class="text_roll" type="roll" value="&{template:Roll2} {{title=Opposed Willowpower}} {{result=[[@{radioW}+@{willpower}+?{Mod.|0}]]}}">+</button>				
+					</div>	
+					<div class="col1 row2">
+						<span class="circle1 circle">	
+							<input name="attr_reflexes" class="attribValues" type="text" value="0">
+						</span>
+					</div>
+					<div class="col2 row2 centerCell">
+						<span class="charLabel" data-i18n="REFLEXES">REFLEXES</span>
+					</div>
+					<div class="col3 row2 centerCell">
+						
+						<span>
+							<div class="sheet-container">
+								<div class="sheet-child">
+									<input type="radio" name="attr_radioR" class="sheet-select-radio sheet-d4" value="1D4"/>
+									<label class="dieLabel">D4</label>
+									<input type="radio" name="attr_radioR" class="sheet-select-radio sheet-d6" value="1D6" />
+									<label class="dieLabel">D6</label>								
+									<input type="radio" name="attr_radioR" class="sheet-select-radio sheet-d8" value="1D8" />
+									<label class="dieLabel">D8</label>
+									<input type="radio" name="attr_radioR" class="sheet-select-radio sheet-d10" value="1D10" />
+									<label class="dieLabel">D10</label>
+									<input type="radio" name="attr_radioR" class="sheet-select-radio sheet-d12" checked="true" value="1D12" />
+									<label class="dieLabel">D12</label>
+									<input type="radio" name="attr_radioR" class="sheet-select-radio sheet-d20" value="1D20" />
+									<label class="dieLabel">D20</label>
+									<div class="sheet-d4"></div>
+									<div class="sheet-d6"></div>
+									<div class="sheet-d8"></div>
+									<div class="sheet-d10"></div>
+									<div class="sheet-d12"></div>
+									<div class="sheet-d20"></div>								
+								</div>
+							</div>					
+						</span><button class="text_roll" type="roll" value="&{template:Roll} {{title=Reflexes}} {{roll=[[@{radioR}+?{Mod.|0}]]}}  {{target=[[@{reflexes}]]}}">&#60;</button><button class="text_roll" type="roll" value="&{template:Roll2} {{title=Opposed reflexes}} {{result=[[@{radioR}+@{reflexes}+?{Mod.|0}]]}}">+</button>	
+					</div>
+					<div class="col4 row2">
+						<span class="circle2 circle">	
+							<input name="attr_sociabilty" class="attribValues" type="text" value="0">
+						</span>
+					</div>
+					<div class="col5 row2 centerCell">
+						<span class="charLabel" data-i18n="SOCIABILITY">SOCIABILITY</span>	
+					</div>
+					<div class="col6 row2 centerCell">
+						
+						<span>
+							<div class="sheet-container">
+								<div class="sheet-child">
+									<input type="radio" name="attr_radioS" class="sheet-select-radio sheet-d4" value="1D4" />
+									<label class="dieLabel">D4</label>
+									<input type="radio" name="attr_radioS" class="sheet-select-radio sheet-d6" value="1D6" />
+									<label class="dieLabel">D6</label>								
+									<input type="radio" name="attr_radioS" class="sheet-select-radio sheet-d8" value="1D8" />
+									<label class="dieLabel">D8</label>
+									<input type="radio" name="attr_radioS" class="sheet-select-radio sheet-d10" value="1D10" />
+									<label class="dieLabel">D10</label>
+									<input type="radio" name="attr_radioS" class="sheet-select-radio sheet-d12" checked="true" value="1D12" />
+									<label class="dieLabel">D12</label>
+									<input type="radio" name="attr_radioS" class="sheet-select-radio sheet-d20" value="1D20" />
+									<label class="dieLabel">D20</label>
+									<div class="sheet-d4"></div>
+									<div class="sheet-d6"></div>
+									<div class="sheet-d8"></div>
+									<div class="sheet-d10"></div>
+									<div class="sheet-d12"></div>
+									<div class="sheet-d20"></div>								
+								</div>
+							</div>					
+						</span><button class="text_roll" type="roll" value="&{template:Roll} {{title=Sociability}} {{roll=[[@{radioS}+?{Mod.|0}]]}}  {{target=[[@{sociabilty}]]}}">&#60;</button><button class="text_roll" type="roll" value="&{template:Roll2} {{title=Opposed sociabilty}} {{result=[[@{radioS}+@{reflexes}+?{Mod.|0}]]}}">+</button>					
+					</div>
+					<div class="col1 row3">
+						<span class="circle2 circle">	
+							<input name="attr_wits" class="attribValues" type="text" value="0">
+						</span>
+					</div>				
+					<div class="col2 row3 centerCell">
+						<span class="charLabel" data-i18n="WITS">WITS</span>
+					</div>
+					<div class="col3 row3 centerCell">
+						
+						<span>
+							<div class="sheet-container">
+								<div class="sheet-child">
+									<input type="radio" name="attr_radioW2" class="sheet-select-radio sheet-d4" value="1D4"/>
+									<label class="dieLabel">D4</label>
+									<input type="radio" name="attr_radioW2" class="sheet-select-radio sheet-d6" value="1D6" />
+									<label class="dieLabel">D6</label>								
+									<input type="radio" name="attr_radioW2" class="sheet-select-radio sheet-d8" value="1D8" />
+									<label class="dieLabel">D8</label>
+									<input type="radio" name="attr_radioW2" class="sheet-select-radio sheet-d10" value="1D10" />
+									<label class="dieLabel">D10</label>
+									<input type="radio" name="attr_radioW2" class="sheet-select-radio sheet-d12" checked="true" value="1D12" />
+									<label class="dieLabel">D12</label>
+									<input type="radio" name="attr_radioW2" class="sheet-select-radio sheet-d20" value="1D20" />
+									<label class="dieLabel">D20</label>
+									<div class="sheet-d4"></div>
+									<div class="sheet-d6"></div>
+									<div class="sheet-d8"></div>
+									<div class="sheet-d10"></div>
+									<div class="sheet-d12"></div>
+									<div class="sheet-d20"></div>								
+								</div>
+							</div>					
+						</span><button class="text_roll" type="roll" value="&{template:Roll} {{title=Wits}} {{roll=[[@{radioW2}+?{Mod.|0}]]}}  {{target=[[@{wits}]]}}">&#60;</button><button class="text_roll" type="roll" value="&{template:Roll2} {{title=Opposed wits}} {{result=[[@{radioW2}+@{wits}+?{Mod.|0}]]}}">+</button>
+					</div>
+					<div class="col4 row3">
+						<span class="circle2 circle">	
+							<input name="attr_intimidation" class="attribValues" type="text" value="0">
+						</span>
+					</div>
+					<div class="col5 row3 centerCell">
+						<span class="charLabel" data-i18n="INTIMIDATION">INTIMIDATION</span>	
+					</div>
+					<div class="col6 row3 centerCell">
+						
+						<span>
+							<div class="sheet-container">
+								<div class="sheet-child">
+									<input type="radio" name="attr_radioI" class="sheet-select-radio sheet-d4" value="1D4" />
+									<label class="dieLabel">D4</label>
+									<input type="radio" name="attr_radioI" class="sheet-select-radio sheet-d6" value="1D6" />
+									<label class="dieLabel">D6</label>								
+									<input type="radio" name="attr_radioI" class="sheet-select-radio sheet-d8" value="1D8" />
+									<label class="dieLabel">D8</label>
+									<input type="radio" name="attr_radioI" class="sheet-select-radio sheet-d10" value="1D10" />
+									<label class="dieLabel">D10</label>
+									<input type="radio" name="attr_radioI" class="sheet-select-radio sheet-d12" checked="true" value="1D12" />
+									<label class="dieLabel">D12</label>
+									<input type="radio" name="attr_radioI" class="sheet-select-radio sheet-d20" value="1D20" />
+									<label class="dieLabel">D20</label>
+									<div class="sheet-d4"></div>
+									<div class="sheet-d6"></div>
+									<div class="sheet-d8"></div>
+									<div class="sheet-d10"></div>
+									<div class="sheet-d12"></div>
+									<div class="sheet-d20"></div>								
+								</div>
+							</div>					
+						</span><button class="text_roll" type="roll" value="&{template:Roll} {{title=Intimidation}} {{roll=[[@{radioI}+?{Mod.|0}]]}}  {{target=[[@{intimidation}]]}}">&#60;</button><button class="text_roll" type="roll" value="&{template:Roll2} {{title=Opposed Intimidation}} {{result=[[@{radioI}+@{intimidation}+?{Mod.|0}]]}}">+</button>					
+					</div>					
+				</div>
+
+			</div><!-- Attributtes 1 end -->		
+		</div>
+		<div class="grid4 traits marginT10">
+			<div class="col1 row1">
+				<div class="charLabel centerText" data-i18n="TRAITS">TRAITS</div>	
+				<fieldset class="repeating_traits">
+					<textarea class="traitDtls" name="attr_trait"></textarea>
+				</fieldset>
+			</div>
+			<div class="col2 row1">
+				<div class=" centerText">
+					<div class="charLabel" style="display:inline-block" data-i18n="WEAPONS">WEAPONS</div><button type="roll" style="display:inline-block;padding-top: 0px;" class="sheet-turn_order" title="Add to turn order" value="&{template:turnOrder} {{rank=[[[[1d12+@{reflexes}+?{mod|0}]] &{tracker}]]}}" ></button>
+				</div>
+				<div class="wpnGrid">
+					<div class="col1 wpn_labels cellFill" data-i18n="Weapon">Weapon</div>
+					<div class="col2 wpn_labels cellFill centerText" data-i18n="Dam.">Dam.</div>				
+					<div class="col3 cellFill"></div>	
+				</div>			
+				<fieldset class="repeating_weapons">
+					<div class="wpnGrid">
+						<input type="text" name="attr_weapon" class="col1 text_input cellFill"  />
+						<input type="text" name="attr_damage" class="col2 text_input cellFill  centerText"  />
+						<button type="roll" class="col3 base-roll" value="&{template:Roll2} {{title=@{weapon}}} {{result=[[@{damage}+?{Mod.|0}]]}}"></button>
+			
+					</div>
+					<textarea name="attr_wpnNotes" class="wpnNotes" ></textarea>
+				</fieldset>
+				
+				<div style="border:1px solid black;width:87%" class="marginT10">
+					<div class="centerCell  gaugeLabel">
+						<span  class="charLabel col1 row1" data-i18n="NOTES">NOTES</span>
+					</div>
+					<textarea name="attr_notes2" style="margin-left: 5px;width: 93%;min-height: 8em;height:400px"></textarea>
+				</div>
+				
+				<div class="marginT10">
+					<div style="border:1px solid black padding:4px;" class="centerCell">
+						<div class="healthGrid" >
+							
+							<span class="col1 row1 healthBP" data-i18n="HEALTH-MAX">HEALTH MAX</span>
+							<input type="text" class="col2 row 1 cellFill text_input centerText" name="attr_health_max" />
+							<span class="col1 row2 healthBP" data-i18n="HEALTH">HEALTH</span>
+							<input type="text" class="col2 row 2 cellFill text_input centerText" name="attr_health" />
+							
+						</div>
+					</div>				
+				</div>
+				
+				<div class="marginT10">
+					<div style="border:1px solid black padding:4px;" class="centerCell">
+						<div class="healthGrid" >
+							
+							<span class="col1 row1 healthBP" data-i18n="BP-TOTAL">BP (TOTAL)</span>
+							<input type="text" class="col2 row 1 cellFill text_input centerText" name="attr_bpTotal" />
+							<span class="col1 row2 healthBP" data-i18n="BP-SPENT">BP (SPENT)</span>
+							<input type="text" class="col2 row 2 cellFill text_input centerText" name="attr_bpSpent" />
+							<span class="col1 row3 healthBP" data-i18n="BP-AVAIL">BP (AVAIL)</span>
+							<input type="text" class="col2 row 3 cellFill text_input centerText" name="attr_bpAvail" />						
+						</div>
+					</div>				
+				</div>
+				
+				
+			</div>
+			
+		</div>
+	</div>	
+
+
+</div>
+<div class='sheet-psych'>
+	<div class="tab-content">
+		
+		<div class="psychGrid">
+			<div class="gaugesGrid col1">
+				<div class="centerCell  gaugeLabel">
+					<span  class="charLabel col1 row1" data-i18n="LUDOVICO-GAUGES">LUDOVICO GAUGES</span>
+				</div>
+				<div class="radiosGrid marginT10 col1 gaugeHeight">
+				  <div class="centerCell  gaugeLabel">
+					 <span  class="charLabel col1 row1" data-i18n="DESPAIR">DESPAIR</span>
+				  </div>
+				  <input type="hidden" class="radio" name="attr_despair" value="0" />
+				  <button type="action" name="act_despair_0" class="radio radio-0 col1 row2">
+					<span class="checked"></span>
+				  </button>
+				  <div class="col2 row2">
+						<span>0.</span>
+					</div>				  
+				  <button type="action" name="act_despair_1" class="radio radio-1 col1 row3">
+					<span class="checked"></span>
+				  </button>
+				  <div class="col2 row3">
+						<span>1.</span>
+				  </div>
+				  <button type="action" name="act_despair_2" class="radio radio-2 col1 row4">
+					<span class="checked"></span>
+				  </button>
+					<div class="col2  row4">
+						<span>2.</span>
+						<span  data-i18n="SHAKES">SHAKES</span>
+					</div>				  
+				  <button type="action" name="act_despair_3" class="radio radio-3 col1 row5">
+					<span class="checked"></span>
+				  </button>
+					<div class="col2 row5">
+						<span>3.</span>
+					</div>				  
+				  <button type="action" name="act_despair_4" class="radio radio-4 col1 row6">
+					<span class="checked"></span>
+				  </button>
+					<div class="col2 row6">
+						<span>4.</span>
+						<span  data-i18n="PANIC">PANIC</span>
+					</div>					  
+				  <button type="action" name="act_despair_5" class="radio radio-5 col1 row7">
+					<span class="checked"></span>
+				  </button>
+					<div class="col2 row7">
+						<span>5.</span>
+					</div>			  
+				  <button type="action" name="act_despair_6" class="radio radio-6 col1 row8">
+					<span class="checked"></span>
+				  </button>
+					<div class="col2 row8">
+						<span>6.</span>
+						<span  class="multiLine" data-i18n="FREEZE-UP">FREEZE<br />UP</span>
+					</div>			  
+				  <button type="action" name="act_despair_7" class="radio radio-7 col1 row9">
+					<span class="checked"></span>
+				  </button>
+					<div class="col2 row9">				
+						<span>7.</span>
+					</div>				  
+				  <button type="action" name="act_despair_8" class="radio radio-8 col1 row10">
+					<span class="checked"></span>
+				  </button>
+					<div class="col2 row10">
+						<span>8.</span>
+						<span  data-i18n="FAINT">FAINT</span>
+					</div>				  
+				  <button type="action" name="act_despair_9" class="radio radio-9 col1 row11">
+					<span class="checked"></span>
+				  </button>
+					<div class="col2 row11">
+						<span>9.</span>
+					</div>				  
+				  <button type="action" name="act_despair_10" class="radio radio-10 col1 row12">
+					<span class="checked"></span>
+				  </button>	
+					<div class="col2 row12">
+						<span>10.</span>
+						<span  class="multiLine" data-i18n="ICY-TERROR">ICY<br />TERROR</span>
+					</div>					  
+			
+				</div>
+				
+				<div class="radiosGrid marginT10 col2 gaugeHeight">
+				  <div class="centerCell  gaugeLabel">
+					 <span  class="charLabel col1 row1" data-i18n="GUILT">GUILT</span>
+				  </div>
+				  <input type="hidden" class="radio" name="attr_guilt" value="0" />
+				  <button type="action" name="act_guilt_0" class="radio radio-0 col1 row2">
+					<span class="checked"></span>
+				  </button>				  
+				  <button type="action" name="act_guilt_1" class="radio radio-1 col1 row3">
+					<span class="checked"></span>
+				  </button>
+				  <button type="action" name="act_guilt_2" class="radio radio-2 col1 row4">
+					<span class="checked"></span>
+				  </button>
+				  <button type="action" name="act_guilt_3" class="radio radio-3 col1 row5">
+					<span class="checked"></span>
+				  </button>
+				  <button type="action" name="act_guilt_4" class="radio radio-4 col1 row6">
+					<span class="checked"></span>
+				  </button>
+				  <button type="action" name="act_guilt_5" class="radio radio-5 col1 row7">
+					<span class="checked"></span>
+				  </button>
+				  <button type="action" name="act_guilt_6" class="radio radio-6 col1 row8">
+					<span class="checked"></span>
+				  </button>
+				  <button type="action" name="act_guilt_7" class="radio radio-7 col1 row9">
+					<span class="checked"></span>
+				  </button>
+				  <button type="action" name="act_guilt_8" class="radio radio-8 col1 row10">
+					<span class="checked"></span>
+				  </button>
+				  <button type="action" name="act_guilt_9" class="radio radio-9 col1 row11">
+					<span class="checked"></span>
+				  </button>
+				  <button type="action" name="act_guilt_10" class="radio radio-10 col1 row12">
+					<span class="checked"></span>
+				  </button>	
+					<div class="col2 row2">
+						<span>0.</span>
+					</div>				  
+					<div class="col2 row3">
+						<span>1.</span>
+					</div>
+					<div class="col2  row4">
+						<span>2.</span>
+						<span  data-i18n="GUILTY">GUILTY</span>
+					</div>
+					<div class="col2 row5">
+						<span>3.</span>
+					</div>
+					<div class="col2 row6">
+						<span>4.</span>
+						<span  data-i18n="ASHAMED">ASHAMED</span>
+					</div>
+					<div class="col2 row7">
+						<span>5.</span>
+					</div>
+					<div class="col2 row8">
+						<span>6.</span>
+						<span  data-i18n="HAUNTED">HAUNTED</span>
+					</div>	
+					<div class="col2 row9">				
+						<span>7.</span>
+					</div>
+					<div class="col2 row10">
+						<span>8.</span>
+						<span  data-i18n="SPITE">SPITE</span>
+					</div>
+					<div class="col2 row11">
+						<span>9.</span>
+					</div>
+					<div class="col2 row12">
+						<span>10.</span>
+						<span  data-i18n="CONSUMED">CONSUMED</span>
+					</div>				
+				</div>		
+				<div class="radiosGrid marginT10 col3 gaugeHeight">
+				  <div class="centerCell  gaugeLabel">
+					 <span  class="charLabel col1 row1" data-i18n="INSANITY">INSANITY</span>
+				  </div>
+				  <input type="hidden" class="radio" name="attr_insanity" value="0" />
+				  <button type="action" name="act_insanity_0" class="radio radio-0 col1 row2">
+					<span class="checked"></span>
+				  </button>				  
+				  <button type="action" name="act_insanity_1" class="radio radio-1 col1 row3">
+					<span class="checked"></span>
+				  </button>
+				  <button type="action" name="act_insanity_2" class="radio radio-2 col1 row4">
+					<span class="checked"></span>
+				  </button>
+				  <button type="action" name="act_insanity_3" class="radio radio-3 col1 row5">
+					<span class="checked"></span>
+				  </button>
+				  <button type="action" name="act_insanity_4" class="radio radio-4 col1 row6">
+					<span class="checked"></span>
+				  </button>
+				  <button type="action" name="act_insanity_5" class="radio radio-5 col1 row7">
+					<span class="checked"></span>
+				  </button>
+				  <button type="action" name="act_insanity_6" class="radio radio-6 col1 row8">
+					<span class="checked"></span>
+				  </button>
+				  <button type="action" name="act_insanity_7" class="radio radio-7 col1 row9">
+					<span class="checked"></span>
+				  </button>
+				  <button type="action" name="act_insanity_8" class="radio radio-8 col1 row10">
+					<span class="checked"></span>
+				  </button>
+				  <button type="action" name="act_insanity_9" class="radio radio-9 col1 row11">
+					<span class="checked"></span>
+				  </button>
+				  <button type="action" name="act_insanity_10" class="radio radio-10 col1 row12">
+					<span class="checked"></span>
+				  </button>	
+					<div class="col2 row2">
+						<span>0.</span>
+					</div>				  
+					<div class="col2 row3">
+						<span>1.</span>
+					</div>
+					<div class="col2  row4">
+						<span>2.</span>
+						<span  data-i18n="TWITCHY">TWITCHY</span>
+					</div>
+					<div class="col2 row5">
+						<span>3.</span>
+					</div>
+					<div class="col2 row6">
+						<span>4.</span>
+						<span  class="multiLine" data-i18n="MILD-MADNESS">MILD<br />MADNESS</span>
+					</div>
+					<div class="col2 row7">
+						<span>5.</span>
+					</div>
+					<div class="col2 row8">
+						<span>6.</span>
+						<span   class="multiLine" data-i18n="MOD-MADNESS">MOD<br />MADNESS</span>
+					</div>	
+					<div class="col2 row9">				
+						<span>7.</span>
+					</div>
+					<div class="col2 row10">
+						<span>8.</span>
+						<span  class="multiLine"  data-i18n="SERIOUS-MADNESS">SERIOUS<br />MADNESS</span>
+					</div>
+					<div class="col2 row11">
+						<span>9.</span>
+					</div>
+					<div class="col2 row12">
+						<span>10.</span>
+						<span   data-i18n="CRAZY">CRAZY</span>
+					</div>				
+				</div>		
+		</div>
+			<div class="psycholgy col2">
+					<div style="border:1px solid black; padding:4px; background-color: #dac2e2" class="centerCell">
+						<div class="aberrantGrid" >
+							<div class="centerCell  gaugeLabel">
+								<span  class="charLabel col1 row1" data-i18n="ABBERANT-PSYCHOLOGICAL-TRAITS">ABBERANT PSYCHOLOGICAL<BR>TRAITS</span>
+							</div>							
+							<span class="col1 row2 marginT10" data-i18n="PSY-POTENTIAL">PSY - POTENTIAL</span>
+							<input type="text" class="col2 row 2 cellFill text_input centerText" name="attr_psyPotential" />
+							<span class="col1 row3" data-i18n="PSY-STRENGTH">PSY STRENGTH</span>
+							<input type="text" class="col2 row 3 cellFill text_input centerText" name="attr_psyStrength" />
+							<span class="col1 row4 healthBP" data-i18n="MADDNESS-IF-ANY">MADDNESS (IF ANY)</span>				
+						</div>
+						<textarea style="width:90%;min-height:6em" name="att_rmadness"></textarea>							
+					</div>								
+			</div>
+		</div><!--end of psych grid-->
+	</div>
+</div> <!-- end of psych tab -->
+<div class='sheet-gear'>
+	<div class="gearGrid">
+		<div class="col1">
+			<div class="centerCell  gaugeLabel">
+				<span  class="charLabel col1 row1" data-i18n="CONTROBAND">CONTROBAND (GEAR)</span>
+			</div>
+			<textarea name="attr_gear" style="margin-left: 5px;width: 93%;;min-height: 8em;"></textarea>	
+			<div class="centerCell  gaugeLabel">
+				<span  class="charLabel col1 row1" data-i18n="SMOKES">SMOKES</span>
+			</div>
+			<textarea name="attr_smokes" style="margin-left: 5px;width: 93%;min-height: 8em;"></textarea>
+			
+		</div>
+		<div class="col2">
+			<div class="centerCell  gaugeLabel">
+				<span  class="charLabel col1 row1" data-i18n="COMPONENTS">COMPONENTS</span>
+			</div>
+			<textarea name="attr_components" style="margin-left: 5px;width: 93%;min-height: 16em;"></textarea>
+		</div>		
+	</div>
+</div>
+
+	<rolltemplate class="sheet-rolltemplate-turnOrder">
+		<div class="wrapper">
+		
+			
+			<div class="rollHeader">Turn Order</div>
+			<div style="text-align:center">
+				<div style="display:inline-block;border-bottom:solid black 1px;width:98%"></div> 
+			</div>
+			<div class="rollBody">
+				<div class="rollResult">
+					<span>{{rank}}</span>		
+				</div>
+			</div>
+		</div>
+	</rolltemplate>
+	
+	
+	<rolltemplate class="sheet-rolltemplate-Roll2">
+		<div class="wrapper">
+		
+			
+			<div class="rollHeader">{{title}}</div>
+			<div style="text-align:center">
+				<div style="display:inline-block;border-bottom:solid black 1px;width:98%"></div> 
+			</div>
+			<div class="rollBody">
+				<div class="rollResult">
+					<span>{{result}}</span>		
+				</div>
+			</div>
+		</div>
+	</rolltemplate>
+	
+
+	<rolltemplate class="sheet-rolltemplate-Roll">
+		<div class="wrapper">
+
+
+			<div class="rollResult">{{title}}</div>
+
+			<div class="rollHeader">{{skill}}</div>
+			<div style="text-align:center">
+				<div style="display:inline-block;border-bottom:solid black 1px;width:98%"></div> 
+			</div>
+
+			<div class="rollBody"> <!-- -->
+				<div class="rollResult">Roll:{{roll}}  <= {{target}} </div>
+				
+				{{#rollGreater() roll target}} 
+					<div class="rollResult">Result:Failure</div>
+				{{/rollGreater() roll target}} 
+				{{#^rollGreater() roll target}} 
+					<div class="rollResult">Result:Success</div>
+				{{/^rollGreater() roll target}} 			
+			</div>
+
+		</div>
+		
+	</rolltemplate>
+	
+	
+	
+	
+
+<script type="text/worker">
+    const buttonlist = ["character","psych","gear"];
+    buttonlist.forEach(button => {
+        on(`clicked:${button}`, function() {
+            setAttrs({
+                sheetTab: button
+            });
+        });
+    });
+	
+  const despairRadioValues = ["0","1","2","3","4","5","6","7","8","9","10"];
+  despairRadioValues.forEach(function(value) {
+    on(`clicked:despair_${value}`, function() {
+	
+      setAttrs({
+        ["despair"]: value
+      });
+    });
+  });
+
+  
+ const guiltRadioValues = ["0","1","2","3","4","5","6","7","8","9","10"];
+  guiltRadioValues.forEach(function(value) {
+    on(`clicked:guilt_${value}`, function() {
+	
+      setAttrs({
+        ["guilt"]: value
+      });
+    });
+  });
+  
+  
+  const insanityRadioValues = ["0","1","2","3","4","5","6","7","8","9","10"];
+  insanityRadioValues.forEach(function(value) {
+    on(`clicked:insanity_${value}`, function() {
+	
+      setAttrs({
+        ["insanity"]: value
+      });
+    });
+  });  
+  
+</script>
