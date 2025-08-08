@@ -1,0 +1,634 @@
+@import url('https://fonts.googleapis.com/css?family=Special+Elite');
+
+div.sheet-tab-content
+{
+	font-family: 'Special Elite';
+	/*font-family: 'Verdana';*/
+	border-top-color: #000;
+    margin: 2px 0 0 5px;
+    padding: 5px;
+}
+
+.charsheet {
+	background-color:#a7a3a0;
+}
+
+.sheet-details{
+	/*font-family: 'Special Elite';*/
+	border: 1px solid black;
+	padding:5px;	
+	background-color:#dac2e2;
+	font-size:20px;
+}
+
+
+.sheet-details input{
+	font-size:32px;
+}
+
+.sheet-marginT10{
+	margin-top:10px;
+}
+
+.sheet-attributes{
+	/*font-family: 'Special Elite';*/
+	border: 1px solid black;
+	padding:5px;	
+	background-color:#dac2e2;
+	font-size:20px;
+}
+
+
+.sheet-Attributes input{
+	font-size:32px;
+}
+
+
+.sheet-prisonRecordOf{
+	font-size:20px	
+}
+
+.sheet-name{
+	width:496px;
+}
+
+.sheet-cin{
+	width:501px;
+}
+
+.sheet-prisonStatus{
+	width:386px;
+}
+
+.sheet-conviction{
+	width:419px;
+}
+
+
+.sheet-idFeatures{
+	width:291px;
+}
+
+.sheet-sentenceText{
+	font-size:15px
+}
+
+.sheet-charLabel{
+	align-self: end;
+	font-weight:bold;
+}
+
+
+.sheet-centerText{
+		text-align:center;
+}
+
+.sheet-text_input{
+	border: none;
+    box-shadow: none;
+    border-bottom: 1px solid black;
+    border-radius: 0;
+	display:inline-block;
+	outline:none;
+	line-height:12px;
+	padding-top:0px;
+	padding-bottom:0px;
+	background: transparent;
+
+}	
+
+
+.sheet-attribValues{
+	background-color: transparent;
+    display: inline-block;
+    font-size: 1.0em;
+    width: 50px;
+    box-shadow: none;
+    border: 0px;
+    border-radius: 0px;
+    text-align: center;
+    padding-top: 17px;
+    padding-bottom: 9px;
+    font-size: x-large;
+	left:0px;
+	top:0px;
+	z-index: 5;
+}
+
+
+.sheet-circle {
+  height: 50px;
+  width: 50px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.sheet-dtlsLine{
+	padding-bottom:4px;
+}
+
+
+/* Grids */
+.sheet-grid1 {
+
+	display: grid;
+    grid-template-columns: 80% 20%;
+    grid-gap: 10px;
+    grid-auto-rows: minmax(auto, auto);
+}
+
+.sheet-grid2{
+
+	display: grid;
+    grid-template-columns: 8% 19% 20% 8% 20% 18%;
+    grid-gap: 10px;
+    grid-auto-rows: minmax(auto, auto);
+}
+
+.sheet-grid3{
+
+	display: grid;
+    grid-template-columns: 6% 94%;
+    grid-gap: 10px;
+    grid-auto-rows: minmax(auto, auto);
+}
+
+.sheet-dieLabel{
+	margin:  0 5px 0 5px;
+}
+
+
+/* Text button */
+
+button[type=roll].sheet-text_roll::before {    
+    content: " ";
+    background-image: none;
+}
+
+button.sheet-text_roll[type="roll"] {
+	
+    /*width: 95%;*/
+    /*height:24px;*/
+    padding-bottom: 0;
+    display: inline-block;
+    margin: 0;
+    font-weight: 400;
+    text-align: center;
+    cursor: pointer;
+    background-image: none;
+    background-color: white;
+    /*border: 1px solid red;*/
+    white-space: nowrap;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+	font-size:xx-large;
+}
+
+button.sheet-text_roll[type="roll"]:hover {
+    background-color: #a7a3a0;
+    /*border-color: red;*/
+    color:white
+}
+
+button.sheet-text_roll[type="roll"] label, button[type="roll"] input {
+    height:24px;
+    line-height: 24px;
+    text-align:center;
+    width: 100%;
+    cursor: pointer;
+    background: none;
+    box-shadow: none;
+    transition: none;
+    border-radius: none;
+    border:none;
+    font-weight:700;
+}
+
+
+button.sheet-text_roll[type="roll"]:hover label, button[type="roll"]:hover input {
+    color: white;
+    border: none;
+}
+
+
+/* End Text button end*/
+
+
+
+.sheet-centerCell{
+	align-self: center;
+}
+
+.repcontainer[data-groupname="repeating_melee2"]{
+													 
+    width:100%!important;
+}
+
+
+.repcontainer[data-groupname="repeating_missle2"]{
+													 
+    width:100%!important;
+}
+
+
+.repcontainer[data-groupname="repeating_mounts"]{
+													 
+    width:100%!important;
+}
+
+
+
+
+.repcontainer{
+	width:112%;
+}
+
+.itemcontrol {
+    margin-left: -33px;
+}
+
+
+.repcontrol{
+	margin-right: 7px;
+}
+
+div.repcontrol button
+{
+	width: 13px;
+    color: transparent;
+    padding: 0px;
+    padding-left: 2px;
+    text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+	 
+}
+
+div.repcontrol button.repcontrol_add::before,
+div.repcontrol button.repcontrol_edit::before
+{
+    font-family: Pictos;
+    position: relative;
+    color: #000;
+	width:12px;
+	height:12px;
+}
+
+/* +Add */
+div.repcontrol button.repcontrol_add::before
+{
+	
+    content: "&"; /* & in Pictos is a + sign, while + is a plus inside a circle */    
+    left: -0px;
+    top: -0px;
+}
+
+/* Modify */
+div.repcontrol button.repcontrol_edit::before
+{
+	text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+    content: "x"; /* x in Pictos is a crossed hammer and wrench */
+    left: -0px;
+    top: -0px;
+}
+/* Done */
+div.repcontrol.editmode button.repcontrol_edit::before
+{
+    content: "3"; /* 3 in Pictos is a check mark */
+	 
+}
+
+
+
+
+
+.sheet-text_input{
+	border: none;
+    box-shadow: none;
+    border-bottom: 1px solid black;
+    border-radius: 0;
+	display:inline-block;
+	outline:none;
+	padding:0px;
+	padding-left:3px;
+	line-height:12px;
+}	
+
+
+.charsheet {
+	min-width: 832px;
+	max-width: 832px;	
+}
+
+
+.sheet-col1{
+		grid-column:1;
+}	
+
+.sheet-col2{
+		grid-column:2;
+}	
+
+.sheet-col3{
+		grid-column:3;
+}	
+
+.sheet-col4{
+		grid-column:4;
+}	
+
+.sheet-col5{
+		grid-column:5;
+}	
+
+.sheet-col6{
+		grid-column:6;
+}	
+
+.sheet-col7{
+		grid-column:7;
+}	
+
+
+.sheet-col8{
+		grid-column:8;
+}	
+
+.sheet-col9{
+		grid-column:9;
+}	
+
+.sheet-col10{
+		grid-column:10;
+}	
+
+.sheet-col11{
+		grid-column:11;
+}	
+
+
+.sheet-col12{
+		grid-column:12;
+}	
+
+.sheet-col113{
+		grid-column:13;
+}	
+
+.sheet-col114{
+		grid-column:14;
+}	
+
+.sheet-col15{
+		grid-column:15;
+}	
+
+
+.sheet-col16{
+		grid-column:16;
+}	
+
+.sheet-col17{
+		grid-column:17;
+}	
+
+.sheet-col18{
+		grid-column:18;
+}	
+
+.sheet-col19{
+		grid-column:19;
+}	
+
+.sheet-col20{
+		grid-column:20;
+}	
+
+.sheet-col21{
+		grid-column:21;
+}	
+
+.sheet-col22{
+		grid-column:22;
+}	
+
+
+.sheet-row1{
+		grid-row:1;
+}	
+
+.sheet-row2{
+		grid-row:2;
+}	
+
+.sheet-row3{
+		grid-row:3;
+}	
+
+.sheet-row4{
+		grid-row:4;
+}	
+
+.sheet-row5{
+		grid-row:5;
+}	
+
+.sheet-row6{
+		grid-row:6;
+}
+
+
+.sheet-row7{
+		grid-row:7;
+}
+
+
+.sheet-row8{
+		grid-row:8;
+}
+
+/* Radio button sample */
+/* Configure a container for the radio buttons. */
+.sheet-radios {
+  display: flex;
+  align-items: center;
+}
+
+/* Configure the button styling. This example makes it look like a radio. */
+button.sheet-radio {
+  padding: 0;
+  border: solid 1px #a8a8a8;
+  cursor: pointer;
+
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+button.sheet-radio > span.sheet-checked {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: buttontext;
+}
+
+/* Hide the "checked" section of the radio if the attribute value does not match the radio */
+input.sheet-radio:not([value="1"]) ~ button.sheet-radio-1 > span.sheet-checked {
+  display: none;
+}
+input.sheet-radio:not([value="2"]) ~ button.sheet-radio-2 > span.sheet-checked {
+  display: none;
+}
+input.sheet-radio:not([value="3"]) ~ button.sheet-radio-3 > span.sheet-checked {
+  display: none;
+}
+input.sheet-radio:not([value="4"]) ~ button.sheet-radio-4 > span.sheet-checked {
+  display: none;
+}
+input.sheet-radio:not([value="5"]) ~ button.sheet-radio-5 > span.sheet-checked {
+  display: none;
+}
+input.sheet-radio:not([value="6"]) ~ button.sheet-radio-6 > span.sheet-checked {
+  display: none;
+}
+
+/* end radio button sample*/
+/* Die graphic select */
+.sheet-container {
+    width: 44px;
+}
+
+.sheet-container,
+.sheet-child {
+    display: inline-block;
+}
+
+.sheet-child {
+    vertical-align: middle;
+    width: 35px;
+    height: 35px;
+}
+
+.sheet-child input,
+.sheet-child input + label {
+    display: none;
+    z-index: 1;
+}
+
+.sheet-child:hover {
+    background: gray;
+    position:absolute;
+    width: 100px;
+    height: auto;
+    z-index: 1;
+    padding: 5px;
+}
+
+.sheet-child:hover > div.sheet-d4 {
+    display: none;
+}
+
+.sheet-child:hover input,
+.sheet-child:hover input + label {
+    display: inline;
+}
+
+.sheet-child:hover input + label {
+   margin-right: 50%
+}
+
+.sheet-child:hover label {
+    display: inline-block;
+}
+
+.sheet-dieLabel{
+	font-size:small;
+	padding-right:0px;
+}
+
+div.sheet-d4 {
+    /*background-position: -411px -1px;*/
+    width: 46px;
+    height: 46px;
+    background-image: url("https://raw.githubusercontent.com/Lockbox313/imagedump/master/AAH/Graphics/d4_2.png");
+    background-repeat: no-repeat;
+    color: transparent;
+    display: none;
+	background-size:cover;
+}
+
+
+div.sheet-d6 {
+    /*background-position: -703px -1px;*/
+    width: 46px;
+    height: 46px;
+    background-image: url("https://raw.githubusercontent.com/Lockbox313/imagedump/master/AAH/Graphics/d6_2.png");
+    background-repeat: no-repeat;
+    color: transparent;
+    display: none;
+	background-size:cover;
+}
+
+div.sheet-d8 {
+    /*background-position: -703px -1px;*/
+    width: 46px;
+    height: 46px;
+    background-image: url("https://raw.githubusercontent.com/Lockbox313/imagedump/master/AAH/Graphics/d8_2.png");
+    background-repeat: no-repeat;
+    color: transparent;
+    display: none;
+	background-size:cover;
+}
+
+div.sheet-d10 {
+    /*background-position: -703px -1px;*/
+    width: 46px;
+    height: 46px;
+    background-image: url("https://raw.githubusercontent.com/Lockbox313/imagedump/master/AAH/Graphics/d10_2.png");
+    background-repeat: no-repeat;
+    color: transparent;
+    display: none;
+	background-size:cover;
+}
+
+div.sheet-d12 {
+    /*background-position: -703px -1px;*/
+    width: 46px;
+    height: 46px;
+    background-image: url("https://raw.githubusercontent.com/Lockbox313/imagedump/master/AAH/Graphics/d12_2.png");
+    background-repeat: no-repeat;
+    color: transparent;
+    display: none;
+	background-size:cover;
+}
+
+
+div.sheet-d20 {
+    /*background-position: -703px -1px;*/
+    width: 46px;
+    height: 46px;
+    background-image: url("https://raw.githubusercontent.com/Lockbox313/imagedump/master/AAH/Graphics/d20_2.png");
+    background-repeat: no-repeat;
+    color: transparent;
+    display: none;
+	background-size:cover;
+}
+
+.sheet-child:not(:hover) input.sheet-select-radio.sheet-d4:checked ~ div.sheet-d4,
+.sheet-child:not(:hover) input.sheet-select-radio.sheet-d6:checked ~ div.sheet-d6,
+.sheet-child:not(:hover) input.sheet-select-radio.sheet-d8:checked ~ div.sheet-d8,
+.sheet-child:not(:hover) input.sheet-select-radio.sheet-d10:checked ~ div.sheet-d10,
+.sheet-child:not(:hover) input.sheet-select-radio.sheet-d12:checked ~ div.sheet-d12,
+.sheet-child:not(:hover) input.sheet-select-radio.sheet-d20:checked ~ div.sheet-d20 {
+    display: block;
+}
+
+
+/* end Die graphic select */
